@@ -6,7 +6,7 @@ const Notice = () => {
   return (
 <Fragment>
   <ContentLayout>
-    <span>notice</span>
+    <span>Expliquer le concept du magasin</span>
   </ContentLayout>
 </Fragment>
   );
