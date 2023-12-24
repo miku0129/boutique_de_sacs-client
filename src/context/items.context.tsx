@@ -1,20 +1,6 @@
 import { createContext, useEffect, useState, ReactNode } from "react";
 import axios from "axios";
 
-interface Item_img_url {
-  id: number;
-  is_main_img: boolean;
-  item_img_url: string;
-};
-
-interface Item {
-  id: string;
-  item_name: string;
-  item_desc: string;
-  item_price: number;
-  item_img_urls: Item_img_url[];
-};
-
 export const ItemsContext = createContext<Item[] | any>([]);
 
 export const ItemsProvider = ({ children }: { children: ReactNode }) => {
