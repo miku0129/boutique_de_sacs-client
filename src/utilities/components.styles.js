@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderAndFooterLayout = styled.div`
   display: grid;
@@ -14,3 +15,7 @@ export const HomeLayout = styled.div`
 export const ContentLayout = styled.div`
   padding: 0px 20px 0px 20px;
 `;
+
+export const CustomLink = styled(Link)`
+    text-decoration: none;
+`
