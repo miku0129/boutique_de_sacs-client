@@ -1,5 +1,7 @@
-import { useEffect, useState, Fragment } from "react";
-import axios from "axios";
+import { Fragment, useContext } from "react";
+import { Link } from "react-router-dom";
+
+import { ItemsContext } from "../../context/items.context";
 
 import { useWindowSize } from "../../utilities/useWindowSize";
 import { ContentLayout } from "../../utilities/components.styles";
@@ -7,7 +9,6 @@ import { CustomImageListItem } from "./preview.styles";
 
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 
 import "./preview.styles.scss";
 
@@ -26,33 +27,22 @@ type Item = {
 };
 
 const Preview = () => {
-  const [items, setItems] = useState<Item[]>([]);
-
   const [width, height] = useWindowSize();
-  console.log(width);
 
-  useEffect(() => {
-    const getItems = async () => {
-      const items = await axios.get(
-        "https://boutique-de-sacs-winter-night-1102.fly.dev/items"
-      );
-      setItems(items.data);
-    };
-    getItems();
-  }, []);
+  const items = useContext(ItemsContext)[0];
 
   const imageItem = () => {
-    return items.map((item) => (
-      // <ImageListItem key={item.id}>
-      <CustomImageListItem key={item.id}>
-        <img
-          srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-          src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
-          alt={item.item_name}
-          loading="lazy"
-        />
-      </CustomImageListItem>
-      // </ImageListItem>
+    return items.map((item: Item) => (
+      <Link to={`item/${item.id}`}>
+        <CustomImageListItem key={item.id}>
+          <img
+            srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
+            alt={item.item_name}
+            loading="lazy"
+          />
+        </CustomImageListItem>
+      </Link>
     ));
   };
 
