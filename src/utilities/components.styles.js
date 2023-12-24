@@ -7,6 +7,10 @@ export const HeaderAndFooterLayout = styled.div`
 `;
 
 export const HomeLayout = styled.div`
-display: grid;
-grid-template-rows:  1fr auto;
+  display: grid;
+  grid-template-rows: 1fr auto;
+`;
+
+export const ContentLayout = styled.div`
+  padding: 0px 20px 0px 20px;
 `;

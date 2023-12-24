@@ -1,7 +1,15 @@
-import "./footer.styles.scss"
+import { Fragment } from "react";
+import { ContentLayout } from "../../utilities/components.styles";
+import "./footer.styles.scss";
 
 const Footer = () => {
-    return <div className="footer">Footer</div>
-}
+  return (
+    <Fragment>
+      <ContentLayout>
+        <span>Footer</span>
+      </ContentLayout>
+    </Fragment>
+  );
+};
 
-export default Footer; 
+export default Footer;
