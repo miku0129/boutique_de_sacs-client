@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { useWindowSize } from "../../utilities/useWindowSize";
 import { ContentLayout } from "../../utilities/components.styles";
+import { CustomImageListItem } from "./preview.styles";
 
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
@@ -42,14 +43,16 @@ const Preview = () => {
 
   const imageItem = () => {
     return items.map((item) => (
-      <ImageListItem key={item.id}>
+      // <ImageListItem key={item.id}>
+      <CustomImageListItem key={item.id}>
         <img
           srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
           src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
           alt={item.item_name}
           loading="lazy"
         />
-      </ImageListItem>
+      </CustomImageListItem>
+      // </ImageListItem>
     ));
   };
 
