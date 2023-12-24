@@ -11,10 +11,12 @@ const Item = () => {
 
   const items = useContext(ItemsContext)[0];
   const params = useParams();
-  const id = params.id;
+  let id: string | number | undefined = params.id;
   let item;
-  if (id) item = items[id];
-  console.log("item", item);
+  if (id) id = Number(id);
+  item = items.find((item: Item) => {
+    return item.id === id;
+  });
 
   const handleSelect = (selectedIndex: number) => {
     setIndex(selectedIndex);

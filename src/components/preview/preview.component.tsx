@@ -18,18 +18,21 @@ const Preview = () => {
   const items = useContext(ItemsContext)[0];
 
   const imageItem = () => {
-    return items.map((item: Item) => (
-      <Link to={`item/${item.id}`}>
-        <CustomImageListItem key={item.id}>
-          <img
-            srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
-            alt={item.item_name}
-            loading="lazy"
-          />
-        </CustomImageListItem>
-      </Link>
-    ));
+    return items.map((item: Item) => {
+      console.log("item id", item.id);
+      return (
+        <Link to={`item/${item.id}`}>
+          <CustomImageListItem key={item.id}>
+            <img
+              srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
+              alt={item.item_name}
+              loading="lazy"
+            />
+          </CustomImageListItem>
+        </Link>
+      );
+    });
   };
 
   const handleStyleOfImageList = () => {
