@@ -20,5 +20,5 @@ export const CustomLink = styled(Link)`
   text-decoration: none;
 `;
 export const CustomSpan = styled.span`
-  font-size: large;
+  font-size: x-large;
 `;
