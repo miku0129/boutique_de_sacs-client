@@ -9,8 +9,6 @@ export const ItemContentLayout = styled(ContentLayout)`
   @media (max-width: 450px) {
     flex-direction: column-reverse;
     padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 10px  }
 `;
 
 export const CustomItemImg = styled.img`
