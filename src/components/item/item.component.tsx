@@ -33,7 +33,7 @@ const Item = () => {
             item.item_img_urls.map((item_img_url: Item_img_url) => {
               return (
                 <Carousel.Item>
-                  <CustomItemImg src={item_img_url.url} />;
+                  <CustomItemImg src={item_img_url.url} />
                 </Carousel.Item>
               );
             })}
