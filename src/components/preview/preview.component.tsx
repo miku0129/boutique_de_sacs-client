@@ -24,9 +24,13 @@ const Preview = () => {
         <Link to={`item/${item.id}`}>
           <CustomImageListItem key={item.id}>
             <img
-              srcSet={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.item_img_urls[0].item_img_url}?w=248&fit=crop&auto=format`}
-              alt={item.item_name}
+              srcSet={`${
+                item.item_img_urls && item.item_img_urls[0].url
+              }?w=248&fit=crop&auto=format&dpr=2 2x`}
+              src={`${
+                item.item_img_urls && item.item_img_urls[0].url
+              }?w=248&fit=crop&auto=format`}
+              alt={item.name}
               loading="lazy"
             />
           </CustomImageListItem>

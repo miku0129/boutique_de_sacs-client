@@ -31,20 +31,20 @@ const Item = () => {
           <Carousel.Item>
             {item &&
               item.item_img_urls &&
-              item.item_img_urls.map((url: Item_img_url) => {
-                return <CustomItemImg src={url.item_img_url} />;
+              item.item_img_urls.map((item_img_url: Item_img_url) => {
+                return <CustomItemImg src={item_img_url.url} />;
               })}
           </Carousel.Item>
         </Carousel>
         <div>
           <div>
-            <h1>{item.item_name}</h1>
+            <h1>{item.name}</h1>
           </div>
           <div>
-            <h3>{item.item_desc}</h3>
+            <h3>{item.desc}</h3>
           </div>
           <div>
-            <h3>Price: {item.item_price}euros</h3>
+            <h3>Price: {item.price}euros</h3>
           </div>
           <div>
             <span>url-to-sumup</span>
