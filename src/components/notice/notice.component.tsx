@@ -1,5 +1,7 @@
 import { Fragment } from "react";
+
 import { NoticeContentLayout } from "./notice.styles";
+import { CustomSpan } from "../../utilities/components.styles";
 
 import { shop_concept } from "../../asset/asset";
 
@@ -9,7 +11,7 @@ const Notice = () => {
   return (
     <Fragment>
       <NoticeContentLayout>
-        <span>{shop_concept}</span>
+        <CustomSpan>{shop_concept}</CustomSpan>
       </NoticeContentLayout>
     </Fragment>
   );

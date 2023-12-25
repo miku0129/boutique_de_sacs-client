@@ -9,7 +9,7 @@ export const HeaderAndFooterLayout = styled.div`
 
 export const HomeLayout = styled.div`
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 0.8fr auto;
 `;
 
 export const ContentLayout = styled.div`
@@ -17,5 +17,8 @@ export const ContentLayout = styled.div`
 `;
 
 export const CustomLink = styled(Link)`
-    text-decoration: none;
-`
+  text-decoration: none;
+`;
+export const CustomSpan = styled.span`
+  font-size: large;
+`;
