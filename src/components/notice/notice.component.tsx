@@ -1,14 +1,17 @@
 import { Fragment } from "react";
-import { ContentLayout } from "../../utilities/components.styles";
+import { NoticeContentLayout } from "./notice.styles";
+
+import { shop_concept } from "../../asset/asset";
+
 import "./notice.styles.scss";
 
 const Notice = () => {
   return (
-<Fragment>
-  <ContentLayout>
-    <span>Expliquer le concept du magasin</span>
-  </ContentLayout>
-</Fragment>
+    <Fragment>
+      <NoticeContentLayout>
+        <span>{shop_concept}</span>
+      </NoticeContentLayout>
+    </Fragment>
   );
 };
 

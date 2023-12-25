@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
+import { shop_name } from "../../asset/asset";
 import { CustomLink } from "../../utilities/components.styles";
 import "./header.styles.scss";
 
@@ -14,7 +15,7 @@ const Header = () => {
         <Container>
           <CustomLink to={"/"}>
             <Navbar.Brand href="/">
-              <span className="custom-navbar-main-title">Chez Aziliz</span>
+              <span className="custom-navbar-main-title">{shop_name}</span>
             </Navbar.Brand>
           </CustomLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
