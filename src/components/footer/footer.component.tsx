@@ -5,9 +5,11 @@ import "./footer.styles.scss";
 const Footer = () => {
   return (
     <Fragment>
-      <ContentLayout>
-        <span>Footer</span>
-      </ContentLayout>
+      <div className="footer">
+        <ContentLayout>
+          <span>Footer</span>
+        </ContentLayout>
+      </div>
     </Fragment>
   );
 };

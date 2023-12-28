@@ -5,6 +5,11 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
 import { shop_name } from "../../asset/asset";
+import { header_about } from "../../asset/asset";
+import { header_category_1 } from "../../asset/asset";
+import { header_category_2 } from "../../asset/asset";
+import { header_category_3 } from "../../asset/asset";
+
 import { CustomLink } from "../../utilities/components.styles";
 import "./header.styles.scss";
 
@@ -21,12 +26,12 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#about">About</Nav.Link>
-              <NavDropdown title="Shop" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Sac</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Panier</NavDropdown.Item>
+              <Nav.Link href="#about">{header_about}</Nav.Link>
+              <NavDropdown title="boutique" id="basic-nav-dropdown">
+                <NavDropdown.Item href="#action/3.1">{header_category_1}</NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">{header_category_2}</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.3">
-                  Réparation des chaises
+                  {header_category_3}
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
