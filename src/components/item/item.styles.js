@@ -17,7 +17,7 @@ export const CustomItemImg = styled.img`
   object-fit: contain;
   @media (max-width: 450px) {
     width: 350px;
-    height: 350px;
+    height: 300px;
     object-fit: contain;
   }
 `;

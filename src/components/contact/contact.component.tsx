@@ -1,0 +1,1 @@
+import "./contact.styles.scss"

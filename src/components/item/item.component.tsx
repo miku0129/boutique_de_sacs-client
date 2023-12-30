@@ -10,6 +10,7 @@ import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.compon
 import { ItemContentLayout } from "./item.styles";
 import { CustomItemImg } from "./item.styles";
 import { ContentLayout } from "../../utilities/components.styles";
+import { Button } from "react-bootstrap";
 
 import "./item.component.scss";
 
@@ -23,35 +24,35 @@ const Item = () => {
     return item.id === id;
   });
 
-  console.log("item", item);
   return (
     <Fragment>
       <ItemContentLayout>
-        <Carousel>
-          {item &&
-            item.item_img_urls &&
-            item.item_img_urls.map((item_img_url: Item_img_url) => {
-              return (
-                <Carousel.Item>
-                  <CustomItemImg src={item_img_url.url} />
-                </Carousel.Item>
-              );
-            })}
-        </Carousel>
+        <div>
+          <Carousel>
+            {item &&
+              item.item_img_urls &&
+              item.item_img_urls.map((item_img_url: Item_img_url) => {
+                return (
+                  <Carousel.Item>
+                    <CustomItemImg src={item_img_url.url} />
+                  </Carousel.Item>
+                );
+              })}
+          </Carousel>
+          <h3>{item && item.desc}</h3>
+        </div>
 
         <div>
           <div>
             <h1>{item && item.name}</h1>
-          </div>
-          <div>
-            <h3>{item && item.desc}</h3>
+            <span>numéro: </span>
           </div>
           <div>
             <h3>Price: {item && item.price}euros</h3>
           </div>
-          <div>
-            <span>link to contact</span>
-          </div>
+          <Button style={{ backgroundColor: "#eda184", border: "none" }}>
+            Achet
+          </Button>
         </div>
       </ItemContentLayout>
       <ContentLayout>
