@@ -22,3 +22,18 @@ export const CustomLink = styled(Link)`
 export const CustomSpan = styled.span`
   font-size: x-large;
 `;
+
+export const CustomBtn = styled.button`
+  background-color: #eda184;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  width: 60px;
+  height: 30px;
+
+  &:hover {
+    background-color: white;
+    color: #eda184;
+    border: solid 1px #eda184;
+  }
+`;
