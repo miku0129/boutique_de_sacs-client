@@ -5,11 +5,11 @@ import { ItemsContext } from "../../context/items.context";
 import Carousel from "react-bootstrap/Carousel";
 
 import NoticeItemGeneral from "../notice_item_general/notice_item_general.component";
-import NoticeItemOrdermade from "../notice_item_ordermade/notice_item_ordermade";
 import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.component";
 
 import { ItemContentLayout } from "./item.styles";
 import { CustomItemImg } from "./item.styles";
+import { ContentLayout } from "../../utilities/components.styles";
 
 import "./item.component.scss";
 
@@ -54,15 +54,14 @@ const Item = () => {
           </div>
         </div>
       </ItemContentLayout>
-      <hr />
-      <h2>Cher client</h2>
-      {item && (item.category === "sac" || item.category === "panier") && (
-        <div>
+      <ContentLayout>
+        <hr />
+        <h2>Cher client</h2>
+        {item && (item.category === "sac" || item.category === "panier") && (
           <NoticeItemGeneral />
-          <NoticeItemOrdermade />
-        </div>
-      )}
-      {item && item.category === "autre" && <NoticeRepairChair />}
+        )}
+        {item && item.category === "autre" && <NoticeRepairChair />}
+      </ContentLayout>
     </Fragment>
   );
 };
