@@ -1,8 +1,12 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
 
 import Carousel from "react-bootstrap/Carousel";
+
+import NoticeItemGeneral from "../notice_item_general/notice_item_general.component";
+import NoticeItemOrdermade from "../notice_item_ordermade/notice_item_ordermade";
+import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.component";
 
 import { ItemContentLayout } from "./item.styles";
 import { CustomItemImg } from "./item.styles";
@@ -10,8 +14,6 @@ import { CustomItemImg } from "./item.styles";
 import "./item.component.scss";
 
 const Item = () => {
-  const [index, setIndex] = useState(0);
-
   const items = useContext(ItemsContext)[0];
   const params = useParams();
   let id: string | number | undefined = params.id;
@@ -21,9 +23,7 @@ const Item = () => {
     return item.id === id;
   });
 
-  const handleSelect = (selectedIndex: number) => {
-    setIndex(selectedIndex);
-  };
+  console.log("item", item);
   return (
     <Fragment>
       <ItemContentLayout>
@@ -50,10 +50,19 @@ const Item = () => {
             <h3>Price: {item && item.price}euros</h3>
           </div>
           <div>
-            <span>url-to-sumup</span>
+            <span>link to contact</span>
           </div>
         </div>
       </ItemContentLayout>
+      <hr />
+      <h2>Cher client</h2>
+      {item && (item.category === "sac" || item.category === "panier") && (
+        <div>
+          <NoticeItemGeneral />
+          <NoticeItemOrdermade />
+        </div>
+      )}
+      {item && item.category === "autre" && <NoticeRepairChair />}
     </Fragment>
   );
 };
