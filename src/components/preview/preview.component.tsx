@@ -1,5 +1,5 @@
 import { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import { ItemsContext } from "../../context/items.context";
 
@@ -12,10 +12,27 @@ import ImageList from "@mui/material/ImageList";
 
 import "./preview.styles.scss";
 
+type PreviewPropsType = {
+  previewtype?: Sac | Panier | Other;
+};
+
 const Preview = () => {
   const [width, height] = useWindowSize();
 
-  const items = useContext(ItemsContext)[0];
+  const location = useLocation();
+  const state = location.state as PreviewPropsType;
+
+  let items = useContext(ItemsContext)[0];
+
+  if (state !== null) {
+    if (state.previewtype === "sac") {
+      items = items.filter((item: Item) => item.category === "sac");
+    } else if (state.previewtype === "panier") {
+      items = items.filter((item: Item) => item.category === "panier");
+    } else {
+      items = items.filter((item: Item) => item.category === "autre");
+    }
+  }
 
   const imageItem = () => {
     return items.map((item: Item) => {

@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -28,11 +30,21 @@ const Header = () => {
             <Nav className="me-auto">
               <Nav.Link href="#about">{header_about}</Nav.Link>
               <NavDropdown title="boutique" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">{header_category_1}</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">{header_category_2}</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  {header_category_3}
-                </NavDropdown.Item>
+                <CustomLink to={"/"} state={{ previewtype: "sac" }}>
+                  <NavDropdown.Item href="#action/3.1">
+                    {header_category_1}
+                  </NavDropdown.Item>
+                </CustomLink>
+                <CustomLink to={"/"} state={{ previewtype: "panier" }}>
+                  <NavDropdown.Item href="#action/3.2">
+                    {header_category_2}
+                  </NavDropdown.Item>
+                </CustomLink>
+                <CustomLink to={"/"} state={{ previewtype: "autre" }}>
+                  <NavDropdown.Item href="#action/3.3">
+                    {header_category_3}
+                  </NavDropdown.Item>
+                </CustomLink>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
               </NavDropdown>
