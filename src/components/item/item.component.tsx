@@ -9,9 +9,11 @@ import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.compon
 
 import { ItemContentLayout } from "./item.styles";
 import { CustomItemImg } from "./item.styles";
-import { ContentLayout, CustomBtn } from "../../utilities/components.styles";
-// import { Button } from "react-bootstrap";
-
+import {
+  ContentLayout,
+  CustomBtn,
+  CustomLink,
+} from "../../utilities/components.styles";
 
 import "./item.component.scss";
 
@@ -51,11 +53,11 @@ const Item = () => {
           <div>
             <h3>Price: {item && item.price}euros</h3>
           </div>
-          {/* <Button style={{ backgroundColor: "#eda184", border: "none" }}>
-            Achet
-          </Button> */}
-          <CustomBtn>Achet</CustomBtn>
-
+          {item && (
+            <CustomLink to={"/contact"} state={{ item }}>
+              <CustomBtn>Achet</CustomBtn>
+            </CustomLink>
+          )}
         </div>
       </ItemContentLayout>
       <ContentLayout>

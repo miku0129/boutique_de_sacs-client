@@ -46,7 +46,11 @@ const Header = () => {
                   </NavDropdown.Item>
                 </CustomLink>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Contact</NavDropdown.Item>
+                <CustomLink to={"/contact"}>
+                  <NavDropdown.Item href="#action/3.4">
+                    Contact
+                  </NavDropdown.Item>
+                </CustomLink>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
