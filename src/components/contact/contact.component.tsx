@@ -1,4 +1,4 @@
-import { FormEvent, Fragment, useState } from "react";
+import { FormEvent, Fragment, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { init, send } from "@emailjs/browser";
@@ -23,17 +23,28 @@ const Contact = () => {
   const [whatappuserName, setWhatsappuserName] = useState("");
   const [destination, setDestination] = useState("");
   const [isChecked, setIsChecked] = useState(false);
+  const [itemNumber, setItemNumber] = useState("");
+  const [itemImg, setItemImg] = useState("");
   const [content, setContent] = useState("");
-
-  console.log(firstName)
-  console.log(destination)
-  console.log(isChecked)
-  console.log(content)
-
-
 
   const location = useLocation();
   const state = location.state as ContactPropsType;
+  useEffect(() => {
+    if (state && state.item !== undefined) {
+      setItemNumber(state.item.id);
+    }
+  }, [state]);
+  useEffect(() => {
+    if (
+      state &&
+      state.item !== undefined &&
+      state.item.item_img_urls !== undefined
+    ) {
+      state.item.item_img_urls
+        .filter((img) => img.is_main)
+        .forEach((img) => setItemImg(img.url));
+    }
+  }, [state]);
 
   // console.log("contact state", state);
 
@@ -59,6 +70,7 @@ const Contact = () => {
         email: email,
         whatappuserName: whatappuserName,
         destination: destination,
+        itemNumber: itemNumber, 
         content: content,
       };
 
@@ -108,9 +120,6 @@ const Contact = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
-        </Row>
-
-        <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={6}>
             <Form.Label>Nom d'utilisateur WhatsApp</Form.Label>
             <Form.Control
@@ -122,13 +131,14 @@ const Contact = () => {
         </Row>
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridState" xs={6}>
-            <Form.Label>Un lieu de livraison</Form.Label>
+          <Form.Group as={Col} controlId="formGridState" xs={3}>
+            <Form.Label>Localisation</Form.Label>
             <Form.Select
-              defaultValue="Saint François"
+              defaultValue="Choisir..."
               value={destination}
               onChange={(e) => setDestination(e.target.value)}
             >
+              <option>Choisir...</option>
               <option>Saint François</option>
               <option>Le Moule</option>
               <option>Sainte Anne</option>
@@ -139,14 +149,20 @@ const Contact = () => {
           </Form.Group>
         </Row>
 
-        <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="<Rédiger un texte pour obtenir le consentement au traitement des données personnelles.>"
-            onClick={() => setIsChecked(!isChecked)}
-            value={`${isChecked}`}
-          />
-        </Form.Group>
+        <Row className="mb-3">
+          <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
+            <Form.Label>Numéro de l'article</Form.Label>
+            <Form.Control
+              placeholder="Numéro de l'article"
+              value={itemNumber}
+              onChange={(e) => setItemNumber(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
+            <Form.Label>Image du produit</Form.Label>
+            <img src={itemImg} style={{ width: "200px" }} />
+          </Form.Group>
+        </Row>
 
         <Form.Group className="mb-3" id="formGridContents">
           <Form.Label htmlFor="inputForm">Contenu</Form.Label>
@@ -159,6 +175,15 @@ const Contact = () => {
           <Form.Text id="contentHelpBlock" muted>
             Veuillez préciser la nature de votre demande.
           </Form.Text>
+        </Form.Group>
+
+        <Form.Group className="mb-3" id="formGridCheckbox">
+          <Form.Check
+            type="checkbox"
+            label="<Rédiger un texte pour obtenir le consentement au traitement des données personnelles.>"
+            onClick={() => setIsChecked(!isChecked)}
+            value={`${isChecked}`}
+          />
         </Form.Group>
 
         <Button variant="primary" type="submit">
