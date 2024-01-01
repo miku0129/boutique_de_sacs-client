@@ -21,17 +21,19 @@ const Contact = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [whatappuserName, setWhatsappuserName] = useState("");
-  const [destination, setDestination] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
-  const [itemNumber, setItemNumber] = useState("");
+  const [dLocation, setDLocation] = useState("");
+  const [isAgreed, setIsAgreed] = useState(false);
+  const [itemIdNum, setItemIdNum] = useState("");
   const [itemImg, setItemImg] = useState("");
-  const [content, setContent] = useState("");
+  const [text, setText] = useState("");
+
+  console.log("itemIdNum", itemIdNum)
 
   const location = useLocation();
   const state = location.state as ContactPropsType;
   useEffect(() => {
     if (state && state.item !== undefined) {
-      setItemNumber(state.item.id);
+      setItemIdNum(state.item.id);
     }
   }, [state]);
   useEffect(() => {
@@ -63,21 +65,23 @@ const Contact = () => {
       // emailJS初期化
       init(userID);
 
+      console.log("item id num ??", itemIdNum)
+
       // emailJS送信データを定義
       const params = {
         from_first_name: firstName,
         from_last_name: lastName,
         email: email,
         whatappuserName: whatappuserName,
-        destination: destination,
-        itemNumber: itemNumber, 
-        content: content,
+        dLocation: dLocation,
+        itemIdNum: itemIdNum,
+        text: text,
       };
 
       // emailJS送信
       try {
         await send(serviceID, templateID, params);
-        alert("送信成功");
+        alert("Succès de la transmission");
       } catch (error) {
         // 送信失敗したらalertで表示
         alert(error);
@@ -87,9 +91,6 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <div>Contact/ {state && state.item && state.item.name}</div>
-      <br />
-
       <Form onSubmit={(e) => onSubmit(e)}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formFirstname">
@@ -135,8 +136,8 @@ const Contact = () => {
             <Form.Label>Localisation</Form.Label>
             <Form.Select
               defaultValue="Choisir..."
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
+              value={dLocation}
+              onChange={(e) => setDLocation(e.target.value)}
             >
               <option>Choisir...</option>
               <option>Saint François</option>
@@ -153,9 +154,8 @@ const Contact = () => {
           <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
             <Form.Label>Numéro de l'article</Form.Label>
             <Form.Control
-              placeholder="Numéro de l'article"
-              value={itemNumber}
-              onChange={(e) => setItemNumber(e.target.value)}
+              value={itemIdNum}
+              onChange={(e) => setItemIdNum(e.target.value)}
             />
           </Form.Group>
           <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
@@ -168,9 +168,9 @@ const Contact = () => {
           <Form.Label htmlFor="inputForm">Contenu</Form.Label>
           <Form.Control
             type="text"
-            aria-describedby="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            aria-describedby="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
           <Form.Text id="contentHelpBlock" muted>
             Veuillez préciser la nature de votre demande.
@@ -181,8 +181,8 @@ const Contact = () => {
           <Form.Check
             type="checkbox"
             label="<Rédiger un texte pour obtenir le consentement au traitement des données personnelles.>"
-            onClick={() => setIsChecked(!isChecked)}
-            value={`${isChecked}`}
+            onClick={() => setIsAgreed(!isAgreed)}
+            value={`${isAgreed}`}
           />
         </Form.Group>
 
@@ -190,67 +190,6 @@ const Contact = () => {
           Submit
         </Button>
       </Form>
-
-      {/* <div className="mt-20">
-        <h2 className="text-center text-2xl font-bold">お問い合わせフォーム</h2>
-        <div className="mx-auto mt-9 max-w-lg">
-          <form
-            onSubmit={(e) => onSubmit(e)}
-            className="w-full space-y-9 rounded bg-white p-3  shadow-2xl"
-          >
-            <div>
-              <label
-                htmlFor="name"
-                className=" mb-3 block font-bold text-black"
-              >
-                お名前
-              </label>
-              <input
-                className="form-input"
-                id="name"
-                type="text"
-                placeholder="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className=" mb-3 block font-bold text-black"
-              >
-                メールアドレス
-              </label>
-              <input
-                className="form-input"
-                id="email"
-                type="text"
-                placeholder="your@examle.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="content"
-                className=" mb-3 block font-bold text-black"
-              >
-                お問い合わせ内容
-              </label>
-              <textarea
-                className="form-input"
-                id="content"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
-            </div>
-            <input
-              type="submit"
-              className="block w-full rounded bg-blue-700 py-2 px-3 text-lg font-bold text-white  shadow transition-all hover:cursor-pointer hover:opacity-80"
-            />
-          </form>
-        </div>
-      </div> */}
 
       <CustomBtn onClick={() => navigate(-1)}>Retour</CustomBtn>
     </Fragment>
