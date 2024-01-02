@@ -1,9 +1,9 @@
-import { FormEvent, Fragment, useState, useEffect } from "react";
+import { FormEvent, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { init, send } from "@emailjs/browser";
 
-import { CustomBtn } from "../../utilities/components.styles";
+import { ContentLayout, CustomBtn } from "../../utilities/components.styles";
 
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -80,6 +80,12 @@ const Contact = () => {
       try {
         await send(serviceID, templateID, params);
         alert("Succès de la transmission");
+        setFirstName("");
+        setLastName("");
+        setEmail("");
+        setWhatsappuserName("");
+        setDLocation("");
+        setText("")
       } catch (error) {
         // 送信失敗したらalertで表示
         alert(error);
@@ -88,98 +94,105 @@ const Contact = () => {
   };
 
   return (
-    <Fragment>
-      {state !== null && (
-        <div>
-          <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={itemImg} />
-            <Card.Body>
-              <Card.Title>{itemName}</Card.Title>
-              <Card.Text>Numéro de l'article: {itemIdNum}</Card.Text>
-              <Card.Text>50 euros</Card.Text>
-            </Card.Body>
-          </Card>
-        </div>
-      )}
-
-      <Form onSubmit={(e) => onSubmit(e)}>
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formFirstname">
-            <Form.Label>Prénom</Form.Label>
-            <Form.Control
-              placeholder="Prénom"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group as={Col} controlId="formLastname">
-            <Form.Label>Nom de famille</Form.Label>
-            <Form.Control
-              placeholder="Nom de famille"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </Form.Group>
-        </Row>
-
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail" xs={6}>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={6}>
-            <Form.Label>Nom d'utilisateur WhatsApp</Form.Label>
-            <Form.Control
-              placeholder="Nom d'utilisateur WhatsApp"
-              value={whatsAppUserName}
-              onChange={(e) => setWhatsappuserName(e.target.value)}
-            />
-          </Form.Group>
-        </Row>
-
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridState" xs={3}>
-            <Form.Label>Localisation</Form.Label>
-            <Form.Select
-              defaultValue="Choisir..."
-              value={dLocation}
-              onChange={(e) => setDLocation(e.target.value)}
+    <div className="contact-form-container">
+      <ContentLayout>
+        {state !== null && (
+          <div className="contact-form-item-image-container">
+            <Card
+              className="contact-form-item-image"
+              style={{ width: "18rem" }}
             >
-              <option>Choisir...</option>
-              <option>Saint François</option>
-              <option>Le Moule</option>
-              <option>Sainte Anne</option>
-              <option>Gosier</option>
-              <option>Pointe à Pitre</option>
-              <option>Pointe à Jarry</option>
-            </Form.Select>
+              <Card.Img variant="top" src={itemImg} />
+              <Card.Body>
+                <Card.Title>{itemName}</Card.Title>
+                <Card.Text>Numéro: {itemIdNum}</Card.Text>
+                <Card.Text>50 euros</Card.Text>
+              </Card.Body>
+            </Card>
+          </div>
+        )}
+
+        <Form onSubmit={(e) => onSubmit(e)}>
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formFirstname">
+              <Form.Label>Prénom</Form.Label>
+              <Form.Control
+                placeholder="Prénom"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formLastname">
+              <Form.Label>Nom de famille</Form.Label>
+              <Form.Control
+                placeholder="Nom de famille"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </Form.Group>
+          </Row>
+
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridEmail" xs={6}>
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={6}>
+              <Form.Label>Nom d'utilisateur WhatsApp</Form.Label>
+              <Form.Control
+                placeholder="Nom d'utilisateur WhatsApp"
+                value={whatsAppUserName}
+                onChange={(e) => setWhatsappuserName(e.target.value)}
+              />
+            </Form.Group>
+          </Row>
+
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridState" xs={5}>
+              <Form.Label>Localisation</Form.Label>
+              <Form.Select
+                defaultValue="Choisir..."
+                value={dLocation}
+                onChange={(e) => setDLocation(e.target.value)}
+              >
+                <option>Choisir...</option>
+                <option>Saint François</option>
+                <option>Le Moule</option>
+                <option>Sainte Anne</option>
+                <option>Gosier</option>
+                <option>Pointe à Pitre</option>
+                <option>Pointe à Jarry</option>
+              </Form.Select>
+            </Form.Group>
+          </Row>
+
+          <Form.Group className="mb-3" id="formGridContents">
+            <Form.Label htmlFor="inputForm">Contenu</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <Form.Text id="contentHelpBlock" muted>
+              Veuillez préciser la nature de votre demande.
+            </Form.Text>
           </Form.Group>
-        </Row>
 
-        <Form.Group className="mb-3" id="formGridContents">
-          <Form.Label htmlFor="inputForm">Contenu</Form.Label>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <Form.Text id="contentHelpBlock" muted>
-            Veuillez préciser la nature de votre demande.
-          </Form.Text>
-        </Form.Group>
-
-        <CustomBtn onClick={() => navigate(-1)}>Retour</CustomBtn>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </Fragment>
+          <div className="contact-form-btn-layout">
+            <CustomBtn type="button" onClick={() => navigate(-1)}>Retour</CustomBtn>
+            <Button variant="success" type="submit">
+              Soumettre
+            </Button>
+          </div>
+        </Form>
+      </ContentLayout>
+    </div>
   );
 };
 
