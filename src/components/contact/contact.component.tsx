@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import Card from "react-bootstrap/Card";
 
 import "./contact.styles.scss";
 
@@ -20,20 +21,20 @@ const Contact = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [whatappuserName, setWhatsappuserName] = useState("");
+  const [whatsAppUserName, setWhatsappuserName] = useState("");
   const [dLocation, setDLocation] = useState("");
-  const [isAgreed, setIsAgreed] = useState(false);
-  const [itemIdNum, setItemIdNum] = useState("");
-  const [itemImg, setItemImg] = useState("");
   const [text, setText] = useState("");
 
-  console.log("itemIdNum", itemIdNum)
+  const [itemIdNum, setItemIdNum] = useState("");
+  const [itemName, setItemName] = useState("");
+  const [itemImg, setItemImg] = useState("");
 
   const location = useLocation();
   const state = location.state as ContactPropsType;
   useEffect(() => {
     if (state && state.item !== undefined) {
       setItemIdNum(state.item.id);
+      setItemName(state.item.name);
     }
   }, [state]);
   useEffect(() => {
@@ -47,8 +48,6 @@ const Contact = () => {
         .forEach((img) => setItemImg(img.url));
     }
   }, [state]);
-
-  // console.log("contact state", state);
 
   const navigate = useNavigate();
 
@@ -65,17 +64,16 @@ const Contact = () => {
       // emailJS初期化
       init(userID);
 
-      console.log("item id num ??", itemIdNum)
-
       // emailJS送信データを定義
       const params = {
         from_first_name: firstName,
         from_last_name: lastName,
         email: email,
-        whatappuserName: whatappuserName,
+        whatsAppUserName: whatsAppUserName,
         dLocation: dLocation,
-        itemIdNum: itemIdNum,
         text: text,
+        itemIdNum: itemIdNum,
+        itemName: itemName,
       };
 
       // emailJS送信
@@ -91,6 +89,19 @@ const Contact = () => {
 
   return (
     <Fragment>
+      {state !== null && (
+        <div>
+          <Card style={{ width: "18rem" }}>
+            <Card.Img variant="top" src={itemImg} />
+            <Card.Body>
+              <Card.Title>{itemName}</Card.Title>
+              <Card.Text>Numéro de l'article: {itemIdNum}</Card.Text>
+              <Card.Text>50 euros</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
+      )}
+
       <Form onSubmit={(e) => onSubmit(e)}>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formFirstname">
@@ -125,7 +136,7 @@ const Contact = () => {
             <Form.Label>Nom d'utilisateur WhatsApp</Form.Label>
             <Form.Control
               placeholder="Nom d'utilisateur WhatsApp"
-              value={whatappuserName}
+              value={whatsAppUserName}
               onChange={(e) => setWhatsappuserName(e.target.value)}
             />
           </Form.Group>
@@ -150,25 +161,11 @@ const Contact = () => {
           </Form.Group>
         </Row>
 
-        <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
-            <Form.Label>Numéro de l'article</Form.Label>
-            <Form.Control
-              value={itemIdNum}
-              onChange={(e) => setItemIdNum(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={3}>
-            <Form.Label>Image du produit</Form.Label>
-            <img src={itemImg} style={{ width: "200px" }} />
-          </Form.Group>
-        </Row>
-
         <Form.Group className="mb-3" id="formGridContents">
           <Form.Label htmlFor="inputForm">Contenu</Form.Label>
           <Form.Control
-            type="text"
-            aria-describedby="text"
+            as="textarea"
+            rows={3}
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
@@ -177,21 +174,11 @@ const Contact = () => {
           </Form.Text>
         </Form.Group>
 
-        <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="<Rédiger un texte pour obtenir le consentement au traitement des données personnelles.>"
-            onClick={() => setIsAgreed(!isAgreed)}
-            value={`${isAgreed}`}
-          />
-        </Form.Group>
-
+        <CustomBtn onClick={() => navigate(-1)}>Retour</CustomBtn>
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
-
-      <CustomBtn onClick={() => navigate(-1)}>Retour</CustomBtn>
     </Fragment>
   );
 };
