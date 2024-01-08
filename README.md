@@ -4,7 +4,7 @@ This repository contains the codebase of a website for <strong>CréAZion</strong
 
 ## Demo
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p4NnB6cDV6Ync5amt5ZzI5ZDV6MmE2dHJrYTlwYW1qNmtjM2tuaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/p4CPdYqQSdoz5kMLtm/giphy.gif" alt="demo video" width="200px"/>
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWhxNjNuYmEydGs3N3J2bjNjemhtYzFoNWFkY2gyZ3JwY25mbHFzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UyIFTgsOa2QG2Rh91Y/giphy.gif" alt="demo video" width="200px"/>
 
 ## Motivation
 
