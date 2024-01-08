@@ -13,11 +13,11 @@
   max-width: 500px;
   max-height: 500px;
   overflow: hidden;
-  margin: 0 auto;
 }
 .about-img {
-  width: 500px;
-  object-fit: cover;
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
 }
 .about-text-container {
   font-size: 25px;
