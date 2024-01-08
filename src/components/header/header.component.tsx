@@ -28,7 +28,9 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#about">{header_about}</Nav.Link>
+              <CustomLink to={"/about"}>
+                <Nav.Link href="/about">{header_about}</Nav.Link>
+              </CustomLink>
               <NavDropdown title="boutique" id="basic-nav-dropdown">
                 <CustomLink to={"/"} state={{ previewtype: "sac" }}>
                   <NavDropdown.Item href="#action/3.1">

@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { ContentLayout } from "../../utilities/components.styles";
+import { shop_name } from "../../asset/asset";
 import "./footer.styles.scss";
 
 const Footer = () => {
@@ -7,7 +8,7 @@ const Footer = () => {
     <Fragment>
       <div className="footer">
         <ContentLayout>
-          <span>Footer</span>
+          <span>© 2024, {shop_name}</span>
         </ContentLayout>
       </div>
     </Fragment>
