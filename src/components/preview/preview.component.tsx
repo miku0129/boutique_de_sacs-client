@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 
 import { ItemsContext } from "../../context/items.context";
 
+import Notice from "../notice/notice.component";
+
 import { useWindowSize } from "../../utilities/useWindowSize";
 import { ContentLayout } from "../../utilities/components.styles";
 import { CustomImageListItem } from "./preview.styles";
@@ -79,6 +81,7 @@ const Preview = () => {
   return (
     <Fragment>
       <ContentLayout>
+      <Notice />
         <Box sx={{ width: "auto", height: 450, overflowY: "scroll" }}>
           {handleStyleOfImageList()}
         </Box>

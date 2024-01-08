@@ -11,7 +11,7 @@ import "./notice.styles.scss";
 const Notice = () => {
   return (
     <Fragment>
-      <NoticeContentLayout>
+      <NoticeContentLayout className="notice-content-layout">
         <br />
         <CustomSpan>{shop_concept_1}</CustomSpan>
         <br />
