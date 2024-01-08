@@ -82,7 +82,7 @@ const Preview = () => {
     <Fragment>
       <ContentLayout>
       <Notice />
-        <Box sx={{ width: "auto", height: 450, overflowY: "scroll" }}>
+        <Box sx={{ width: "auto", overflowY: "scroll" }}>
           {handleStyleOfImageList()}
         </Box>
       </ContentLayout>
