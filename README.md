@@ -1,47 +1,24 @@
-# Getting Started with Create React App
+# CréAZion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains the codebase of a website for <strong>CréAZion</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Sainte Anne.<br/>
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa3p4NnB6cDV6Ync5amt5ZzI5ZDV6MmE2dHJrYTlwYW1qNmtjM2tuaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/p4CPdYqQSdoz5kMLtm/giphy.gif" alt="demo video" width="200px"/>
 
-### `npm start`
+## Motivation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+I'd like to create the opportunity for the artist to exhibit and sell her work on the web and provide all customers accessible shop space.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
+- **Appeal to the eye:** Enhance visuals with materials such as React-bootstrap and MaterialUi.
+- **Responsive design:** That takes into account both mobile and PCs.
+- **Highly reliable data management:** using nestjs and TypeORM.
+- **Architected test driven application:** Jest was used to test the code and improve quality.
+- **Improve user interaction.:** Enabled Emailjs to make smooth communication.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# boutique_de_sacs-client
+<img src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="300px"/>
+<p>
+&copy;Drew Dizzy Graham
+</p>
