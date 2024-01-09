@@ -21,7 +21,7 @@ const Contact = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [whatsAppUserName, setWhatsappuserName] = useState("");
+  const [phone, setPhone] = useState("");
   const [dLocation, setDLocation] = useState("");
   const [text, setText] = useState("");
 
@@ -69,7 +69,7 @@ const Contact = () => {
         from_first_name: firstName,
         from_last_name: lastName,
         email: email,
-        whatsAppUserName: whatsAppUserName,
+        phone: phone,
         dLocation: dLocation,
         text: text,
         itemIdNum: itemIdNum,
@@ -83,9 +83,9 @@ const Contact = () => {
         setFirstName("");
         setLastName("");
         setEmail("");
-        setWhatsappuserName("");
+        setPhone("");
         setDLocation("");
-        setText("")
+        setText("");
       } catch (error) {
         // 送信失敗したらalertで表示
         alert(error);
@@ -142,12 +142,12 @@ const Contact = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
-            <Form.Group as={Col} controlId="formGridWhatsAppUserName" xs={6}>
-              <Form.Label>Nom d'utilisateur WhatsApp</Form.Label>
+            <Form.Group as={Col} controlId="formGridPhone" xs={6}>
+              <Form.Label>Numéro de téléphone</Form.Label>
               <Form.Control
-                placeholder="Nom d'utilisateur WhatsApp"
-                value={whatsAppUserName}
-                onChange={(e) => setWhatsappuserName(e.target.value)}
+                placeholder="Numéro de téléphone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </Form.Group>
           </Row>
@@ -185,7 +185,9 @@ const Contact = () => {
           </Form.Group>
 
           <div className="contact-form-btn-layout">
-            <CustomBtn type="button" onClick={() => navigate(-1)}>Retour</CustomBtn>
+            <CustomBtn type="button" onClick={() => navigate(-1)}>
+              Retour
+            </CustomBtn>
             <Button variant="success" type="submit">
               Soumettre
             </Button>
