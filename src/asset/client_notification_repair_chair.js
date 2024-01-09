@@ -3,7 +3,7 @@ export const client_notification_rp = {
   text1: "Contactez-nous au travers de la rubrique 'contact'. ",
   text2: "Prenez un RDV avec nous. Le contact se fera par WhatsApp.",
   text3:
-    "Nous verrons la ou les chaises. Après, nous proposont un devis. Si vous acceptez, payez un acompte de 50%.",
+    "Nous verrons la ou les chaises. Après, nous vous proposerons un devis. Une fois le devis accepté, un acompte de 50% devra être versé.Vous déposerez la ou les chaises à l'atelier.",
   text4:
-    "Quand je vous redonne la chaise, vous pairez le solde avec carte bancaire ou en espèces.",
+    "Paiement du solde par carte bancaire ou espèce, le jour de la livraison.",
 };
