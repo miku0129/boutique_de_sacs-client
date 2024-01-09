@@ -1,7 +1,7 @@
 export const client_notification_gn = {
   text0: "Pour acheter un article, disponible en boutique",
   text1:
-    "Contactez-nous au travers de la rubrique contact. Indiquez l'article que vous souhaitez acheter.",
+    "Contactez-nous au travers de la rubrique contact. Indiquez l'article que vous souhaitez acheter. Une vidéo de l'article peut vous être partagée sur demande.",
   text2:
     "Nous convenons ensemble d'un lieu de livraison - Saint François, Le Moule, Sainte Anne, Gosier, Pointe à Pitre ou Jarry. La livraison est en personne. Le contact se fera par WhatsApp.",
   text3: "Vous réglez un acompte d'une valeur de 50%.",

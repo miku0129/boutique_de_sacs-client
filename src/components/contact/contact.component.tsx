@@ -166,7 +166,7 @@ const Contact = () => {
                 <option>Sainte Anne</option>
                 <option>Gosier</option>
                 <option>Pointe à Pitre</option>
-                <option>Pointe à Jarry</option>
+                <option>Jarry</option>
               </Form.Select>
             </Form.Group>
           </Row>
