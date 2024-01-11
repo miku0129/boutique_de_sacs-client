@@ -20,6 +20,7 @@ type PreviewPropsType = {
 
 const Preview = () => {
   const [width, height] = useWindowSize();
+  console.log("to avoid eslint issue: ", height);
 
   const location = useLocation();
   const state = location.state as PreviewPropsType;
@@ -81,7 +82,7 @@ const Preview = () => {
   return (
     <Fragment>
       <ContentLayout>
-      <Notice />
+        <Notice />
         <Box sx={{ width: "auto", overflowY: "scroll" }}>
           {handleStyleOfImageList()}
         </Box>
