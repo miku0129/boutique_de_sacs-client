@@ -1,3 +1,5 @@
+// import { useEffect } from "react";
+// import { initializeItemsData } from "./utilities/firebase/firebase.utils";
 import { Routes, Route } from "react-router-dom";
 
 import BasicLayout from "./routes/basic-layout.component";
@@ -9,6 +11,12 @@ import About from "./components/about/about.component";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  // useEffect(() => {
+  //   const initCategoryData = async () => {
+  //     await initializeItemsData();
+  //   };
+  //   initCategoryData();
+  // }, []);
   return (
     <div className="App">
       <Routes>
