@@ -11,7 +11,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_avairable: true,
-      item_img: [
+      item_img_urls: [
         {
           id: 1,
           url: "https://i.ibb.co/fSn8xsj/20240107-142050.jpg",

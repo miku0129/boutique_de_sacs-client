@@ -63,7 +63,7 @@ const Item = () => {
       <ContentLayout>
         <hr />
         <h2>Cher client</h2>
-        {item && (item.category === "sac" || item.category === "panier") && (
+        {item && (item.category === "sacs" || item.category === "vannerie") && (
           <NoticeItemGeneral />
         )}
         {item && item.category === "autre" && <NoticeRepairChair />}

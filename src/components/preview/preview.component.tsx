@@ -15,7 +15,7 @@ import ImageList from "@mui/material/ImageList";
 import "./preview.styles.scss";
 
 type PreviewPropsType = {
-  previewtype?: Sac | Panier | Other;
+  previewtype?: Sacs | Vannerie | Other;
 };
 
 const Preview = () => {
@@ -28,17 +28,17 @@ const Preview = () => {
   let items = useContext(ItemsContext)[0];
 
   if (state !== null) {
-    if (state.previewtype === "sac") {
-      items = items.filter((item: Item) => item.category === "sac");
-    } else if (state.previewtype === "panier") {
-      items = items.filter((item: Item) => item.category === "panier");
+    if (state.previewtype === "sacs") {
+      items = items.filter((item: Item) => item.category === "sacs");
+    } else if (state.previewtype === "vannerie") {
+      items = items.filter((item: Item) => item.category === "vannerie");
     } else {
       items = items.filter((item: Item) => item.category === "autre");
     }
   }
 
   const imageItem = () => {
-    return items.map((item: Item) => {
+    return items && items.map((item: Item) => {
       return (
         <Link to={`item/${item.id}`}>
           <CustomImageListItem key={item.id}>

@@ -48,7 +48,7 @@ export const initializeItemsData = async () => {
           category: item.category,
           price: item.price,
           is_avairable: item.is_avairable,
-          item_img: item.item_img,
+          item_img_urls: item.item_img_urls,
         });
       } catch (e) {
         console.error("Error adding document: ", e);
