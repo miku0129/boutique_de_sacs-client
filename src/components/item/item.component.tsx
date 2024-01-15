@@ -28,10 +28,10 @@ const Item = () => {
   });
 
   let price_or_notification = "";
-  if (item.is_avairable) {
+  if (item.is_avairable && (typeof item.price === "number")) {
     price_or_notification = "Price: " + item.price + " euro";
   } else {
-    price_or_notification = "Cet article est fabriqué sur commande.";
+    price_or_notification = "Commandes reçues";
   }
 
   return (
