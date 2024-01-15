@@ -154,7 +154,7 @@ const Contact = () => {
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridState" xs={5}>
-              <Form.Label>Localisation</Form.Label>
+              <Form.Label>Lieu de livraison souhaité</Form.Label>
               <Form.Select
                 defaultValue="Choisir..."
                 value={dLocation}

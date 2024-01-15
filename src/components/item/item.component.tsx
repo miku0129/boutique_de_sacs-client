@@ -14,6 +14,7 @@ import {
   CustomBtn,
   CustomLink,
 } from "../../utilities/components.styles";
+import { item_purchase_button_text } from "../../asset/asset";
 
 import "./item.component.scss";
 
@@ -63,7 +64,7 @@ const Item = () => {
           </div>
           {item && (
             <CustomLink to={"/contact"} state={{ item }}>
-              <CustomBtn>Achet</CustomBtn>
+              <CustomBtn>{item_purchase_button_text}</CustomBtn>
             </CustomLink>
           )}
         </div>
