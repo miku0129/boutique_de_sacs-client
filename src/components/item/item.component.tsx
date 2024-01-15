@@ -27,6 +27,13 @@ const Item = () => {
     return item.id === id;
   });
 
+  let price_or_notification = "";
+  if (item.is_avairable) {
+    price_or_notification = "Price: " + item.price + " euro";
+  } else {
+    price_or_notification = "Cet article est fabriqué sur commande.";
+  }
+
   return (
     <Fragment>
       <ItemContentLayout>
@@ -42,16 +49,17 @@ const Item = () => {
                 );
               })}
           </Carousel>
-          <h3>{item && item.desc}</h3>
         </div>
 
         <div>
           <div>
             <h1>{item && item.name}</h1>
-            <span>numéro: </span>
+            <p>numéro: {item && item.item_id_number}</p>
           </div>
           <div>
-            <h3>Price: {item && item.price}euros</h3>
+            <h3>{price_or_notification}</h3>
+            <h4>{item && item.desc_1}</h4>
+            <h4>{item && item.desc_2}</h4>
           </div>
           {item && (
             <CustomLink to={"/contact"} state={{ item }}>
