@@ -33,7 +33,7 @@ const Contact = () => {
   const state = location.state as ContactPropsType;
   useEffect(() => {
     if (state && state.item !== undefined) {
-      setItemIdNum(state.item.id);
+      setItemIdNum(state.item.item_id_number);
       setItemName(state.item.name);
     }
   }, [state]);
