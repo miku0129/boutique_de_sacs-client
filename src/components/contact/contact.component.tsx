@@ -28,6 +28,8 @@ const Contact = () => {
   const [itemIdNum, setItemIdNum] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemImg, setItemImg] = useState("");
+  const [itemPrice, setItemPrice] = useState<number | string>("");
+  const [itemIsAvailable, setIsItemAvailable] = useState(true);
 
   const location = useLocation();
   const state = location.state as ContactPropsType;
@@ -35,6 +37,8 @@ const Contact = () => {
     if (state && state.item !== undefined) {
       setItemIdNum(state.item.item_id_number);
       setItemName(state.item.name);
+      setItemPrice(state.item.price);
+      setIsItemAvailable(state.item.is_available);
     }
   }, [state]);
   useEffect(() => {
@@ -50,6 +54,12 @@ const Contact = () => {
   }, [state]);
 
   const navigate = useNavigate();
+  let price_or_notification = "";
+  if (itemIsAvailable && (typeof itemPrice === "number")) {
+    price_or_notification = "Price: " + itemPrice + " euro";
+  } else {
+    price_or_notification = "Commandes reçues";
+  }
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     // フォームのデフォルトの動作をキャンセル
@@ -106,7 +116,7 @@ const Contact = () => {
               <Card.Body>
                 <Card.Title>{itemName}</Card.Title>
                 <Card.Text>Numéro: {itemIdNum}</Card.Text>
-                <Card.Text>50 euros</Card.Text>
+                <Card.Text>{price_or_notification}</Card.Text>
               </Card.Body>
             </Card>
           </div>
