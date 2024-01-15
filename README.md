@@ -15,7 +15,7 @@ To create opportunities for the artist to showcase his/her work and sell it on t
 
 - **Appeal to the eye:** Enhance visuals with materials such as React-bootstrap and MaterialUi.
 - **Responsive design:** That takes into account both mobile and PCs.
-- **Highly reliable database:** using nestjs and TypeORM.
+- **Highly reliable database:** by using nestjs and TypeORM.
 - **Architected test driven application:** Jest and Docker contribute to improve the quality of code.
 - **Ensures smooth communication between users:** by enabled Emailjs. 
 
