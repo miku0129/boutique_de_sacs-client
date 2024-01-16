@@ -488,7 +488,7 @@ export const item = {
       desc_2:
         "Prix uniquement sur devis et après avoir touché l'objet à rénover.",
       category: "autre",
-      price: "Commandes reçues",
+      price: "Article sur commande" ,
       is_avairable: true,
       item_img_urls: [
         {

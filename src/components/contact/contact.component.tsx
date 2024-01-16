@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { init, send } from "@emailjs/browser";
 
+import { price_or_notification_text } from "../../asset/asset";
+
 import { ContentLayout, CustomBtn } from "../../utilities/components.styles";
 
 import Button from "react-bootstrap/Button";
@@ -56,9 +58,9 @@ const Contact = () => {
   const navigate = useNavigate();
   let price_or_notification = "";
   if (itemIsAvailable && (typeof itemPrice === "number")) {
-    price_or_notification = "Price: " + itemPrice + " euro";
+    price_or_notification = "Prix: " + itemPrice + " euro";
   } else {
-    price_or_notification = "Commandes reçues";
+    price_or_notification = price_or_notification_text;
   }
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {

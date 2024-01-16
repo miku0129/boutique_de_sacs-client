@@ -6,6 +6,7 @@ import Carousel from "react-bootstrap/Carousel";
 
 import NoticeItemGeneral from "../notice_item_general/notice_item_general.component";
 import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.component";
+import { price_or_notification_text } from "../../asset/asset";
 
 import { ItemContentLayout } from "./item.styles";
 import { CustomItemImg } from "./item.styles";
@@ -30,9 +31,9 @@ const Item = () => {
 
   let price_or_notification = "";
   if (item.is_avairable && (typeof item.price === "number")) {
-    price_or_notification = "Price: " + item.price + " euro";
+    price_or_notification = "Prix: " + item.price + " euro";
   } else {
-    price_or_notification = "Commandes reçues";
+    price_or_notification = price_or_notification_text;
   }
 
   return (
