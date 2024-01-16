@@ -23,18 +23,28 @@ const Item = () => {
   const items = useContext(ItemsContext)[0];
   const params = useParams();
   let id: string | number | undefined = params.id;
-  let item;
+  let item: Item | undefined;
   if (id) id = Number(id);
   item = items.find((item: Item) => {
     return item.id === id;
   });
 
   let price_or_notification = "";
-  if (item.is_avairable && (typeof item.price === "number")) {
+  if (item && item.is_available && typeof item.price === "number") {
     price_or_notification = "Prix: " + item.price + " euro";
   } else {
     price_or_notification = price_or_notification_text;
   }
+
+  const item_desc_1 = () => {
+    if (item && item.desc_1) {
+      const strArray = item.desc_1.split(".");
+      console.log(strArray);
+      return strArray.filter(str=> str !== "").map(str => {
+        return <h4>{str.trim()}.</h4>
+      })
+    }
+  };
 
   return (
     <Fragment>
@@ -60,8 +70,10 @@ const Item = () => {
           </div>
           <div>
             <h3>{price_or_notification}</h3>
-            <h4>{item && item.desc_1}</h4>
-            <h4>{item && item.desc_2}</h4>
+            <hr />
+            <div>{item_desc_1()}</div>
+            <hr />
+            <h5>{item && item.desc_2}</h5>
           </div>
           {item && (
             <CustomLink to={"/contact"} state={{ item }}>
