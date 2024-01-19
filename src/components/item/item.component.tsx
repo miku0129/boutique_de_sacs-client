@@ -28,7 +28,7 @@ const Item = () => {
   item = items.find((item: Item) => {
     return item.id === id;
   });
-  
+
   let price_or_notification = "";
   if (item && item.is_available && typeof item.price === "number") {
     price_or_notification = "Prix: " + item.price + " euro";
@@ -36,13 +36,22 @@ const Item = () => {
     price_or_notification = price_or_notification_text;
   }
 
-  const item_desc_1 = () => {
-    if (item && item.desc_1) {
-      const strArray = item.desc_1.split(".");
-      return strArray.filter(str=> str !== "").map(str => {
-        return <h4>{str.trim()}.</h4>
-      })
-    }
+  // const item_desc_1 = () => {
+  //   if (item && item.desc_1) {
+  //     const strArray = item.desc_1.split(".");
+  //     return strArray.filter(str=> str !== "").map(str => {
+  //       return <h4>{str.trim()}.</h4>
+  //     })
+  //   }
+  // };
+
+  const makeNewline = (desc: string) => {
+    const strArray = desc.split(".");
+    return strArray
+      .filter((str) => str !== "")
+      .map((str) => {
+        return <h5>{str.trim()}.</h5>;
+      });
   };
 
   return (
@@ -70,9 +79,9 @@ const Item = () => {
           <div>
             <h3>{price_or_notification}</h3>
             <hr />
-            <div>{item_desc_1()}</div>
+            <div>{item && item.desc_1 && makeNewline(item.desc_1)}</div>
             <hr />
-            <h5>{item && item.desc_2}</h5>
+            <div>{item && item.desc_2 && makeNewline(item.desc_2)}</div>
           </div>
           {item && (
             <CustomLink to={"/contact"} state={{ item }}>

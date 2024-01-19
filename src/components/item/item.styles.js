@@ -7,8 +7,8 @@ export const ItemContentLayout = styled(ContentLayout)`
   justify-content: center;
   padding-top: 20px;
   @media (max-width: 450px) {
-    flex-direction: column-reverse;
-    padding-top: 10px;
+    flex-direction: column;
+    padding-top: 30px;
 `;
 
 export const CustomItemImg = styled.img`
