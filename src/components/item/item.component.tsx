@@ -28,7 +28,7 @@ const Item = () => {
   item = items.find((item: Item) => {
     return item.id === id;
   });
-
+  
   let price_or_notification = "";
   if (item && item.is_available && typeof item.price === "number") {
     price_or_notification = "Prix: " + item.price + " euro";
@@ -39,7 +39,6 @@ const Item = () => {
   const item_desc_1 = () => {
     if (item && item.desc_1) {
       const strArray = item.desc_1.split(".");
-      console.log(strArray);
       return strArray.filter(str=> str !== "").map(str => {
         return <h4>{str.trim()}.</h4>
       })

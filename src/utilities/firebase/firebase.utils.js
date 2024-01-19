@@ -47,7 +47,7 @@ export const initializeItemsData = async () => {
           desc_2: item.desc_2,
           category: item.category,
           price: item.price,
-          is_avairable: item.is_avairable,
+          is_available: item.is_available,
           item_img_urls: item.item_img_urls,
         });
       } catch (e) {

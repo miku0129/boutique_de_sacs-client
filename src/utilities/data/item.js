@@ -10,7 +10,7 @@ export const item = {
         "Tissus : simili cuir et coton. Nécessite d'être imperméabilisé régulièrement.Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -44,7 +44,7 @@ export const item = {
         "Tissus : toile à sac imperméable et jacquard. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -73,7 +73,7 @@ export const item = {
         "Tissus : toile à sac imperméable et coton. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -97,7 +97,7 @@ export const item = {
         "Tissus : toile à sac imperméable et coton enduit. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 55,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -131,7 +131,7 @@ export const item = {
         "Tissus : simili cuir et coton. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -165,7 +165,7 @@ export const item = {
         "Tissus : simili cuir et coton. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -199,7 +199,7 @@ export const item = {
         "Tissus : simili cuir et coton. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -228,7 +228,7 @@ export const item = {
         "Tissu : simili cuir et coton. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Dodynette.",
       category: "sacs",
       price: 50,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -257,7 +257,7 @@ export const item = {
         "Tissus : jacquard, coton et suédine. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Sacôtin.",
       category: "sacs",
       price: 80,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -297,7 +297,7 @@ export const item = {
         "Tissus : jacquard, coton et suédine. Nécessite d'être imperméabilisé régulièrement. Modèle sous licence Sacôtin.",
       category: "sacs",
       price: 80,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -329,7 +329,7 @@ export const item = {
       desc_2: "Matière : rotin.",
       category: "vannerie",
       price: 70,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -351,7 +351,7 @@ export const item = {
       desc_2: "Matière : rotin.",
       category: "vannerie",
       price: 80,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -373,7 +373,7 @@ export const item = {
       desc_2: "Matière : rotin.",
       category: "vannerie",
       price: 85,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -401,7 +401,7 @@ export const item = {
       desc_2: "Matière : rotin tinté bleu.",
       category: "vannerie",
       price: 75,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -433,7 +433,7 @@ export const item = {
       desc_2: "Matière : rotin",
       category: "vannerie",
       price: 30,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -455,7 +455,7 @@ export const item = {
       desc_2: "Matière : rotin",
       category: "vannerie",
       price: 30,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -488,8 +488,8 @@ export const item = {
       desc_2:
         "Prix uniquement sur devis et après avoir touché l'objet à rénover.",
       category: "autre",
-      price: "Article sur commande" ,
-      is_avairable: true,
+      price: "Article sur commande",
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -527,7 +527,7 @@ export const item = {
       desc_2: "Tissu: coton. Nécessite d'être imperméabilisé régulièrement.",
       category: "sacs",
       price: 45,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -555,7 +555,7 @@ export const item = {
       desc_2: "Tissu: coton",
       category: "sacs",
       price: 40,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -578,7 +578,7 @@ export const item = {
       desc_2: "Tissu: coton",
       category: "sacs",
       price: 40,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -601,7 +601,7 @@ export const item = {
         "Matière: rouelle de rotin naturel et éclisse (plat) de rotin teintée violet.",
       category: "vannerie",
       price: 75,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -624,7 +624,7 @@ export const item = {
       desc_2: "Matière: rouelle de rotin.",
       category: "vannerie",
       price: 80,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -651,7 +651,7 @@ export const item = {
       desc_2: "Matière: moelle et éclisse de rotin.",
       category: "vannerie",
       price: 45,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -679,7 +679,7 @@ export const item = {
       desc_2: "Matière: rouelle de rotin.",
       category: "vannerie",
       price: 20,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -712,7 +712,7 @@ export const item = {
       desc_2: "Matière: rouelle de rotin.",
       category: "vannerie",
       price: 60,
-      is_avairable: false,
+      is_available: false,
       item_img_urls: [
         {
           id: 1,
@@ -732,10 +732,11 @@ export const item = {
       name: "Sac à dos city",
       desc_1:
         "Sac à dos possédant une grande pochette principale s'ouvrant grâce à une fermeture 'antivol' positionnée au dos. 2 vides poche vous permettent de ranger téléphone et clés. Peut contenir une gourde de 50cl, un portefeuille, un téléphone et une paire de lunettes.",
-      desc_2: "Tissus: toile à sac et coton enduit.  Modèle sous licence Sacôtin.  Le modèle présenté n'est pas à vendre. Le sac est uniquement sur commande et sur mesures.",
+      desc_2:
+        "Tissus: toile à sac et coton enduit.  Modèle sous licence Sacôtin.  Le modèle présenté n'est pas à vendre. Le sac est uniquement sur commande et sur mesures.",
       category: "sacs",
       price: 75,
-      is_avairable: true,
+      is_available: true,
       item_img_urls: [
         {
           id: 1,
@@ -749,6 +750,5 @@ export const item = {
         },
       ],
     },
-
   ],
 };
