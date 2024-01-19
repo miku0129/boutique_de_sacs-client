@@ -14,16 +14,22 @@ export const ItemsProvider = ({ children }: { children: ReactNode }) => {
       //   "https://boutique-de-sacs-winter-night-1102.fly.dev/items"
       // );
       // setItems(db.data);
-      const data = await getAllDocuments();
-      setItems(data);
+      try {
+        const data = await getAllDocuments();
+        setItems(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getItems();
   }, []);
 
   return (
-    <ItemsContext.Provider value={[items, setItems]}>
-      {children}
-    </ItemsContext.Provider>
+    items && (
+      <ItemsContext.Provider value={[items, setItems]}>
+        {children}
+      </ItemsContext.Provider>
+    )
   );
 };
