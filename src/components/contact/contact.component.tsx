@@ -58,7 +58,7 @@ const Contact = () => {
   const navigate = useNavigate();
   let price_or_notification = "";
   if (itemIsAvailable && (typeof itemPrice === "number")) {
-    price_or_notification = "Prix: " + itemPrice + " euro";
+    price_or_notification = "Prix: " + itemPrice + " euros";
   } else {
     price_or_notification = price_or_notification_text;
   }
