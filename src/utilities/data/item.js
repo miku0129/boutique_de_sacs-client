@@ -570,29 +570,6 @@ export const item = {
       ],
     },
     {
-      id: 19,
-      item_id_number: "202319",
-      name: "Housse pour ordinateur",
-      desc_1:
-        "Housse matelassée pour ordinateur. Se compose d'une poche principale pouvant accueillir un  PC 15 pouces ainsi que d'une pochette plaquée pour le chargeur.",
-      desc_2: "Tissu: coton",
-      category: "sacs",
-      price: 40,
-      is_available: false,
-      item_img_urls: [
-        {
-          id: 1,
-          url: "https://i.ibb.co/BN4jP4n/20220819-114630.jpg",
-          is_main: false,
-        },
-        {
-          id: 2,
-          url: "https://i.ibb.co/02t306K/20220819-114610.jpg",
-          is_main: true,
-        },
-      ],
-    },
-    {
       id: 20,
       item_id_number: "202320",
       name: "Panier violet et naturel",
