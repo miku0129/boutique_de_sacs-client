@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { init, send } from "@emailjs/browser";
 
+import { price_or_notification_text } from "../../asset/asset";
+
 import { ContentLayout, CustomBtn } from "../../utilities/components.styles";
 
 import Button from "react-bootstrap/Button";
@@ -28,13 +30,17 @@ const Contact = () => {
   const [itemIdNum, setItemIdNum] = useState("");
   const [itemName, setItemName] = useState("");
   const [itemImg, setItemImg] = useState("");
+  const [itemPrice, setItemPrice] = useState<number | string>("");
+  const [itemIsAvailable, setIsItemAvailable] = useState(true);
 
   const location = useLocation();
   const state = location.state as ContactPropsType;
   useEffect(() => {
     if (state && state.item !== undefined) {
-      setItemIdNum(state.item.id);
+      setItemIdNum(state.item.item_id_number);
       setItemName(state.item.name);
+      setItemPrice(state.item.price);
+      setIsItemAvailable(state.item.is_available);
     }
   }, [state]);
   useEffect(() => {
@@ -50,6 +56,12 @@ const Contact = () => {
   }, [state]);
 
   const navigate = useNavigate();
+  let price_or_notification = "";
+  if (itemIsAvailable && (typeof itemPrice === "number")) {
+    price_or_notification = "Prix: " + itemPrice + " euros";
+  } else {
+    price_or_notification = price_or_notification_text;
+  }
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     // フォームのデフォルトの動作をキャンセル
@@ -106,7 +118,7 @@ const Contact = () => {
               <Card.Body>
                 <Card.Title>{itemName}</Card.Title>
                 <Card.Text>Numéro: {itemIdNum}</Card.Text>
-                <Card.Text>50 euros</Card.Text>
+                <Card.Text>{price_or_notification}</Card.Text>
               </Card.Body>
             </Card>
           </div>
@@ -154,7 +166,7 @@ const Contact = () => {
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridState" xs={5}>
-              <Form.Label>Localisation</Form.Label>
+              <Form.Label>Lieu de livraison souhaité</Form.Label>
               <Form.Select
                 defaultValue="Choisir..."
                 value={dLocation}

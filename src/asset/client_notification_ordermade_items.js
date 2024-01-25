@@ -3,7 +3,7 @@ export const client_notification_od = {
   text1:
     "Contactez-nous au travers de la rubrique 'contact'. Décrivez l'article souhaité en faisant des comparaisons avec des articles de la boutique, en indiquant les couleurs et matières souhaitées, en précisant les dimensions désirées.",
   text2:
-    "Nous vous ferons des suggestions et proposerons devis. Le contact se fera par WhatsApp.",
+    "Nous vous ferons des suggestions et proposerons devis.",
   text3:
     "Après acceptation, vous réglerez un acompte de 50% de la valeur de l'article.",
   text4:

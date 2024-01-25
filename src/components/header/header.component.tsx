@@ -31,12 +31,12 @@ const Header = () => {
                 <Nav.Link href="/about">{header_about}</Nav.Link>
               </CustomLink>
               <NavDropdown title="boutique" id="basic-nav-dropdown">
-                <CustomLink to={"/"} state={{ previewtype: "sac" }}>
+                <CustomLink to={"/"} state={{ previewtype: "sacs" }}>
                   <NavDropdown.Item href="#action/3.1">
                     {header_category_1}
                   </NavDropdown.Item>
                 </CustomLink>
-                <CustomLink to={"/"} state={{ previewtype: "panier" }}>
+                <CustomLink to={"/"} state={{ previewtype: "vannerie" }}>
                   <NavDropdown.Item href="#action/3.2">
                     {header_category_2}
                   </NavDropdown.Item>
