@@ -168,7 +168,6 @@ const Contact = () => {
             <Form.Group as={Col} controlId="formGridState" xs={5}>
               <Form.Label>Lieu de livraison souhaité</Form.Label>
               <Form.Select
-                defaultValue="Choisir..."
                 value={dLocation}
                 onChange={(e) => setDLocation(e.target.value)}
               >
