@@ -1,8 +1,27 @@
 .custom-navbar {
-  background-color: #64C99B;
+  background-color: #64c99b;
 }
 
 .custom-navbar-main-title {
   font-size: xx-large;
-  color: #DFECAA;
+  color: #dfecaa;
+  margin-right: 20px;
+}
+
+.custom-header-menu-link-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#basic-nav-dropdown {
+  color: darkgreen;
+}
+
+div.dropdown-menu.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding-left: 5px;
 }

@@ -38,25 +38,29 @@ const Preview = () => {
   }
 
   const imageItem = () => {
-    return items && items.map((item: Item) => {
-      return (
-        <Link to={`item/${item.id}`}>
-          <CustomImageListItem key={item.id}>
-            {item.item_img_urls &&
-              item.item_img_urls
-                .filter((item_img_url: Item_img_url) => item_img_url.is_main)
-                .map((item_img_url: Item_img_url) => (
-                  <img
-                    srcSet={`${item_img_url.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    src={`${item_img_url.url}?w=248&fit=crop&auto=format`}
-                    alt={item.name}
-                    loading="lazy"
-                  />
-                ))}
-          </CustomImageListItem>
-        </Link>
-      );
-    });
+    return (
+      items &&
+      items.map((item: Item, idx: number) => {
+        return (
+          <Link to={`item/${item.id}`} key={idx}>
+            <CustomImageListItem key={item.id}>
+              {item.item_img_urls &&
+                item.item_img_urls
+                  .filter((item_img_url: Item_img_url) => item_img_url.is_main)
+                  .map((item_img_url: Item_img_url, idx: number) => (
+                    <img
+                      srcSet={`${item_img_url.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      src={`${item_img_url.url}?w=248&fit=crop&auto=format`}
+                      alt={item.name}
+                      loading="lazy"
+                      key={idx}
+                    />
+                  ))}
+            </CustomImageListItem>
+          </Link>
+        );
+      })
+    );
   };
 
   const handleStyleOfImageList = () => {

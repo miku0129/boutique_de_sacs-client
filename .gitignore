@@ -24,3 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 creaz-c0346-6173d4f9e70d.json
+/src/data/item.js

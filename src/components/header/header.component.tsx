@@ -12,6 +12,7 @@ import { header_category_2 } from "../../asset/asset";
 import { header_category_3 } from "../../asset/asset";
 
 import { CustomLink } from "../../utilities/components.styles";
+import { CustomHeaderMenuLink } from "./header.styles";
 import "./header.styles.scss";
 
 const Header = () => {
@@ -20,38 +21,26 @@ const Header = () => {
       <Navbar expand="lg" className="custom-navbar">
         <Container>
           <CustomLink to={"/"}>
-            <Navbar.Brand href="/">
-              <span className="custom-navbar-main-title">{shop_name}</span>
-            </Navbar.Brand>
+            <span className="custom-navbar-main-title">{shop_name}</span>
           </CustomLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <CustomLink to={"/about"}>
-                <Nav.Link href="/about">{header_about}</Nav.Link>
-              </CustomLink>
+              <CustomHeaderMenuLink to={"/about"} className="custom-header-menu-link-about">
+                {header_about}
+              </CustomHeaderMenuLink>
               <NavDropdown title="boutique" id="basic-nav-dropdown">
-                <CustomLink to={"/"} state={{ previewtype: "sacs" }}>
-                  <NavDropdown.Item href="#action/3.1">
-                    {header_category_1}
-                  </NavDropdown.Item>
-                </CustomLink>
-                <CustomLink to={"/"} state={{ previewtype: "vannerie" }}>
-                  <NavDropdown.Item href="#action/3.2">
-                    {header_category_2}
-                  </NavDropdown.Item>
-                </CustomLink>
-                <CustomLink to={"/"} state={{ previewtype: "autre" }}>
-                  <NavDropdown.Item href="#action/3.3">
-                    {header_category_3}
-                  </NavDropdown.Item>
-                </CustomLink>
+                <CustomHeaderMenuLink to={"/"} state={{ previewtype: "sacs" }}>
+                  {header_category_1}
+                </CustomHeaderMenuLink>
+                <CustomHeaderMenuLink to={"/"} state={{ previewtype: "vannerie" }}>
+                  {header_category_2}
+                </CustomHeaderMenuLink>
+                <CustomHeaderMenuLink to={"/"} state={{ previewtype: "autre" }}>
+                  {header_category_3}
+                </CustomHeaderMenuLink>
                 <NavDropdown.Divider />
-                <CustomLink to={"/contact"}>
-                  <NavDropdown.Item href="#action/3.4">
-                    Contact
-                  </NavDropdown.Item>
-                </CustomLink>
+                <CustomHeaderMenuLink to={"/contact"}>Contact</CustomHeaderMenuLink>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
