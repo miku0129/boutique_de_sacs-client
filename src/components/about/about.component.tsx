@@ -5,6 +5,8 @@ import {
   about_text_2,
   about_text_3,
   about_text_4,
+  about_text_5,
+  about_text_6,
 } from "../../asset/asset";
 
 import { ContentLayout } from "../../utilities/components.styles";
@@ -27,6 +29,10 @@ const About = () => {
           <p>{about_text_2}</p>
           <p>{about_text_3}</p>
           <p>{about_text_4}</p>
+          <div className="about-text-address">
+            <span>{about_text_5}</span><br/>
+            <span>{about_text_6}</span>
+          </div>
         </div>
       </ContentLayout>
     </Fragment>

@@ -24,3 +24,6 @@ export const about_text_2 = "En 2021, j'ai gagné une formation vannerie avec Ma
 export const about_text_3 = "Passionnée, je me laisse guider par l'inspiration et les fibres naturelles!"
 
 export const about_text_4 = "En utilisant des techniques traditionnelles, je découvre les aspects de cette belle matière en la transformant en objets décoratifs et fonctionnels tels que les paniers et corbeilles!"
+
+export const about_text_5 = "Atelier à Saint Paul, 97180 Sainte Anne"
+export const about_text_6 = "Siret : 814072328000 10"
