@@ -1,4 +1,4 @@
-# CréAZion
+# CréAz
 
 This repository contains the codebase of a website for <strong>CréAz</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe ⛱
 <br/>
