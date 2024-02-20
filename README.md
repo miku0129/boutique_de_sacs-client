@@ -1,6 +1,6 @@
-# CréAz
+# Kréya-D-zil
 
-This repository contains the codebase of a website for <strong>CréAz</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe ⛱
+This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe ⛱
 <br/>
 
 ## Demo
@@ -15,7 +15,7 @@ To create opportunities for the artist to showcase his/her work and sell it on t
 
 - **Appeal to the eye:** Enhance visuals with materials such as React-bootstrap and MaterialUi.
 - **Responsive design:** That takes into account both mobile and PCs.
-- **Ensures smooth communication between users:** by enabled Emailjs. 
+- **Ensures smooth communication between users:** by enabled Emailjs.
 - **Highly reliable database:** by using nestjs and TypeORM.
 - **Architected test driven application:** Jest and Docker contribute to improve the quality of backend.
 
