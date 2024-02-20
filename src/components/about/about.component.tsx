@@ -10,6 +10,7 @@ import {
 } from "../../asset/asset";
 
 import { ContentLayout } from "../../utilities/components.styles";
+import { ReactComponent as ShopLogo } from "./../../asset/logo.svg";
 import "./about.style.scss";
 
 const About = () => {
@@ -17,12 +18,7 @@ const About = () => {
     <Fragment>
       <ContentLayout className="about-content-layout">
         <div className="about-img-container">
-          <img
-            className="about-img"
-            src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="bio"
-          />
-          <p>&copy;Drew Dizzy Graham</p>
+          <ShopLogo style={{ height: "300px" }} />
         </div>
         <div className="about-text-container">
           <p>{about_text_1}</p>
@@ -30,7 +26,8 @@ const About = () => {
           <p>{about_text_3}</p>
           <p>{about_text_4}</p>
           <div className="about-text-address">
-            <span>{about_text_5}</span><br/>
+            <span>{about_text_5}</span>
+            <br />
             <span>{about_text_6}</span>
           </div>
         </div>
