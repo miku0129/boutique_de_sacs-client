@@ -5,7 +5,7 @@ This repository contains the codebase of a website for <strong>Kréya-D-zil</str
 
 ## Demo
 
-<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWhxNjNuYmEydGs3N3J2bjNjemhtYzFoNWFkY2gyZ3JwY25mbHFzciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UyIFTgsOa2QG2Rh91Y/giphy.gif" alt="demo video" width="200px"/>
+<img src="https://i.giphy.com/p4CPdYqQSdoz5kMLtm.webp" alt="demo video" width="200px"/>
 
 ## Motivation
 
@@ -19,10 +19,7 @@ To create opportunities for the artist to showcase his/her work and sell it on t
 - **Highly reliable database:** by using nestjs and TypeORM.
 - **Architected test driven application:** Jest and Docker contribute to improve the quality of backend.
 
-<img src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="img" height="300px"/>
-<p>
-&copy;Drew Dizzy Graham
-</p>
+<img src="https://i.ibb.co/cw2g2dr/logo.png" alt="img" height="300px"/>
 
 ## Link
 
