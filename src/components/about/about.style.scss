@@ -16,12 +16,13 @@
   text-align: center;
 }
 .about-img {
-    width: 300px;
-    object-fit: cover;
-    object-position: center;
+  width: 300px;
+  object-fit: cover;
+  object-position: center;
 }
 .about-text-container {
   font-size: 25px;
+  max-width: 800px;
 }
 
 .about-text-address {
