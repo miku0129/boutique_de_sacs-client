@@ -1,10 +1,13 @@
 import { Fragment } from "react";
 
 import {
+  shop_logo_url,
   about_text_1,
   about_text_2,
   about_text_3,
   about_text_4,
+  about_text_5,
+  about_text_6,
 } from "../../asset/asset";
 
 import { ContentLayout } from "../../utilities/components.styles";
@@ -16,17 +19,21 @@ const About = () => {
       <ContentLayout className="about-content-layout">
         <div className="about-img-container">
           <img
-            className="about-img"
-            src="https://images.unsplash.com/photo-1501644898242-cfea317d7faf?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="bio"
+            src={shop_logo_url}
+            style={{ height: "300px" }}
+            alt="shop-logo"
           />
-          <p>&copy;Drew Dizzy Graham</p>
         </div>
         <div className="about-text-container">
           <p>{about_text_1}</p>
           <p>{about_text_2}</p>
           <p>{about_text_3}</p>
           <p>{about_text_4}</p>
+          <div className="about-text-address">
+            <span>{about_text_5}</span>
+            <br />
+            <span>{about_text_6}</span>
+          </div>
         </div>
       </ContentLayout>
     </Fragment>
