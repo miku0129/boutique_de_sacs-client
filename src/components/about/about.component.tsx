@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import {
+  shop_logo_url,
   about_text_1,
   about_text_2,
   about_text_3,
@@ -10,7 +11,6 @@ import {
 } from "../../asset/asset";
 
 import { ContentLayout } from "../../utilities/components.styles";
-import { ReactComponent as ShopLogo } from "./../../asset/logo.svg";
 import "./about.style.scss";
 
 const About = () => {
@@ -18,7 +18,11 @@ const About = () => {
     <Fragment>
       <ContentLayout className="about-content-layout">
         <div className="about-img-container">
-          <ShopLogo style={{ height: "300px" }} />
+          <img
+            src={shop_logo_url}
+            style={{ height: "300px" }}
+            alt="shop-logo"
+          />
         </div>
         <div className="about-text-container">
           <p>{about_text_1}</p>

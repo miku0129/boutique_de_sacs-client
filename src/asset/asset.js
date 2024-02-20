@@ -1,4 +1,5 @@
 export const shop_name = "Kréya-D-zil";
+export const shop_logo_url = "https://i.ibb.co/cw2g2dr/logo.png";
 
 export const shop_concept_1 =
   "Créatrice vous propose des pièces uniques et originales, réalisées à Sainte Anne!";

@@ -5,15 +5,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-import { shop_name } from "../../asset/asset";
-import { header_about } from "../../asset/asset";
-import { header_category_1 } from "../../asset/asset";
-import { header_category_2 } from "../../asset/asset";
-import { header_category_3 } from "../../asset/asset";
+import {
+  shop_name,
+  shop_logo_url,
+  header_about,
+  header_category_1,
+  header_category_2,
+  header_category_3,
+} from "../../asset/asset";
 
 import { CustomLink } from "../../utilities/components.styles";
 import { CustomHeaderMenuLink } from "./header.styles";
-import { ReactComponent as ShopLogo } from "./../../asset/logo.svg";
 import "./header.styles.scss";
 
 const Header = () => {
@@ -23,7 +25,11 @@ const Header = () => {
         <Container>
           <div className="shoptitle-contaier">
             <div>
-              <ShopLogo style={{ height: "40px" }} />
+              <img
+                src={shop_logo_url}
+                style={{ height: "40px" }}
+                alt="shop-logo"
+              />
             </div>
             <CustomLink to={"/"}>
               <span className="custom-navbar-main-title">{shop_name}</span>
