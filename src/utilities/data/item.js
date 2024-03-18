@@ -727,5 +727,79 @@ export const item = {
         },
       ],
     },
+    {
+      id: 26,
+      item_id_number: "202426",
+      name: "Sac banane ALL WE DO IS KITING",
+      desc_1:
+        "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
+      desc_2:
+        "Tissus: voile de kite et coton. Modèle sous licence Dodynette.",
+      category: "sacs",
+      price: "Article sur commande",
+      is_available: false,
+      item_img_urls: [
+        {
+          id: 1,
+          url: "https://i.ibb.co/zrBCgxs/20240128-164000.jpg",
+          is_main: true,
+        },
+        {
+          id: 2,
+          url: "https://i.ibb.co/VxnGNJw/20240128-164029.jpg",
+          is_main: false,
+        },
+      ],
+    },
+    {
+      id: 27,
+      item_id_number: "202427",
+      name: "Sac banane Bandidos",
+      desc_1:
+        "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
+      desc_2:
+        "Tissu: voile de kite et coton. Modèle sous licence Dodynette.",
+      category: "sacs",
+      price: "Article sur commande",
+      is_available: false,
+      item_img_urls: [
+        {
+          id: 1,
+          url: "https://i.ibb.co/NpZzS3L/20240303-174307.jpg",
+          is_main: true,
+        },
+        {
+          id: 2,
+          url: "https://i.ibb.co/YWGr3fx/20240303-174613.jpg",
+          is_main: false,
+        },
+      ],
+    },
+    {
+      id: 29,
+      item_id_number: "202429",
+      name: "Berceuse simple",
+      desc_1:
+        "L'assise et le dossier d'origines étaient en cannage. Nous avons fait le choix de remplacer ce cannage par une planche en contreplaqué capitonnée avec un tissu d'ameublement!",
+      desc_2:
+        "",
+      category: "autre",
+      price: "Article sur commande",
+      is_available: false,
+      item_img_urls: [
+        {
+          id: 1,
+          url: "https://i.ibb.co/CQpbyq2/20211129-101222.jpg",
+          is_main: true,
+        },
+        {
+          id: 2,
+          url: "https://i.ibb.co/DQYSjRT/20211120-190734.jpg",
+          is_main: false,
+        },
+      ],
+    },
+
+
   ],
 };
