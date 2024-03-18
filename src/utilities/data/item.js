@@ -741,7 +741,7 @@ export const item = {
       item_img_urls: [
         {
           id: 1,
-          url: "https://i.ibb.co/9H7Dv0M/20220204-144917.jpg",
+          url: "https://i.ibb.co/zrBCgxs/20240128-164000.jpg",
           is_main: true,
         },
         {
