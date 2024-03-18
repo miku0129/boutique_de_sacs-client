@@ -1,6 +1,6 @@
 # Kréya-D-zil
 
-This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe ⛱
+This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe! ⛱
 <br/>
 
 ## Demo
