@@ -9,7 +9,7 @@ export default function HankoAuth() {
   const hanko = useMemo(() => new Hanko(hankoApi), []);
 
   const redirectAfterLogin = useCallback(() => {
-    navigate("/dashboard");
+    navigate("/admin/dashboard");
   }, [navigate]);
 
   useEffect(
