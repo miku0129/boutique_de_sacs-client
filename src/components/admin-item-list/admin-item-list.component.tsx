@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
-// import { deleteDocument_of_a_product } from "../../utils/firebase/firebase.utils";
+import { deleteDocument_of_an_item } from "../../utilities/firebase/firebase.utils";
 import { CustomItemlistBtnGroup } from "./admin-item-list.styles";
 
 import Card from "react-bootstrap/Card";
@@ -43,9 +43,7 @@ const AdminItemList = () => {
                     <CustomItemlistBtnGroup>
                       <Button
                         variant="outline-danger"
-                        //   onClick={() =>
-                        //     deleteDocument_of_a_product(shopId, product.id)
-                        //   }
+                        onClick={() => deleteDocument_of_an_item(item.id)}
                       >
                         Supprimer
                       </Button>

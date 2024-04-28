@@ -1,5 +1,6 @@
 import HankoLogoutBtn from "../../utilities/hanko/hanko-logout-btn/hanko-logout-btn.component";
 import AdminItemList from "../admin-item-list/admin-item-list.component";
+import AdminItemRegister from "../admin-item-register/admin-item-register.component";
 import { useUserData } from "../../utilities/hanko/hanko-useUserData.hooks";
 import {
   CustomLink,
@@ -32,6 +33,7 @@ const AdminDashboard = () => {
         </CustomLink>
         <HankoLogoutBtn />
       </CustomBtnGroup>
+      <AdminItemRegister />
       <AdminItemList />
     </div>
   );

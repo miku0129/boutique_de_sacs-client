@@ -13,6 +13,7 @@ import {
   getDoc,
   getDocs,
   setDoc,
+  deleteDoc
 } from "firebase/firestore/lite";
 import { firestore as db } from "./firebase.utils";
 
@@ -125,4 +126,14 @@ export const initializeItemsData = async () => {
       }
     }
   });
+};
+
+export const deleteDocument_of_an_item = async (itemId) => {
+  try {
+    await deleteDoc(doc(db, "test-items", String(itemId)));
+    window.alert(`Élément supprimé avec succès.`);
+    window.location.reload();
+  } catch (e) {
+    window.alert(`Echec de la suppression de l'élément, Error log: ${e}`);
+  }
 };

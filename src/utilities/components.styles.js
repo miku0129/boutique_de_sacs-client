@@ -42,3 +42,7 @@ export const CustomBtnGroup = styled.div`
   gap: 10px;
   margin: 10px;
 `;
+
+export const CustomContentContainer = styled.div`
+  padding: 20px;
+`;
