@@ -1,9 +1,10 @@
 import HankoLogoutBtn from "../../utilities/hanko/hanko-logout-btn/hanko-logout-btn.component";
+import AdminItemList from "../admin-item-list/admin-item-list.component";
 import { useUserData } from "../../utilities/hanko/hanko-useUserData.hooks";
 import {
   CustomLink,
   CustomBtn,
-  CustomBtnLow,
+  CustomBtnGroup,
 } from "../../utilities/components.styles";
 import "./admin-dashboard.styles.scss";
 
@@ -25,12 +26,13 @@ const AdminDashboard = () => {
   return (
     <div>
       <p>Bonjour, {email}</p>
-      <CustomBtnLow>
+      <CustomBtnGroup>
         <CustomLink to={"/admin/profile"}>
           <CustomBtn>Profile</CustomBtn>
         </CustomLink>
         <HankoLogoutBtn />
-      </CustomBtnLow>
+      </CustomBtnGroup>
+      <AdminItemList />
     </div>
   );
 };

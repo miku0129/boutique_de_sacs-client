@@ -37,7 +37,7 @@ export const CustomBtn = styled.button`
   }
 `;
 
-export const CustomBtnLow = styled.div`
+export const CustomBtnGroup = styled.div`
   display: flex;
   gap: 10px;
   margin: 10px;

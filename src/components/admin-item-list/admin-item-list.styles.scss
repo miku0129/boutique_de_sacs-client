@@ -1,0 +1,12 @@
+.admin-item-list-row {
+  padding: 10px;
+}
+.admin-item-card {
+  max-width: 350px;
+
+  .admin-item-list-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+}
