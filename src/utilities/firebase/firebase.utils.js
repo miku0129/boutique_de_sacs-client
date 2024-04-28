@@ -28,10 +28,22 @@ export const firestore = getFirestore(app);
 //   return querySnapshot.docs.map((docsnapshot) => docsnapshot.data());
 // };
 export const getAllDocuments = async () => {
-  const querySnapshot = await getDocs(collection(db, "test-items"));
-  return querySnapshot.docs.map((docsnapshot) => docsnapshot.data());
-};
+  const querySnapshot_of_items = await getDocs(collection(db, "test-items"));
+  let items = querySnapshot_of_items.docs.map((docsnapshot) =>
+    docsnapshot.data()
+  );
+  for (let i = 0; i < items.length; i++) {
+    let querySnapshot_of_images_of_the_item = await getDocs(
+      collection(db, "test-items", String(items[i].id), "images_of_item")
+    );
+    const images = querySnapshot_of_images_of_the_item.docs.map((doc) => {
+      return doc.data();
+    });
 
+    items[i] = { ...items[i], item_img_urls: images };
+  }
+  return items;
+};
 
 // export const initializeItemsData = async () => {
 //   const { data } = item;
@@ -63,7 +75,6 @@ export const getAllDocuments = async () => {
 // };
 export const initializeItemsData = async () => {
   const { data } = item;
-  console.log("data", data);
 
   data.forEach(async (item, idx) => {
     const item_id = String(idx);
@@ -81,7 +92,33 @@ export const initializeItemsData = async () => {
           category: item.category,
           price: item.price,
           is_available: item.is_available,
-          item_img_urls: item.item_img_urls,
+          // item_img_urls: item.item_img_urls,
+        });
+
+        item.item_img_urls.forEach(async (image, idx) => {
+          const item_image_id = String(idx);
+          const itemImgDocRef = doc(
+            db,
+            "test-items",
+            item_id,
+            "images_of_item",
+            item_image_id
+          );
+          const itemImgDocSnap = await getDoc(itemImgDocRef);
+          if (!itemImgDocSnap.exists()) {
+            try {
+              await setDoc(
+                doc(db, "test-items", item_id, "images_of_item", item_image_id),
+                //もとのIDをfirestore用に上書きする
+                {
+                  ...image,
+                  id: idx,
+                }
+              );
+            } catch (e) {
+              console.error("Error adding document: ", e);
+            }
+          }
         });
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -89,4 +126,3 @@ export const initializeItemsData = async () => {
     }
   });
 };
-
