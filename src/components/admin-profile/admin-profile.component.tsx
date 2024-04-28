@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import HankoProfile from "../hanko-profile/hanko-profile.component";
+import HankoProfile from "../../utilities/hanko/hanko-profile.component";
 import { CustomBtn, CustomBtnLow } from "../../utilities/components.styles";
 
 const AdminProfile = () => {

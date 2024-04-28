@@ -1,4 +1,4 @@
-import HankoLogoutBtn from "../hanko-logout-btn/hanko-logout-btn.component";
+import HankoLogoutBtn from "../../utilities/hanko/hanko-logout-btn/hanko-logout-btn.component";
 import { CustomLink, CustomBtn, CustomBtnLow } from "../../utilities/components.styles";
 import "./admin-dashboard.styles.scss";
 

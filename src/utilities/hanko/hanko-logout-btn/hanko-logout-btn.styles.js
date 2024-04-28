@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { CustomBtn } from "../../utilities/components.styles";
+import { CustomBtn } from "../../components.styles";
 
 export const CustomLogoutBtn = styled(CustomBtn)`
   background-color: white;
