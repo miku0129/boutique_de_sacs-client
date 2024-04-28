@@ -36,3 +36,9 @@ export const CustomBtn = styled.button`
     border: solid 1px #eda184;
   }
 `;
+
+export const CustomBtnLow = styled.div`
+  display: flex;
+  gap: 10px;
+  margin: 10px;
+`;
