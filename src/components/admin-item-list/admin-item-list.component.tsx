@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
 import { deleteDocument_of_an_item } from "../../utilities/firebase/firebase.utils";
+
+import { formTypes } from "../../types/types";
 import { CustomItemlistBtnGroup } from "./admin-item-list.styles";
 
 import Card from "react-bootstrap/Card";
@@ -46,11 +48,11 @@ const AdminItemList = () => {
                       >
                         Supprimer
                       </Button>
-                      {/* <Link
-                          to={`product/edit/${product.id}`}
-                        > */}
+                      <Link
+                          to={`item/${item.id}/edit`} state={formTypes["UPDATE"]}
+                        >
                       <Button variant="secondary">Modifié</Button>
-                      {/* </Link> */}
+                      </Link>
                     </CustomItemlistBtnGroup>
                   </Card.Body>
                 </Card>

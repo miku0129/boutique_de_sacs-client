@@ -1,7 +1,10 @@
 import HankoLogoutBtn from "../../utilities/hanko/hanko-logout-btn/hanko-logout-btn.component";
 import AdminItemList from "../admin-item-list/admin-item-list.component";
-import AdminItemRegister from "../admin-item-register/admin-item-register.component";
+import AdminItemFormContainer from "../admin-item-form-container/admin-item-form-container.component";
 import { useUserData } from "../../utilities/hanko/hanko-useUserData.hooks";
+
+import { formTypes } from "../../types/types";
+
 import {
   CustomLink,
   CustomBtn,
@@ -11,7 +14,6 @@ import "./admin-dashboard.styles.scss";
 
 const AdminDashboard = () => {
   const {
-    // id,
     email,
     loading: userDataLoading,
     error: userDataError,
@@ -33,7 +35,7 @@ const AdminDashboard = () => {
         </CustomLink>
         <HankoLogoutBtn />
       </CustomBtnGroup>
-      <AdminItemRegister />
+      <AdminItemFormContainer formtype={formTypes["REGISTER"]} />
       <AdminItemList />
     </div>
   );
