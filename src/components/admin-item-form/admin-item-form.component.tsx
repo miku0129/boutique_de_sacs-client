@@ -49,10 +49,9 @@ const AdminItemForm = (props: AdminItemFormProps) => {
     };
 
     if (formType === formTypes["REGISTER"]) {
-      console.log("item", item, "image", image);
       await addDocument_of_an_item(item, image);
-      // setFormData(initFormState);
-      // window.location.reload();
+      setFormData(initFormState);
+      window.location.reload();
     }
     // else if (formType === formTypes["UPDATE"]) {
     //   await updateDocument_of_a_product(shopId, product, product_id, image);
