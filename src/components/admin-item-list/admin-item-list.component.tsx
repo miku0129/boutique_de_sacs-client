@@ -12,7 +12,6 @@ import "./admin-item-list.styles.scss";
 
 const AdminItemList = () => {
   const items = useContext(ItemsContext)[0];
-  console.log("items", items);
   return (
     <div>
       <hr />

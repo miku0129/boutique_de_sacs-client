@@ -5,12 +5,12 @@ import { formTypes } from "../../types/types";
 
 const initFormState = {
   name: "",
-  price: 0,
+  category: undefined,
+  is_available: undefined,
+  price: undefined,
   desc_1: "",
   desc_2: "",
-  is_available: false,
-  item_img_urls: [],
-  category: undefined
+  item_img_url: "",
 };
 
 const AdminItemRegister = () => {
@@ -18,9 +18,9 @@ const AdminItemRegister = () => {
     <div>
       <AdminItemForm
         props={{
+          id: undefined,
           formType: formTypes["REGISTER"],
           initFormState: initFormState,
-          id: undefined
         }}
       />
     </div>
