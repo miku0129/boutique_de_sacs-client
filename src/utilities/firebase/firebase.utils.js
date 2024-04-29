@@ -13,12 +13,15 @@ import {
   getDoc,
   getDocs,
   setDoc,
-  deleteDoc
+  deleteDoc,
 } from "firebase/firestore/lite";
 import { firestore as db } from "./firebase.utils";
 
+import { getTailendId } from "./firebase.helper";
+
 //To initialize shop data
 import { item } from "../data/item";
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -93,7 +96,6 @@ export const initializeItemsData = async () => {
           category: item.category,
           price: item.price,
           is_available: item.is_available,
-          // item_img_urls: item.item_img_urls,
         });
 
         item.item_img_urls.forEach(async (image, idx) => {
@@ -135,5 +137,41 @@ export const deleteDocument_of_an_item = async (itemId) => {
     window.location.reload();
   } catch (e) {
     window.alert(`Echec de la suppression de l'élément, Error log: ${e}`);
+  }
+};
+
+export const addDocument_of_an_item = async (item, image) => {
+  const items = await getAllDocuments();
+  const tailEndId_for_newItem = getTailendId(items);
+  try {
+    item = { ...item, id: tailEndId_for_newItem };
+    await setDoc(doc(db, "test-items", String(tailEndId_for_newItem)), item);
+
+    const { item_img_urls } = image;
+    try {
+      //当座は1productにつき1画像のみ登録可能とする
+      const imageOfNewItem = {
+        id: 0,
+        is_main: true,
+        url: item_img_urls[0],
+      };
+      await setDoc(
+        doc(
+          db,
+          "test-items",
+          String(tailEndId_for_newItem),
+          "images_of_item",
+          "0"
+        ),
+        imageOfNewItem
+      );
+      window.alert("L'article a été enregistré avec succès.");
+    } catch (e) {
+      window.alert(
+        `Échec de l'enregistrement de l'image de l'élément. Error log: ${e}`
+      );
+    }
+  } catch (e) {
+    window.alert(`Échec de l'enregistrement de l'article. Error log: ${e}`);
   }
 };

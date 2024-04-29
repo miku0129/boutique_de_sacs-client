@@ -3,6 +3,7 @@ import { useState, ChangeEvent } from "react";
 //   addDocument_of_a_product,
 //   updateDocument_of_a_product,
 // } from "../../utils/firebase/firebase.utils";
+import { addDocument_of_an_item } from "../../utilities/firebase/firebase.utils";
 
 import { formTypes } from "../../types/types";
 // import { redirect_url_after_updating_product } from "../../assets/page-assets";
@@ -49,7 +50,7 @@ const AdminItemForm = (props: AdminItemFormProps) => {
 
     if (formType === formTypes["REGISTER"]) {
       console.log("item", item, "image", image);
-      // await addDocument_of_a_product(item, image);
+      await addDocument_of_an_item(item, image);
       // setFormData(initFormState);
       // window.location.reload();
     }
