@@ -13,10 +13,10 @@ const initFormState = {
   item_img_url: "",
 };
 
-const AdminItemFormContainer = (props: { formtype: string }) => {
+const AdminItemFormContainer = ({ props }: AdminItemFormProps) => {
   return (
     <div>
-      {props.formtype === formTypes["REGISTER"] && (
+      {props.formType === formTypes["REGISTER"] && (
         <AdminItemForm
           props={{
             formType: formTypes["REGISTER"],
@@ -24,10 +24,10 @@ const AdminItemFormContainer = (props: { formtype: string }) => {
           }}
         />
       )}
-      {props.formtype === formTypes["UPDATE"] && (
+      {props.formType === formTypes["UPDATE"] && (
         <AdminItemForm
           props={{
-            id: undefined,
+            itemId: props.itemId,
             formType: formTypes["UPDATE"],
             initFormState: initFormState,
           }}

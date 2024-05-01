@@ -48,10 +48,8 @@ const AdminItemList = () => {
                       >
                         Supprimer
                       </Button>
-                      <Link
-                          to={`item/${item.id}/edit`} state={formTypes["UPDATE"]}
-                        >
-                      <Button variant="secondary">Modifié</Button>
+                      <Link to={`item/${item.id}/edit`}>
+                        <Button variant="secondary">Modifié</Button>
                       </Link>
                     </CustomItemlistBtnGroup>
                   </Card.Body>

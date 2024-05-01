@@ -11,8 +11,8 @@ const Admin = () => {
       <Routes>
         <Route index element={<AdminLogin />} />
         <Route path="dashboard" element={<AdminDashboard />} />
-        <Route path="dashboard/item/:id/edit" element={<AdminItemEdit />} />
         <Route path="profile" element={<AdminProfile />} />
+        <Route path="dashboard/item/:id/edit" element={<AdminItemEdit />} />
       </Routes>
     </>
   );

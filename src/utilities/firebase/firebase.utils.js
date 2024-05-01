@@ -22,7 +22,6 @@ import { getTailendId } from "./firebase.helper";
 //To initialize shop data
 import { item } from "../data/item";
 
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
@@ -47,6 +46,11 @@ export const getAllDocuments = async () => {
     items[i] = { ...items[i], item_img_urls: images };
   }
   return items;
+};
+
+export const getItemById = async (id) => {
+  const items = await getAllDocuments();
+  return items.filter((item) => item.id === id)[0];
 };
 
 // export const initializeItemsData = async () => {

@@ -35,8 +35,8 @@ type InitFormState = {
 
 type AdminItemFormProps = {
   props: {
-    id?: number;
+    itemId?: number;
     formType: string;
-    initFormState: InitFormState;
+    initFormState? : InitFormState;
   };
 };

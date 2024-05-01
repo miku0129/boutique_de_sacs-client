@@ -35,7 +35,7 @@ const AdminDashboard = () => {
         </CustomLink>
         <HankoLogoutBtn />
       </CustomBtnGroup>
-      <AdminItemFormContainer formtype={formTypes["REGISTER"]} />
+      <AdminItemFormContainer props={{ formType: formTypes["REGISTER"] }} />
       <AdminItemList />
     </div>
   );
