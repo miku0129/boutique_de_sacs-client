@@ -2,6 +2,7 @@ import { useEffect, useState, ChangeEvent } from "react";
 import {
   addDocument_of_an_item,
   getItemById,
+  getMainImgOfItemById,
 } from "../../utilities/firebase/firebase.utils";
 
 import { formTypes } from "../../types/types";
@@ -22,17 +23,17 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
   if (props.formType === formTypes["UPDATE"]) {
     useEffect(() => {
       const setInitFormState = async () => {
-        const item = await getItemById(props.itemId);
+        const item = await getItemById(itemId);
+        const item_main_img_url = await getMainImgOfItemById(itemId);
         initFormState!.name = item.name;
         initFormState!.category = item.category;
         initFormState!.is_available = item.is_available;
         initFormState!.price = item.price;
         initFormState!.desc_1 = item.desc_1;
         initFormState!.desc_2 = item.desc_2;
-        initFormState!.item_img_url = item.item_img_url;
+        initFormState!.item_img_url = item_main_img_url;
         setFormData(initFormState);
         setHasInitValForUpdate(true);
-        console.log("initFormState", initFormState);
       };
       setInitFormState();
     }, [hasInitValForUpdate]);
@@ -64,7 +65,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       category: formData!.category,
       is_available: formData!.is_available,
       price:
-        typeof formData!.price === "undefined" ? null : Number(formData!.price),
+        typeof formData!.price === "undefined" ? 0 : Number(formData!.price),
       desc_1: formData!.desc_1,
       desc_2: formData!.desc_2,
     };
@@ -86,6 +87,9 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
   return (
     formData && (
       <CustomContentContainer className="admin-item-form">
+        {formType === formTypes["REGISTER"] && <h4>Ajouter un produit</h4>}
+        {formType === formTypes["UPDATE"] && <h4>Update un produit</h4>}
+
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row>
             <Form.Group>
@@ -169,6 +173,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                 onChange={handleChange}
               />
             </Form.Group>
+            
             <Form.Group>
               <Form.Label htmlFor="desc_2">
                 Description de matériaux de l'objet, etc.
@@ -200,25 +205,24 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                 </Form.Control.Feedback>
               </Form.Group>
             )}
-            {/* {formType === formTypes["UPDATE"] && formData && (
-            <Form.Group>
-              <Form.Label htmlFor="product_images">アイテム写真URL</Form.Label>
-              <Form.Control
-                type="text"
-                id="product_images"
-                name="product_images"
-                value={
-                  formData.product_images &&
-                  formData.product_images[0].product_image_url
-                }
-                onChange={handleChange}
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                アイテム写真のURLは必須です
-              </Form.Control.Feedback>
-            </Form.Group>
-          )} */}
+            {formType === formTypes["UPDATE"] && formData && (
+              <Form.Group>
+                <Form.Label htmlFor="product_images">
+                  URL de la photo de l'article
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  id="item_img_url"
+                  name="item_img_url"
+                  value={formData.item_img_url}
+                  onChange={handleChange}
+                  required
+                />
+                <Form.Control.Feedback type="invalid">
+                  L'URL de la photo de l'article est obligatoire.
+                </Form.Control.Feedback>
+              </Form.Group>
+            )}
           </Row>
           <br />
           <Button variant="success" type="submit">

@@ -7,7 +7,7 @@ const initFormState = {
   name: "",
   category: undefined,
   is_available: undefined,
-  price: undefined,
+  price: 0,
   desc_1: "",
   desc_2: "",
   item_img_url: "",
@@ -17,12 +17,12 @@ const AdminItemFormContainer = ({ props }: AdminItemFormProps) => {
   return (
     <div>
       {props.formType === formTypes["REGISTER"] && (
-        <AdminItemForm
-          props={{
-            formType: formTypes["REGISTER"],
-            initFormState: initFormState,
-          }}
-        />
+          <AdminItemForm
+            props={{
+              formType: formTypes["REGISTER"],
+              initFormState: initFormState,
+            }}
+          />
       )}
       {props.formType === formTypes["UPDATE"] && (
         <AdminItemForm

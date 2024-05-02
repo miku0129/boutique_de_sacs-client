@@ -27,7 +27,7 @@ type InitFormState = {
   name: string;
   category: Category | undefined;
   is_available: boolean | undefined;
-  price: string | undefined;
+  price: number | undefined;
   desc_1?: string;
   desc_2?: string;
   item_img_url: string;
