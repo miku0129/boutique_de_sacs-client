@@ -33,4 +33,4 @@ export const about_text_4 =
 export const about_text_5 = "Atelier à Saint Paul, 97180 Sainte Anne";
 export const about_text_6 = "Siret : 814072328000 10";
 
-export const redirect_url_after_updating_item = "https://kreya-d-zil--pr8-test-vite-0nu28rhs.web.app"
+export const redirect_url_after_updating_item = "http://localhost:5173/admin/dashboard"
