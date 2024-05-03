@@ -14,6 +14,7 @@ import {
   getDocs,
   setDoc,
   deleteDoc,
+  updateDoc
 } from "firebase/firestore/lite";
 import { firestore as db } from "./firebase.utils";
 
@@ -56,7 +57,7 @@ export const getMainImgOfItemById = async (id) => {
   const items = await getAllDocuments();
   return items
     .filter((item) => item.id === id)[0]
-    .item_img_urls.filter((img) => img.is_main)[0].url;
+    .item_img_urls.filter((img) => img.is_main)[0];
 };
 
 // export const initializeItemsData = async () => {
@@ -183,5 +184,54 @@ export const addDocument_of_an_item = async (item, image) => {
     }
   } catch (e) {
     window.alert(`Échec de l'enregistrement de l'article. Error log: ${e}`);
+  }
+};
+
+export const updateDocument_of_an_item = async (
+  itemId, 
+  item, 
+  itemImgsId,
+  image
+) => {
+  const itemRef = doc(
+    db,
+    "test-items",
+    String(itemId),
+  );
+  try {
+    const docSnap_of_item = await getDoc(itemRef);
+    if (docSnap_of_item.exists()) {
+      await updateDoc(itemRef, item);
+    }
+    const ItemImgsRef = doc(
+      db,
+      "test-items",
+      String(itemId),
+      "images_of_item",
+      String(itemImgsId),
+    );
+
+    //フォームで更新前のアイテムの画像urlを表示させるため
+    //画像urlの更新を行わず更新ボタンを押下するとデータがdbに正しく挿入されない。
+    //データを正しく上書きし更新できるようにする
+    // if (Array.isArray(image.item_img_urls)) {
+    //   image = {
+    //     ...image,
+    //     url: image.item_img_urls[0].url,
+    //   };
+    // }
+    console.log("image", image)
+
+    try {
+      const docSnap_of_img = await getDoc(ItemImgsRef);
+      if (docSnap_of_img.exists()) {
+        await updateDoc(ItemImgsRef, image);
+      }
+      window.alert(`アイテムの更新に成功しました。`);
+    } catch (e) {
+      window.alert(`アイテム画像の更新に失敗しました。Error log: ${e}`);
+    }
+  } catch (e) {
+    window.alert(`アイテムの更新に失敗しました。Error log: ${e}`);
   }
 };

@@ -3,6 +3,7 @@ import {
   addDocument_of_an_item,
   getItemById,
   getMainImgOfItemById,
+  updateDocument_of_an_item
 } from "../../utilities/firebase/firebase.utils";
 
 import { formTypes } from "../../types/types";
@@ -17,21 +18,23 @@ import { CustomContentContainer } from "../../utilities/components.styles";
 const AdminItemForm = ({ props }: AdminItemFormProps) => {
   const { formType, initFormState, itemId } = props;
   const [formData, setFormData] = useState(initFormState);
-  const [validated, setValidated] = useState(false);
   const [hasInitValForUpdate, setHasInitValForUpdate] = useState(false);
+  const [itemImgId, setItemImgId] = useState(null); 
+  const [validated, setValidated] = useState(false);
 
   if (props.formType === formTypes["UPDATE"]) {
     useEffect(() => {
       const setInitFormState = async () => {
         const item = await getItemById(itemId);
-        const item_main_img_url = await getMainImgOfItemById(itemId);
+        const item_main_img= await getMainImgOfItemById(itemId);
+        setItemImgId(item_main_img.id); 
         initFormState!.name = item.name;
         initFormState!.category = item.category;
         initFormState!.is_available = item.is_available;
         initFormState!.price = item.price;
         initFormState!.desc_1 = item.desc_1;
         initFormState!.desc_2 = item.desc_2;
-        initFormState!.item_img_url = item_main_img_url;
+        initFormState!.item_img_url = item_main_img.url;
         setFormData(initFormState);
         setHasInitValForUpdate(true);
       };
@@ -70,7 +73,9 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       desc_2: formData!.desc_2,
     };
     const image = {
-      item_img_urls: [formData!.item_img_url],
+      id: itemImgId, 
+      is_main: true,  
+      url: formData!.item_img_url,
     };
 
     if (formType === formTypes["REGISTER"]) {
@@ -78,14 +83,17 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       setFormData(initFormState);
       window.location.reload();
     }
-    // else if (formType === formTypes["UPDATE"]) {
-    //   await updateDocument_of_a_product(shopId, product, product_id, image);
-    //   window.location = redirect_url_after_updating_product;
-    // }
+    else if (formType === formTypes["UPDATE"]) {
+      await updateDocument_of_an_item(itemId, item, itemImgId, image);
+      // window.location = redirect_url_after_updating_product;
+    }
   };
 
   return (
-    formData && (
+    (formType === formTypes["UPDATE"] && !hasInitValForUpdate && (
+      <h4>Loading...</h4>
+    )) ||
+    (formData && (
       <CustomContentContainer className="admin-item-form">
         {formType === formTypes["REGISTER"] && <h4>Ajouter un produit</h4>}
         {formType === formTypes["UPDATE"] && <h4>Update un produit</h4>}
@@ -173,7 +181,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                 onChange={handleChange}
               />
             </Form.Group>
-            
+
             <Form.Group>
               <Form.Label htmlFor="desc_2">
                 Description de matériaux de l'objet, etc.
@@ -230,7 +238,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
           </Button>
         </Form>
       </CustomContentContainer>
-    )
+    ))
   );
 };
 
