@@ -4,6 +4,7 @@ import { formTypes } from "../../types/types";
 // import "./admin-product-register.styles.scss";
 
 const initFormState = {
+  item_id_number: "", 
   name: "",
   category: undefined,
   is_available: undefined,

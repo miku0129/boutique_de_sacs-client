@@ -14,7 +14,7 @@ import {
   getDocs,
   setDoc,
   deleteDoc,
-  updateDoc
+  updateDoc,
 } from "firebase/firestore/lite";
 import { firestore as db } from "./firebase.utils";
 
@@ -158,13 +158,13 @@ export const addDocument_of_an_item = async (item, image) => {
     item = { ...item, id: tailEndId_for_newItem };
     await setDoc(doc(db, "test-items", String(tailEndId_for_newItem)), item);
 
-    const { item_img_urls } = image;
+    const { url } = image;
     try {
       //当座は1productにつき1画像のみ登録可能とする
       const imageOfNewItem = {
         id: 0,
         is_main: true,
-        url: item_img_urls[0],
+        url: url,
       };
       await setDoc(
         doc(
@@ -188,16 +188,12 @@ export const addDocument_of_an_item = async (item, image) => {
 };
 
 export const updateDocument_of_an_item = async (
-  itemId, 
-  item, 
+  itemId,
+  item,
   itemImgsId,
   image
 ) => {
-  const itemRef = doc(
-    db,
-    "test-items",
-    String(itemId),
-  );
+  const itemRef = doc(db, "test-items", String(itemId));
   try {
     const docSnap_of_item = await getDoc(itemRef);
     if (docSnap_of_item.exists()) {
@@ -208,30 +204,21 @@ export const updateDocument_of_an_item = async (
       "test-items",
       String(itemId),
       "images_of_item",
-      String(itemImgsId),
+      String(itemImgsId)
     );
-
-    //フォームで更新前のアイテムの画像urlを表示させるため
-    //画像urlの更新を行わず更新ボタンを押下するとデータがdbに正しく挿入されない。
-    //データを正しく上書きし更新できるようにする
-    // if (Array.isArray(image.item_img_urls)) {
-    //   image = {
-    //     ...image,
-    //     url: image.item_img_urls[0].url,
-    //   };
-    // }
-    console.log("image", image)
 
     try {
       const docSnap_of_img = await getDoc(ItemImgsRef);
       if (docSnap_of_img.exists()) {
         await updateDoc(ItemImgsRef, image);
       }
-      window.alert(`アイテムの更新に成功しました。`);
+      window.alert(`L'article a été mis à jour avec succès.`);
     } catch (e) {
-      window.alert(`アイテム画像の更新に失敗しました。Error log: ${e}`);
+      window.alert(
+        `Échec de la mise à jour de l'image de l'élément. Error log: ${e}`
+      );
     }
   } catch (e) {
-    window.alert(`アイテムの更新に失敗しました。Error log: ${e}`);
+    window.alert(`Échec de la mise à jour de l'élément. Error log: ${e}`);
   }
 };
