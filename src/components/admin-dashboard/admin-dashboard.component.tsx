@@ -35,8 +35,12 @@ const AdminDashboard = () => {
         </CustomLink>
         <HankoLogoutBtn />
       </CustomBtnGroup>
-      <AdminItemFormContainer props={{ formType: formTypes["REGISTER"] }} />
-      <AdminItemList />
+      {email === import.meta.env.VITE_ADMIN_EMAIL && (
+        <div>
+          <AdminItemFormContainer props={{ formType: formTypes["REGISTER"] }} />
+          <AdminItemList />
+        </div>
+      )}
     </div>
   );
 };
