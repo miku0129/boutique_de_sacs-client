@@ -91,18 +91,20 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
   };
 
   return (
-    (formType === formTypes["UPDATE"] && !hasInitValForUpdate && (
+    <div>
+      (formType === formTypes["UPDATE"] && !hasInitValForUpdate && (
       <h4>Loading...</h4>
-    )) ||
-    (formData && (
+      )) || (formData && (
       <CustomContentContainer className="admin-item-form">
         {formType === formTypes["REGISTER"] && <h4>Ajouter un produit</h4>}
         {formType === formTypes["UPDATE"] && <h4>Update un produit</h4>}
 
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Row>
-          <Form.Group>
-              <Form.Label htmlFor="item_id_number">numéro d'identification de l'article</Form.Label>
+            <Form.Group>
+              <Form.Label htmlFor="item_id_number">
+                numéro d'identification de l'article
+              </Form.Label>
               <Form.Control
                 type="text"
                 id="item_id_number"
@@ -254,7 +256,8 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
           </Button>
         </Form>
       </CustomContentContainer>
-    ))
+      ))
+    </div>
   );
 };
 
