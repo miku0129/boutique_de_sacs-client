@@ -48,7 +48,7 @@ const AdminItemList = () => {
                         Supprimer
                       </Button>
                       <Link to={`item/${item.id}/edit`}>
-                        <Button variant="secondary">Modifié</Button>
+                        <Button variant="success">Modifié</Button>
                       </Link>
                     </CustomItemlistBtnGroup>
                   </Card.Body>

@@ -22,7 +22,7 @@ type Item = {
   item_img_urls?: Item_img_url[];
 };
 
-type InitFormState = {
+type FormStateTemplate = {
   item_id_number?: string;
   name: string;
   category: Category | undefined;
@@ -37,6 +37,6 @@ type AdminItemFormProps = {
   props: {
     itemId?: number;
     formType: string;
-    initFormState? : InitFormState;
+    formStateTemplate?: FormStateTemplate;
   };
 };

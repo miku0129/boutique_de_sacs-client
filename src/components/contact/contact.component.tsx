@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 import { init, send } from "@emailjs/browser";
 
-import { price_or_notification_text } from "../../asset/asset";
+import { price_or_notification_text, btn_back } from "../../asset/asset";
 
 import { ContentLayout, CustomBtn } from "../../utilities/components.styles";
 
@@ -57,7 +57,7 @@ const Contact = () => {
 
   const navigate = useNavigate();
   let price_or_notification = "";
-  if (itemIsAvailable && (typeof itemPrice === "number")) {
+  if (itemIsAvailable && typeof itemPrice === "number") {
     price_or_notification = "Prix: " + itemPrice + " euros";
   } else {
     price_or_notification = price_or_notification_text;
@@ -197,7 +197,7 @@ const Contact = () => {
 
           <div className="contact-form-btn-layout">
             <CustomBtn type="button" onClick={() => navigate(-1)}>
-              Retour
+              {btn_back}
             </CustomBtn>
             <Button variant="success" type="submit">
               Soumettre

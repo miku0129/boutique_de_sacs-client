@@ -1,4 +1,5 @@
 import { useEffect, useState, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   addDocument_of_an_item,
   getItemById,
@@ -7,35 +8,41 @@ import {
 } from "../../utilities/firebase/firebase.utils";
 
 import { formTypes } from "../../types/types";
-import { redirect_url_after_updating_item } from "../../asset/asset";
+import { redirect_url_after_updating_item, btn_back } from "../../asset/asset";
 
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { CustomContentContainer } from "../../utilities/components.styles";
-// import "./admin-item-form.styles.scss";
+import {
+  CustomBtnGroup,
+  CustomBtn,
+  CustomContentContainer,
+} from "../../utilities/components.styles";
+import "./admin-item-form.styles.scss";
 
 const AdminItemForm = ({ props }: AdminItemFormProps) => {
-  const { formType, initFormState, itemId } = props;
-  const [formData, setFormData] = useState(initFormState);
+  const { formType, formStateTemplate, itemId } = props;
+  const [formData, setFormData] = useState(formStateTemplate);
   const [itemImgId, setItemImgId] = useState(null);
   const [hasInitValForUpdate, setHasInitValForUpdate] = useState(false);
   const [validated, setValidated] = useState(false);
+
+  const navigate = useNavigate();
 
   if (props.formType === formTypes["UPDATE"]) {
     useEffect(() => {
       const setInitFormState = async () => {
         const item = await getItemById(itemId);
-        initFormState!.item_id_number = item.item_id_number;
-        initFormState!.name = item.name;
-        initFormState!.category = item.category;
-        initFormState!.is_available = item.is_available;
-        initFormState!.price = item.price;
-        initFormState!.desc_1 = item.desc_1;
-        initFormState!.desc_2 = item.desc_2;
-        setFormData(initFormState);
+        formStateTemplate!.item_id_number = item.item_id_number;
+        formStateTemplate!.name = item.name;
+        formStateTemplate!.category = item.category;
+        formStateTemplate!.is_available = item.is_available;
+        formStateTemplate!.price = item.price;
+        formStateTemplate!.desc_1 = item.desc_1;
+        formStateTemplate!.desc_2 = item.desc_2;
+        setFormData(formStateTemplate);
         const item_main_img = await getMainImgOfItemById(itemId);
-        initFormState!.item_img_url = item_main_img.url;
+        formStateTemplate!.item_img_url = item_main_img.url;
         setItemImgId(item_main_img.id);
         setHasInitValForUpdate(true);
       };
@@ -46,8 +53,8 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData(
-      (prevFormData): InitFormState => ({
-        ...(prevFormData as InitFormState),
+      (prevFormData): FormStateTemplate => ({
+        ...(prevFormData as FormStateTemplate),
         [name]: value,
       })
     );
@@ -82,12 +89,25 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
 
     if (formType === formTypes["REGISTER"]) {
       await addDocument_of_an_item(item, image);
-      setFormData(initFormState);
+      setFormData(formStateTemplate);
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
       await updateDocument_of_an_item(itemId, item, itemImgId, image);
       window.location.href = redirect_url_after_updating_item;
     }
+  };
+
+  const clearFormData = () => {
+    formStateTemplate!.item_id_number = "";
+    formStateTemplate!.name = "";
+    formStateTemplate!.category = undefined;
+    formStateTemplate!.is_available = undefined;
+    formStateTemplate!.price = 0;
+    formStateTemplate!.desc_1 = "";
+    formStateTemplate!.desc_2 = "";
+    formStateTemplate!.item_img_url = "";
+    setFormData(formStateTemplate);
+    navigate(-1);
   };
 
   return (
@@ -101,7 +121,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
             {formType === formTypes["UPDATE"] && <h4>Update un produit</h4>}
 
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
-              <Row>
+              <Row className="form-row">
                 <Form.Group>
                   <Form.Label htmlFor="item_id_number">
                     numéro d'identification de l'article
@@ -253,9 +273,17 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                 )}
               </Row>
               <br />
-              <Button variant="success" type="submit">
-                {formType === formTypes["REGISTER"] ? "Ajouter" : "Update"}
-              </Button>
+              <CustomBtnGroup>
+                {formType === formTypes["UPDATE"] && (
+                  <CustomBtn type="button" onClick={() => clearFormData()}>
+                    {btn_back}
+                  </CustomBtn>
+                )}
+
+                <Button variant="success" type="submit">
+                  {formType === formTypes["REGISTER"] ? "Ajouter" : "Update"}
+                </Button>
+              </CustomBtnGroup>
             </Form>
           </CustomContentContainer>
         ))}
