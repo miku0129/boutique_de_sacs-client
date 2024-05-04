@@ -27,7 +27,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div>
+    <div className="admin-content-container">
       <p>Bonjour, {email}</p>
       <CustomBtnGroup>
         <CustomLink to={"/admin/profile"}>
@@ -37,7 +37,7 @@ const AdminDashboard = () => {
       </CustomBtnGroup>
       {(email === import.meta.env.VITE_ADMIN_EMAIL_1 ||
         email === import.meta.env.VITE_ADMIN_EMAIL_2) && (
-        <div>
+        <div className="admin-contents">
           <AdminItemFormContainer props={{ formType: formTypes["REGISTER"] }} />
           <AdminItemList />
         </div>

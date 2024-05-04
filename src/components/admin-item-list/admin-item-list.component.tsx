@@ -15,7 +15,6 @@ const AdminItemList = () => {
   const items = useContext(ItemsContext)[0];
   return (
     <div>
-      <hr />
       <h4>Liste de produits</h4>
       <Row xs={1} md={3} className="g-4 admin-item-list-row">
         {items &&
