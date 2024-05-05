@@ -53,6 +53,7 @@ export const getItemById = async (id) => {
   const items = await getAllDocuments();
   return items.filter((item) => item.id === id)[0];
 };
+
 export const getMainImgOfItemById = async (id) => {
   const items = await getAllDocuments();
   return items
