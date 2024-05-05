@@ -35,11 +35,13 @@ export const about_text_6 = "Siret : 814072328000 10";
 
 export const btn_cancel = "Annuler";
 export const btn_back = "Retour";
+export const btn_clear = "Clair";
 
 export const redirect_url_after_updating_item =
   "http://localhost:5173/admin/dashboard";
 
 export const formStateTemplate = {
+  id: null,
   item_id_number: "",
   name: "",
   category: undefined,
@@ -47,6 +49,6 @@ export const formStateTemplate = {
   price: 0,
   desc_1: "",
   desc_2: "",
+  item_img_id: null,
   item_img_url: "",
 };
-

@@ -23,19 +23,20 @@ type Item = {
 };
 
 type FormStateTemplate = {
-  item_id_number?: string;
+  id: number | null;
+  item_id_number: string | undefined;
   name: string;
   category: Category | undefined;
   is_available: boolean | undefined;
-  price: number | undefined;
+  price?: number;
   desc_1?: string;
   desc_2?: string;
+  item_img_id: number | null;
   item_img_url: string;
 };
 
 type AdminItemFormProps = {
   props: {
-    itemId?: number;
     formType: string;
     formStateTemplate?: FormStateTemplate;
   };
