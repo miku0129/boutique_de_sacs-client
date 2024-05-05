@@ -3,7 +3,7 @@ import AdminItemList from "../admin-item-list/admin-item-list.component";
 import HankoLogoutBtn from "../../utilities/hanko/hanko-logout-btn/hanko-logout-btn.component";
 import { useUserData } from "../../utilities/hanko/hanko-useUserData.hooks";
 import { formTypes } from "../../types/types";
-import { formStateTemplate } from "../../asset/asset";
+import { formStateTemplate, msg_loading } from "../../asset/asset";
 import {
   CustomLink,
   CustomBtn,
@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   } = useUserData();
 
   if (userDataLoading) {
-    return <h4>Loading...</h4>;
+    return <h4>{msg_loading}</h4>;
   }
   if (userDataError) {
     return <div>{userDataError}</div>;

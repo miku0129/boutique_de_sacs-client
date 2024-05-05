@@ -33,9 +33,11 @@ export const about_text_4 =
 export const about_text_5 = "Atelier à Saint Paul, 97180 Sainte Anne";
 export const about_text_6 = "Siret : 814072328000 10";
 
-export const btn_cancel = "Annuler";
 export const btn_back = "Retour";
 export const btn_clear = "Clair";
+export const btn_cancel = "Annuler";
+
+export const msg_loading = "Loading...";
 
 export const redirect_url_after_updating_item =
   "http://localhost:5173/admin/dashboard";

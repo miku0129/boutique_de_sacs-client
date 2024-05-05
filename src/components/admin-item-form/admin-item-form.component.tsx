@@ -27,14 +27,12 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
 
   const navigate = useNavigate();
 
-  // if (props.formType === formTypes["UPDATE"]) {
   useEffect(() => {
     const setInitFormState = async () => {
       setFormData(formStateTemplate);
     };
     setInitFormState();
   }, []);
-  // }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -70,7 +68,6 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     };
     const itemImgId = formData!.item_img_id;
     const image = {
-      // id: formData!.item_img_id,
       is_main: true,
       url: formData!.item_img_url,
     };
@@ -79,8 +76,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       await addDocument_of_an_item(item, image);
       setFormData(formStateTemplate);
       window.location.reload();
-    }
-    else if (formType === formTypes["UPDATE"]) {
+    } else if (formType === formTypes["UPDATE"]) {
       await updateDocument_of_an_item(itemId, item, itemImgId, image);
       window.location.href = redirect_url_after_updating_item;
     }
@@ -219,42 +215,22 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                 />
               </Form.Group>
 
-              {formType === formTypes["REGISTER"] && (
-                <Form.Group>
-                  <Form.Label htmlFor="item_img_url">
-                    L'URL de la photo de l'article
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    id="item_img_url"
-                    name="item_img_url"
-                    value={formData!.item_img_url}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    L'URL de la photo de l'article est obligatoire
-                  </Form.Control.Feedback>
-                </Form.Group>
-              )}
-              {formType === formTypes["UPDATE"] && formData && (
-                <Form.Group>
-                  <Form.Label htmlFor="product_images">
-                    URL de la photo de l'article
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    id="item_img_url"
-                    name="item_img_url"
-                    value={formData.item_img_url}
-                    onChange={handleChange}
-                    required
-                  />
-                  <Form.Control.Feedback type="invalid">
-                    L'URL de la photo de l'article est obligatoire.
-                  </Form.Control.Feedback>
-                </Form.Group>
-              )}
+              <Form.Group>
+                <Form.Label htmlFor="item_img_url">
+                  L'URL de la photo de l'article
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  id="item_img_url"
+                  name="item_img_url"
+                  value={formData!.item_img_url}
+                  onChange={handleChange}
+                  required
+                />
+                <Form.Control.Feedback type="invalid">
+                  L'URL de la photo de l'article est obligatoire
+                </Form.Control.Feedback>
+              </Form.Group>
             </Row>
             <br />
             <CustomBtnGroup>

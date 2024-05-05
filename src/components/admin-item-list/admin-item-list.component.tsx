@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
 import { deleteDocument_of_an_item } from "../../utilities/firebase/firebase.utils";
 
-import { CustomItemlistBtnGroup } from "./admin-item-list.styles";
-
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import { CustomItemlistBtnGroup } from "./admin-item-list.styles";
 import "./admin-item-list.styles.scss";
 
 const AdminItemList = () => {

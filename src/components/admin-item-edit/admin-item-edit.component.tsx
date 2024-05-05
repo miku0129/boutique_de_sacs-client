@@ -6,7 +6,7 @@ import {
   getMainImgOfItemById,
 } from "../../utilities/firebase/firebase.utils";
 import { formTypes } from "../../types/types";
-import { formStateTemplate } from "../../asset/asset";
+import { formStateTemplate, msg_loading } from "../../asset/asset";
 
 const AdminItemEdit = () => {
   const params = useParams();
@@ -34,7 +34,7 @@ const AdminItemEdit = () => {
 
   return (
     <div>
-      {!hasInitValForUpdate && <h4>Loading...</h4> || (
+      {(!hasInitValForUpdate && <h4>{msg_loading}</h4>) || (
         <AdminItemForm
           props={{
             formType: formTypes["UPDATE"],
