@@ -27,10 +27,6 @@ import { item } from "../data/item";
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 
-// export const getAllDocuments = async () => {
-//   const querySnapshot = await getDocs(collection(db, "items"));
-//   return querySnapshot.docs.map((docsnapshot) => docsnapshot.data());
-// };
 export const getAllDocuments = async () => {
   const querySnapshot_of_items = await getDocs(collection(db, "test-items"));
   let items = querySnapshot_of_items.docs.map((docsnapshot) =>
@@ -61,34 +57,6 @@ export const getMainImgOfItemById = async (id) => {
     .item_img_urls.filter((img) => img.is_main)[0];
 };
 
-// export const initializeItemsData = async () => {
-//   const { data } = item;
-//   console.log("data", data);
-
-//   data.forEach(async (item, idx) => {
-//     const item_id = String(idx);
-//     const docRef = doc(db, "items", item_id);
-//     const docSnap = await getDoc(docRef);
-
-//     if (!docSnap.exists()) {
-//       try {
-//         await setDoc(doc(db, "items", item_id), {
-//           id: idx,
-//           item_id_number: item.item_id_number,
-//           name: item.name,
-//           desc_1: item.desc_1,
-//           desc_2: item.desc_2,
-//           category: item.category,
-//           price: item.price,
-//           is_available: item.is_available,
-//           item_img_urls: item.item_img_urls,
-//         });
-//       } catch (e) {
-//         console.error("Error adding document: ", e);
-//       }
-//     }
-//   });
-// };
 export const initializeItemsData = async () => {
   const { data } = item;
 
