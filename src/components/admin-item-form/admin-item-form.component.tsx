@@ -6,7 +6,8 @@ import {
 } from "../../utilities/firebase/firebase.utils";
 import { formTypes } from "../../types/types";
 import {
-  redirect_url_after_updating_item,
+  redirect_url_after_updating_item_prod,
+  redirect_url_after_updating_item_dev,
   btn_back,
   btn_clear,
 } from "../../asset/asset";
@@ -78,7 +79,9 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
       await updateDocument_of_an_item(itemId, item, itemImgId, image);
-      window.location.href = redirect_url_after_updating_item;
+      window.location.href = import.meta.env.PROD
+        ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
+        : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
     }
   };
 

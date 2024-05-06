@@ -12,7 +12,6 @@ import {
 import "./admin-dashboard.styles.scss";
 
 const AdminDashboard = () => {
-
   const {
     email,
     loading: userDataLoading,
@@ -26,22 +25,31 @@ const AdminDashboard = () => {
     return <div>{userDataError}</div>;
   }
 
+  const checkAuth = () => {
+    const authEmail = import.meta.env.VITE_ADMIN_EMAIL_LIST.split(",");
+    return authEmail.filter((auth: string) => auth === email).length > 0;
+  };
+
   return (
     <div className="admin-content-container">
-      <p>Bonjour, {email}</p>
       <CustomBtnGroup>
         <CustomLink to={"/admin/profile"}>
           <CustomBtn>Profile</CustomBtn>
         </CustomLink>
         <HankoLogoutBtn />
       </CustomBtnGroup>
-      {(email === import.meta.env.VITE_ADMIN_EMAIL_1 ||
-        email === import.meta.env.VITE_ADMIN_EMAIL_2) && (
+      {checkAuth() && (
         <div className="admin-contents">
-          <AdminItemForm props={{formType: formTypes["REGISTER"], formStateTemplate: formStateTemplate}}/>
+          <AdminItemForm
+            props={{
+              formType: formTypes["REGISTER"],
+              formStateTemplate: formStateTemplate,
+            }}
+          />
           <AdminItemList />
         </div>
       )}
+      {!checkAuth() && <div>Erreur d'autorité</div>}
     </div>
   );
 };

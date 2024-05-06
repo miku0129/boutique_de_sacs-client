@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { Hanko } from "@teamhanko/hanko-elements";
 
-const hankoApi = import.meta.env.VITE_HANKO_API_URL;
+const hankoApi = import.meta.env.PROD
+  ? import.meta.env.VITE_HANKO_API_URL_PROD
+  : import.meta.env.VITE_HANKO_API_URL_DEV;
 
 interface HankoUser {
   id: string;

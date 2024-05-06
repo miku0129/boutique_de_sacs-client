@@ -39,9 +39,6 @@ export const btn_cancel = "Annuler";
 
 export const msg_loading = "Loading...";
 
-export const redirect_url_after_updating_item =
-  "https://kreya-d-zil--pr9-develop-ag0qiiqu.web.app/admin/dashboard";
-
 export const formStateTemplate = {
   id: null,
   item_id_number: "",
@@ -54,3 +51,7 @@ export const formStateTemplate = {
   item_img_id: null,
   item_img_url: "",
 };
+
+export const redirect_url_after_updating_item_prod =
+  "https://kreya-d-zil--pr9-develop-ag0qiiqu.web.app";
+export const redirect_url_after_updating_item_dev = "http://localhost:5173";
