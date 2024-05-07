@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Hanko } from "@teamhanko/hanko-elements";
 import { CustomLogoutBtn } from "./hanko-logout-btn.styles";
 
-const hankoApi = import.meta.env.VITE_HANKO_API_URL;
+const hankoApi = import.meta.env.PROD
+  ? import.meta.env.VITE_HANKO_API_URL_PROD
+  : import.meta.env.VITE_HANKO_API_URL_DEV;
 
 function HankoLogoutBtn() {
   const navigate = useNavigate();

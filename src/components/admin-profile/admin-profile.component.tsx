@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
-import HankoProfile from "../hanko-profile/hanko-profile.component";
-import { CustomBtn, CustomBtnLow } from "../../utilities/components.styles";
+import HankoProfile from "../../utilities/hanko/hanko-profile.component";
+import { CustomBtn, CustomBtnGroup } from "../../utilities/components.styles";
+import { btn_back } from "../../asset/asset";
 
 const AdminProfile = () => {
   const navigate = useNavigate();
 
   return (
     <div>
-      <CustomBtnLow>
+      <CustomBtnGroup>
         <CustomBtn type="button" onClick={() => navigate(-1)}>
-          Retour
+          {btn_back}
         </CustomBtn>
-      </CustomBtnLow>
+      </CustomBtnGroup>
       <HankoProfile />
     </div>
   );

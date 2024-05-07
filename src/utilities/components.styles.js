@@ -37,8 +37,12 @@ export const CustomBtn = styled.button`
   }
 `;
 
-export const CustomBtnLow = styled.div`
+export const CustomBtnGroup = styled.div`
   display: flex;
   gap: 10px;
   margin: 10px;
+`;
+
+export const CustomContentContainer = styled.div`
+  padding: 20px;
 `;

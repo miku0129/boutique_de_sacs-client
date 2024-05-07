@@ -1,7 +1,7 @@
-import HankoAuth from "../hanko-auth/hanko-auth.component";
+import HankoAuth from "../../utilities/hanko/hanko-auth.component";
 
 const AdminLogin = () => {
-  return <HankoAuth />
+  return <HankoAuth />;
 };
 
-export default AdminLogin
+export default AdminLogin;
