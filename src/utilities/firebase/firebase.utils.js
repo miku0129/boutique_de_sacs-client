@@ -27,6 +27,12 @@ import { item } from "../data/item";
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 
+// firebaseDB: local, firebase-previewではtest-item, productionはitemsを使用する
+const collection = import.meta.env.PROD
+? "items"
+: "test-items";
+
+
 export const getAllDocuments = async () => {
   const querySnapshot_of_items = await getDocs(collection(db, "items"));
   let items = querySnapshot_of_items.docs.map((docsnapshot) =>

@@ -6,6 +6,7 @@ import AdminProfile from "../components/admin-profile/admin-profile.component";
 import AdminItemEdit from "../components/admin-item-edit/admin-item-edit.component";
 
 const Admin = () => {
+  console.log("Is NODE_ENV PROD?: ", import.meta.env.PROD)
   return (
     <>
       <Routes>
