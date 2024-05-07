@@ -28,13 +28,13 @@ const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 
 export const getAllDocuments = async () => {
-  const querySnapshot_of_items = await getDocs(collection(db, "test-items"));
+  const querySnapshot_of_items = await getDocs(collection(db, "items"));
   let items = querySnapshot_of_items.docs.map((docsnapshot) =>
     docsnapshot.data()
   );
   for (let i = 0; i < items.length; i++) {
     let querySnapshot_of_images_of_the_item = await getDocs(
-      collection(db, "test-items", String(items[i].id), "images_of_item")
+      collection(db, "items", String(items[i].id), "images_of_item")
     );
     const images = querySnapshot_of_images_of_the_item.docs.map((doc) => {
       return doc.data();
@@ -62,12 +62,12 @@ export const initializeItemsData = async () => {
 
   data.forEach(async (item, idx) => {
     const item_id = String(idx);
-    const docRef = doc(db, "test-items", item_id);
+    const docRef = doc(db, "items", item_id);
     const docSnap = await getDoc(docRef);
 
     if (!docSnap.exists()) {
       try {
-        await setDoc(doc(db, "test-items", item_id), {
+        await setDoc(doc(db, "items", item_id), {
           id: idx,
           item_id_number: item.item_id_number,
           name: item.name,
@@ -82,7 +82,7 @@ export const initializeItemsData = async () => {
           const item_image_id = String(idx);
           const itemImgDocRef = doc(
             db,
-            "test-items",
+            "items",
             item_id,
             "images_of_item",
             item_image_id
@@ -91,7 +91,7 @@ export const initializeItemsData = async () => {
           if (!itemImgDocSnap.exists()) {
             try {
               await setDoc(
-                doc(db, "test-items", item_id, "images_of_item", item_image_id),
+                doc(db, "items", item_id, "images_of_item", item_image_id),
                 //もとのIDをfirestore用に上書きする
                 {
                   ...image,
@@ -112,7 +112,7 @@ export const initializeItemsData = async () => {
 
 export const deleteDocument_of_an_item = async (itemId) => {
   try {
-    await deleteDoc(doc(db, "test-items", String(itemId)));
+    await deleteDoc(doc(db, "items", String(itemId)));
     window.alert(`Élément supprimé avec succès.`);
     window.location.reload();
   } catch (e) {
@@ -125,7 +125,7 @@ export const addDocument_of_an_item = async (item, image) => {
   const tailEndId_for_newItem = getTailendId(items);
   try {
     item = { ...item, id: tailEndId_for_newItem };
-    await setDoc(doc(db, "test-items", String(tailEndId_for_newItem)), item);
+    await setDoc(doc(db, "items", String(tailEndId_for_newItem)), item);
 
     const { url } = image;
     try {
@@ -136,13 +136,7 @@ export const addDocument_of_an_item = async (item, image) => {
         url: url,
       };
       await setDoc(
-        doc(
-          db,
-          "test-items",
-          String(tailEndId_for_newItem),
-          "images_of_item",
-          "0"
-        ),
+        doc(db, "items", String(tailEndId_for_newItem), "images_of_item", "0"),
         imageOfNewItem
       );
       window.alert("L'article a été enregistré avec succès.");
@@ -162,7 +156,7 @@ export const updateDocument_of_an_item = async (
   itemImgsId,
   image
 ) => {
-  const itemRef = doc(db, "test-items", String(itemId));
+  const itemRef = doc(db, "items", String(itemId));
   try {
     const docSnap_of_item = await getDoc(itemRef);
     if (docSnap_of_item.exists()) {
@@ -170,7 +164,7 @@ export const updateDocument_of_an_item = async (
     }
     const ItemImgsRef = doc(
       db,
-      "test-items",
+      "items",
       String(itemId),
       "images_of_item",
       String(itemImgsId)
