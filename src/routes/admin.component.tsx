@@ -6,7 +6,12 @@ import AdminProfile from "../components/admin-profile/admin-profile.component";
 import AdminItemEdit from "../components/admin-item-edit/admin-item-edit.component";
 
 const Admin = () => {
-  console.log("Is NODE_ENV PROD? : ", import.meta.env.PROD)
+  console.log("Is NODE_ENV PROD? : ", import.meta.env.PROD);
+  console.log(
+    "VITE_HANKO_API_URL_DEV? : ",
+    import.meta.env.VITE_HANKO_API_URL_DEV
+  );
+
   return (
     <>
       <Routes>
