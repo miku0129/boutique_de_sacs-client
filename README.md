@@ -1,6 +1,6 @@
 # Kréya-D-zil
 
-This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - Artisan designer offering unique and original pieces, personalised and made-to-measure items made in Guadalupe ⛱
+This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - this TypeScript web app supports artisan designers who offer unique and original creations made in Guadalupe. ⛱
 <br/>
 
 ## Demo
@@ -13,11 +13,11 @@ To create opportunities for the artist to showcase his/her work and sell it on t
 
 ## Features
 
-- **Appeal to the eye:** Enhance visuals with materials such as React-bootstrap and MaterialUi.
+- **Appeal to eyes:** Enhance visuals using by React-bootstrap and MaterialUi.
 - **Responsive design:** That takes into account both mobile and PCs.
-- **Ensures smooth communication between users:** by enabled Emailjs.
-- **Highly reliable database:** by using nestjs and TypeORM.
-- **Architected test driven application:** Jest and Docker contribute to improve the quality of backend.
+- **Secured login:** Hanko allows user login without password. 
+- **Reliable database:** Implementation with Nestjs and TypeORM.
+- **Test driven application:** Jest and Docker contribute to improve the quality of backend.
 
 <img src="https://i.ibb.co/cw2g2dr/logo.png" alt="img" height="300px"/>
 

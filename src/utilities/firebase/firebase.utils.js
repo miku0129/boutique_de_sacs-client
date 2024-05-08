@@ -31,6 +31,8 @@ export const firestore = getFirestore(app);
 const collection_name = import.meta.env.PROD
 ? "items"
 : "test-items";
+// productionの dbを初期化したい場合は下記を実行する
+// const collection_name = "items"
 
 
 export const getAllDocuments = async () => {
