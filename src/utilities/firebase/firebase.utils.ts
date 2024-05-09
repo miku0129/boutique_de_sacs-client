@@ -52,14 +52,14 @@ export const getAllDocuments = async () => {
 
 export const getItemById = async (id: number) => {
   const items = await getAllDocuments();
-  return items.filter((item) => item.id === id)[0];
+  return items.find((item) => item.id === id);
 };
 
 export const getMainImgOfItemById = async (id: number) => {
   const items = await getAllDocuments();
   return items
-    .filter((item) => item.id === id)[0]
-    .item_img_urls.filter((img: Item_img_url) => img.is_main)[0];
+    .find((item) => item.id === id)!
+    .item_img_urls.find((img: Item_img_url) => img.is_main);
 };
 
 export const initializeItemsData = async () => {
@@ -180,7 +180,7 @@ export const updateDocument_of_an_item = async (
   try {
     const docSnap_of_item = await getDoc(itemRef);
     if (docSnap_of_item.exists()) {
-      await updateDoc(itemRef, item);
+      await updateDoc(itemRef, { ...item });
     }
     const ItemImgsRef = doc(
       db,
@@ -193,7 +193,7 @@ export const updateDocument_of_an_item = async (
     try {
       const docSnap_of_img = await getDoc(ItemImgsRef);
       if (docSnap_of_img.exists()) {
-        await updateDoc(ItemImgsRef, image);
+        await updateDoc(ItemImgsRef, { ...image });
       }
       window.alert(`L'article a été mis à jour avec succès.`);
     } catch (e) {

@@ -1,33 +1,24 @@
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ItemsContext } from "../../context/items.context";
-
-import Carousel from "react-bootstrap/Carousel";
 
 import NoticeItemGeneral from "../notice_item_general/notice_item_general.component";
 import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.component";
-import { price_or_notification_text } from "../../asset/asset";
 
-import { ItemContentLayout } from "./item.styles";
-import { CustomItemImg } from "./item.styles";
+import { findItemById } from "../../utilities/utility";
 import {
   ContentLayout,
   CustomBtn,
   CustomLink,
 } from "../../utilities/components.styles";
-import { item_purchase_button_text } from "../../asset/asset";
+import Carousel from "react-bootstrap/Carousel";
+import { item_purchase_button_text, price_or_notification_text } from "../../asset/asset";
 
+import { ItemContentLayout, CustomItemImg } from "./item.styles";
 import "./item.component.scss";
 
 const Item = () => {
-  const items = useContext(ItemsContext)[0];
   const params = useParams();
-  let id: string | number | undefined = params.id;
-  let item: Item | undefined;
-  if (id) id = Number(id);
-  item = items.find((item: Item) => {
-    return item.id === id;
-  });
+  const id = params.id;
+  const item: Item = id !== undefined ? findItemById(id) : undefined;
 
   let price_or_notification = "";
   if (item && item.is_available && typeof item.price === "number") {
