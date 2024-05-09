@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
 
@@ -36,69 +36,61 @@ const Item = () => {
     price_or_notification = price_or_notification_text;
   }
 
-  // const item_desc_1 = () => {
-  //   if (item && item.desc_1) {
-  //     const strArray = item.desc_1.split(".");
-  //     return strArray.filter(str=> str !== "").map(str => {
-  //       return <h4>{str.trim()}.</h4>
-  //     })
-  //   }
-  // };
-
   const makeNewline = (desc: string) => {
     const strArray = desc.split(".");
     return strArray
       .filter((str) => str !== "")
-      .map((str) => {
-        return <h5>{str.trim()}.</h5>;
+      .map((str, idx) => {
+        return <h5 key={idx}>{str.trim()}.</h5>;
       });
   };
 
   return (
-    <Fragment>
-      <ItemContentLayout>
-        <div>
-          <Carousel>
-            {item &&
-              item.item_img_urls &&
-              item.item_img_urls.map((item_img_url: Item_img_url) => {
-                return (
-                  <Carousel.Item>
-                    <CustomItemImg src={item_img_url.url} />
-                  </Carousel.Item>
-                );
-              })}
-          </Carousel>
-        </div>
+    item && (
+      <div key={item.id}>
+        <ItemContentLayout>
+          <div>
+            <Carousel>
+              {item.item_img_urls &&
+                item.item_img_urls.map((item_img_url: Item_img_url) => {
+                  return (
+                    <Carousel.Item key={item_img_url.id + 1}>
+                      <CustomItemImg src={item_img_url.url} />
+                    </Carousel.Item>
+                  );
+                })}
+            </Carousel>
+          </div>
 
-        <div>
           <div>
-            <h1>{item && item.name}</h1>
-            <p>numéro: {item && item.item_id_number}</p>
+            <div>
+              <h1>{item.name}</h1>
+              <p>numéro: {item.item_id_number}</p>
+            </div>
+            <div>
+              <h3>{price_or_notification}</h3>
+              <hr />
+              <div>{item.desc_1 && makeNewline(item.desc_1)}</div>
+              <hr />
+              <div>{item.desc_2 && makeNewline(item.desc_2)}</div>
+            </div>
+            {
+              <CustomLink to={"/contact"} state={{ item }}>
+                <CustomBtn>{item_purchase_button_text}</CustomBtn>
+              </CustomLink>
+            }
           </div>
-          <div>
-            <h3>{price_or_notification}</h3>
-            <hr />
-            <div>{item && item.desc_1 && makeNewline(item.desc_1)}</div>
-            <hr />
-            <div>{item && item.desc_2 && makeNewline(item.desc_2)}</div>
-          </div>
-          {item && (
-            <CustomLink to={"/contact"} state={{ item }}>
-              <CustomBtn>{item_purchase_button_text}</CustomBtn>
-            </CustomLink>
+        </ItemContentLayout>
+        <ContentLayout>
+          <hr />
+          <h2>Cher client</h2>
+          {(item.category === "sacs" || item.category === "vannerie") && (
+            <NoticeItemGeneral />
           )}
-        </div>
-      </ItemContentLayout>
-      <ContentLayout>
-        <hr />
-        <h2>Cher client</h2>
-        {item && (item.category === "sacs" || item.category === "vannerie") && (
-          <NoticeItemGeneral />
-        )}
-        {item && item.category === "autre" && <NoticeRepairChair />}
-      </ContentLayout>
-    </Fragment>
+          {item.category === "autre" && <NoticeRepairChair />}
+        </ContentLayout>
+      </div>
+    )
   );
 };
 

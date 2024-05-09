@@ -16,7 +16,7 @@ import Card from "react-bootstrap/Card";
 import "./contact.styles.scss";
 
 interface ContactPropsType {
-  item?: Item;
+  item: Item;
 }
 
 const Contact = () => {
