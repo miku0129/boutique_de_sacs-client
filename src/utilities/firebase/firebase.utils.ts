@@ -28,12 +28,9 @@ const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore(app);
 
 // firebaseDB: local, firebase-previewではtest-item, productionはitemsを使用する
-const collection_name = import.meta.env.PROD
-? "items"
-: "test-items";
+const collection_name = import.meta.env.PROD ? "items" : "test-items";
 // productionの dbを初期化したい場合は下記を実行する
 // const collection_name = "items"
-
 
 export const getAllDocuments = async () => {
   const querySnapshot_of_items = await getDocs(collection(db, collection_name));
@@ -53,16 +50,16 @@ export const getAllDocuments = async () => {
   return items;
 };
 
-export const getItemById = async (id) => {
+export const getItemById = async (id: number) => {
   const items = await getAllDocuments();
   return items.filter((item) => item.id === id)[0];
 };
 
-export const getMainImgOfItemById = async (id) => {
+export const getMainImgOfItemById = async (id: number) => {
   const items = await getAllDocuments();
   return items
     .filter((item) => item.id === id)[0]
-    .item_img_urls.filter((img) => img.is_main)[0];
+    .item_img_urls.filter((img: Item_img_url) => img.is_main)[0];
 };
 
 export const initializeItemsData = async () => {
@@ -99,7 +96,13 @@ export const initializeItemsData = async () => {
           if (!itemImgDocSnap.exists()) {
             try {
               await setDoc(
-                doc(db, collection_name, item_id, "images_of_item", item_image_id),
+                doc(
+                  db,
+                  collection_name,
+                  item_id,
+                  "images_of_item",
+                  item_image_id
+                ),
                 //もとのIDをfirestore用に上書きする
                 {
                   ...image,
@@ -118,7 +121,7 @@ export const initializeItemsData = async () => {
   });
 };
 
-export const deleteDocument_of_an_item = async (itemId) => {
+export const deleteDocument_of_an_item = async (itemId: number) => {
   try {
     await deleteDoc(doc(db, collection_name, String(itemId)));
     window.alert(`Élément supprimé avec succès.`);
@@ -128,9 +131,12 @@ export const deleteDocument_of_an_item = async (itemId) => {
   }
 };
 
-export const addDocument_of_an_item = async (item, image) => {
+export const addDocument_of_an_item = async (
+  item: Item,
+  image: Item_img_url
+) => {
   const items = await getAllDocuments();
-  const tailEndId_for_newItem = getTailendId(items);
+  const tailEndId_for_newItem = getTailendId(items as Item[]);
   try {
     item = { ...item, id: tailEndId_for_newItem };
     await setDoc(doc(db, collection_name, String(tailEndId_for_newItem)), item);
@@ -144,7 +150,13 @@ export const addDocument_of_an_item = async (item, image) => {
         url: url,
       };
       await setDoc(
-        doc(db, collection_name, String(tailEndId_for_newItem), "images_of_item", "0"),
+        doc(
+          db,
+          collection_name,
+          String(tailEndId_for_newItem),
+          "images_of_item",
+          "0"
+        ),
         imageOfNewItem
       );
       window.alert("L'article a été enregistré avec succès.");
@@ -159,10 +171,10 @@ export const addDocument_of_an_item = async (item, image) => {
 };
 
 export const updateDocument_of_an_item = async (
-  itemId,
-  item,
-  itemImgsId,
-  image
+  itemId: number,
+  item: Item,
+  itemImgsId: number,
+  image: Item_img_url
 ) => {
   const itemRef = doc(db, collection_name, String(itemId));
   try {

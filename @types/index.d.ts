@@ -11,7 +11,7 @@ type Item_img_url = {
 };
 
 type Item = {
-  id: string;
+  id: number;
   item_id_number: string;
   name: string;
   category: Category;
