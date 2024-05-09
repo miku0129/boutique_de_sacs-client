@@ -36,7 +36,7 @@ export const btn_cancel = "Annuler";
 
 export const msg_loading = "Loading...";
 
-export const formStateTemplate = {
+export const formStateTemplate:FormStateTemplate = {
   id: null,
   item_id_number: "",
   name: "",
