@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AdminItemForm from "../admin-item-form/admin-item-form.component";
-import {
-  getItemById,
-  getMainImgOfItemById,
-} from "../../utilities/firebase/firebase.utils";
 import { formTypes } from "../../types/types";
+import { findItemById, findMainImgOfItemById } from "../../utilities/utility";
 import { formStateTemplate, msg_loading } from "../../asset/asset";
 
 const AdminItemEdit = () => {
@@ -14,8 +11,7 @@ const AdminItemEdit = () => {
 
   useEffect(() => {
     const setInitFormState = async () => {
-      const itemId = Number(params.id);
-      const item = await getItemById(itemId);
+      const item = findItemById(params.id!);
       formStateTemplate!.id = item.id;
       formStateTemplate!.item_id_number = item.item_id_number;
       formStateTemplate!.name = item.name;
@@ -24,7 +20,7 @@ const AdminItemEdit = () => {
       formStateTemplate!.price = item.price;
       formStateTemplate!.desc_1 = item.desc_1;
       formStateTemplate!.desc_2 = item.desc_2;
-      const item_main_img = await getMainImgOfItemById(itemId);
+      const item_main_img = findMainImgOfItemById(params.id!);
       formStateTemplate!.item_img_id = item_main_img.id;
       formStateTemplate!.item_img_url = item_main_img.url;
       setHasInitValForUpdate(true);

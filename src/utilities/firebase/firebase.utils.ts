@@ -50,18 +50,6 @@ export const getAllDocuments = async () => {
   return items;
 };
 
-export const getItemById = async (id: number) => {
-  const items = await getAllDocuments();
-  return items.find((item) => item.id === id);
-};
-
-export const getMainImgOfItemById = async (id: number) => {
-  const items = await getAllDocuments();
-  return items
-    .find((item) => item.id === id)!
-    .item_img_urls.find((img: Item_img_url) => img.is_main);
-};
-
 export const initializeItemsData = async () => {
   const { data } = item;
 
