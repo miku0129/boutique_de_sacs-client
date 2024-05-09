@@ -4,13 +4,13 @@ type Other = "autre";
 
 type Category = Sacs | Vannerie | Other;
 
-type Item_img_url = {
+interface Item_img_url {
   id: number;
   is_main: boolean;
   url: string;
-};
+}
 
-type Item = {
+interface Item {
   id: number;
   item_id_number: string;
   name: string;
@@ -20,9 +20,9 @@ type Item = {
   desc_1?: string;
   desc_2?: string;
   item_img_urls?: Item_img_url[];
-};
+}
 
-type FormStateTemplate = {
+interface FormStateTemplate {
   id: number | null;
   item_id_number: string | undefined;
   name: string;
@@ -33,11 +33,11 @@ type FormStateTemplate = {
   desc_2?: string;
   item_img_id: number | null;
   item_img_url: string;
-};
+}
 
-type AdminItemFormProps = {
+interface AdminItemFormProps {
   props: {
     formType: string;
     formStateTemplate?: FormStateTemplate;
   };
-};
+}

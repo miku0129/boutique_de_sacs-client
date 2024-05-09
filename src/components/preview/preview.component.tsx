@@ -14,9 +14,9 @@ import ImageList from "@mui/material/ImageList";
 
 import "./preview.styles.scss";
 
-type PreviewPropsType = {
-  previewtype?: Sacs | Vannerie | Other;
-};
+interface PreviewPropsType {
+  previewtype: Sacs | Vannerie | Other;
+}
 
 const Preview = () => {
   const [width, height] = useWindowSize();

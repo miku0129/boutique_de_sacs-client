@@ -15,9 +15,9 @@ import Card from "react-bootstrap/Card";
 
 import "./contact.styles.scss";
 
-type ContactPropsType = {
+interface ContactPropsType {
   item?: Item;
-};
+}
 
 const Contact = () => {
   const [firstName, setFirstName] = useState("");

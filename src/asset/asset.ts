@@ -11,6 +11,12 @@ export const header_category_1 = "Sacs";
 export const header_category_2 = "Vannerie";
 export const header_category_3 = "Rénovation de chaises";
 
+const getThisYear = (): string => {
+  const fullDateString = String(new Date());
+  return fullDateString.split(" ")[3];
+};
+export const footer_year = getThisYear(); 
+
 export const item_purchase_button_text = "Contactez le vendeur";
 
 export const price_or_notification_text = "Article sur commande";
