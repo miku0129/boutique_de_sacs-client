@@ -39,13 +39,13 @@ export const getAllDocuments = async () => {
   );
   for (let i = 0; i < items.length; i++) {
     let querySnapshot_of_images_of_the_item = await getDocs(
-      collection(db, collection_name, String(items[i].id), "images_of_item")
+      collection(db, collection_name, String(items[i].id), "item_imgs")
     );
     const images = querySnapshot_of_images_of_the_item.docs.map((doc) => {
       return doc.data();
     });
 
-    items[i] = { ...items[i], item_img_urls: images };
+    items[i] = { ...items[i], item_imgs: images };
   }
   return items;
 };
@@ -71,26 +71,20 @@ export const initializeItemsData = async () => {
           is_available: item.is_available,
         });
 
-        item.item_img_urls.forEach(async (image, idx) => {
+        item.item_imgs.forEach(async (image, idx) => {
           const item_image_id = String(idx);
           const itemImgDocRef = doc(
             db,
             collection_name,
             item_id,
-            "images_of_item",
+            "item_imgs",
             item_image_id
           );
           const itemImgDocSnap = await getDoc(itemImgDocRef);
           if (!itemImgDocSnap.exists()) {
             try {
               await setDoc(
-                doc(
-                  db,
-                  collection_name,
-                  item_id,
-                  "images_of_item",
-                  item_image_id
-                ),
+                doc(db, collection_name, item_id, "item_imgs", item_image_id),
                 //もとのIDをfirestore用に上書きする
                 {
                   ...image,
@@ -119,10 +113,7 @@ export const deleteDocument_of_an_item = async (itemId: number) => {
   }
 };
 
-export const addDocument_of_an_item = async (
-  item: Item,
-  image: Item_img_url
-) => {
+export const addDocument_of_an_item = async (item: Item, image: Item_img) => {
   const items = await getAllDocuments();
   const tailEndId_for_newItem = getTailendId(items as Item[]);
   try {
@@ -142,7 +133,7 @@ export const addDocument_of_an_item = async (
           db,
           collection_name,
           String(tailEndId_for_newItem),
-          "images_of_item",
+          "item_imgs",
           "0"
         ),
         imageOfNewItem
@@ -162,7 +153,7 @@ export const updateDocument_of_an_item = async (
   itemId: number,
   item: Item,
   itemImgsId: number,
-  image: Item_img_url
+  image: Item_img
 ) => {
   const itemRef = doc(db, collection_name, String(itemId));
   try {
@@ -174,7 +165,7 @@ export const updateDocument_of_an_item = async (
       db,
       collection_name,
       String(itemId),
-      "images_of_item",
+      "item_imgs",
       String(itemImgsId)
     );
 

@@ -10,7 +10,10 @@ import {
   CustomLink,
 } from "../../utilities/components.styles";
 import Carousel from "react-bootstrap/Carousel";
-import { item_purchase_button_text, price_or_notification_text } from "../../asset/asset";
+import {
+  item_purchase_button_text,
+  price_or_notification_text,
+} from "../../asset/asset";
 
 import { ItemContentLayout, CustomItemImg } from "./item.styles";
 import "./item.component.scss";
@@ -42,11 +45,11 @@ const Item = () => {
         <ItemContentLayout>
           <div>
             <Carousel>
-              {item.item_img_urls &&
-                item.item_img_urls.map((item_img_url: Item_img_url) => {
+              {item.item_imgs &&
+                item.item_imgs.map((item_img: Item_img) => {
                   return (
-                    <Carousel.Item key={item_img_url.id + 1}>
-                      <CustomItemImg src={item_img_url.url} />
+                    <Carousel.Item key={item_img.id + 1}>
+                      <CustomItemImg src={item_img.url} />
                     </Carousel.Item>
                   );
                 })}

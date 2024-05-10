@@ -47,9 +47,9 @@ const Contact = () => {
     if (
       state &&
       state.item !== undefined &&
-      state.item.item_img_urls !== undefined
+      state.item.item_imgs !== undefined
     ) {
-      state.item.item_img_urls
+      state.item.item_imgs
         .filter((img) => img.is_main)
         .forEach((img) => setItemImg(img.url));
     }

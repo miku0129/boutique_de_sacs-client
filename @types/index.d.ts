@@ -4,7 +4,7 @@ type Other = "autre";
 
 type Category = Sacs | Vannerie | Other;
 
-interface Item_img_url {
+interface Item_img {
   id: number;
   is_main: boolean;
   url: string;
@@ -16,10 +16,10 @@ interface Item {
   name: string;
   category: Category;
   is_available: boolean;
-  price: number ;
+  price: number;
   desc_1?: string;
   desc_2?: string;
-  item_img_urls?: Item_img_url[];
+  item_imgs?: Item_img[];
 }
 
 interface FormStateTemplate {

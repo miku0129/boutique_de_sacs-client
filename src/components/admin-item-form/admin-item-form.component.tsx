@@ -29,7 +29,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const setInitFormState = async () => {
+    const setInitFormState = () => {
       setFormData(formStateTemplate);
     };
     setInitFormState();
