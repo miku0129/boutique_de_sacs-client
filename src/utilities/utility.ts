@@ -1,5 +1,4 @@
 export const findItemById = (id: string, items: Item[]) => {
-  //   const items = useContext(ItemsContext)[0];
   const targetId = Number(id);
   return items.find((item: Item) => item.id === targetId);
 };
