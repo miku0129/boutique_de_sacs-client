@@ -113,7 +113,7 @@ export const deleteDocument_of_an_item = async (itemId: number) => {
   }
 };
 
-export const addDocument_of_an_item = async (item: Item, image: Item_img) => {
+export const addDocument_of_an_item = async (item: FormItem, image: Item_img) => {
   const items = await getAllDocuments();
   const tailEndId_for_newItem = getTailendId(items as Item[]);
   try {
@@ -151,7 +151,7 @@ export const addDocument_of_an_item = async (item: Item, image: Item_img) => {
 
 export const updateDocument_of_an_item = async (
   itemId: number,
-  item: Item,
+  item: FormItem,
   itemImgsId: number,
   image: Item_img
 ) => {

@@ -56,7 +56,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     }
     setValidated(true);
 
-    const itemId = formData!.id;
+    const itemId = formData!.id as number;
     const item = {
       item_id_number: formData!.item_id_number,
       name: formData!.name,
@@ -67,7 +67,7 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       desc_1: formData!.desc_1,
       desc_2: formData!.desc_2,
     };
-    const itemImgId = formData!.item_img_id;
+    const itemImgId = formData!.item_img_id as number;
     const image = {
       is_main: true,
       url: formData!.item_img_url,
@@ -101,14 +101,18 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     <div>
       {formData && (
         <CustomContentContainer className="admin-item-form">
-          {formType === formTypes["REGISTER"] && <h4>Ajouter un produit</h4>}
-          {formType === formTypes["UPDATE"] && <h4>Update un produit</h4>}
+          {formType === formTypes["REGISTER"] ? (
+            <h4>Ajouter un produit</h4>
+          ) : (
+            <h4>Update un produit</h4>
+          )}
 
           <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Row className="form-row">
               <Form.Group>
                 <Form.Label htmlFor="item_id_number">
-                  numéro d'identification de l'article
+                  numéro d'identification de l'article{" "}
+                  <span style={{ fontSize: 10, color: "red" }}>&#8251;</span>
                 </Form.Label>
                 <Form.Control
                   type="text"
@@ -119,12 +123,15 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                   required
                 />
                 <Form.Control.Feedback type="invalid">
-                  Le nnuméro d'identification de l'article est obligatoire
+                  Le numéro d'identification de l'article est obligatoire
                 </Form.Control.Feedback>
               </Form.Group>
 
               <Form.Group>
-                <Form.Label htmlFor="name">Nom de l'article</Form.Label>
+                <Form.Label htmlFor="name">
+                  Nom de l'article{" "}
+                  <span style={{ fontSize: 10, color: "red" }}>&#8251;</span>
+                </Form.Label>
                 <Form.Control
                   type="text"
                   id="name"
@@ -139,7 +146,10 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Catégorie</Form.Label>
+                <Form.Label>
+                  Catégorie{" "}
+                  <span style={{ fontSize: 10, color: "red" }}>&#8251;</span>
+                </Form.Label>
                 <Form.Select
                   value={formData!.category}
                   onChange={(e) => {
@@ -158,7 +168,10 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label>Disponibilité</Form.Label>
+                <Form.Label>
+                  Disponibilité{" "}
+                  <span style={{ fontSize: 10, color: "red" }}>&#8251;</span>
+                </Form.Label>
                 <Form.Text muted>
                   : Produits de la commande définis comme "false".
                 </Form.Text>
@@ -219,31 +232,56 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label htmlFor="item_img_url">
-                  L'URL de la photo de l'article
+                <Form.Label htmlFor="item_img_main">
+                  L'URL de la photo principale de l'article
+                  <span style={{ fontSize: 10, color: "red" }}> &#8251;</span>
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  id="item_img_url"
-                  name="item_img_url"
-                  value={formData!.item_img_url}
+                  id="item_img_main"
+                  name="item_img_main"
+                  value={formData!.item_img_main}
                   onChange={handleChange}
                   required
                 />
                 <Form.Control.Feedback type="invalid">
-                  L'URL de la photo de l'article est obligatoire
+                  L'URL de la photo principale de l'article est obligatoire
                 </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label htmlFor="item_img_sub1">
+                  L'URL de la photo de l'article
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  id="item_img_sub1"
+                  name="item_img_sub1"
+                  value={formData!.item_img_sub1}
+                  onChange={handleChange}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label htmlFor="item_img_sub2">
+                  L'URL de la photo de l'article
+                </Form.Label>
+                <Form.Control
+                  type="text"
+                  id="item_img_sub2"
+                  name="item_img_sub2"
+                  value={formData!.item_img_sub2}
+                  onChange={handleChange}
+                />
               </Form.Group>
             </Row>
             <br />
             <CustomBtnGroup>
-              {formType === formTypes["REGISTER"] && (
+              {formType === formTypes["REGISTER"] ? (
                 <CustomBtn type="button" onClick={() => clearFormData()}>
                   {btn_clear}
                 </CustomBtn>
-              )}
-
-              {formType === formTypes["UPDATE"] && (
+              ) : (
                 <CustomBtn
                   type="button"
                   onClick={() => {
@@ -254,7 +292,6 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
                   {btn_back}
                 </CustomBtn>
               )}
-
               <Button variant="success" type="submit">
                 {formType === formTypes["REGISTER"] ? "Ajouter" : "Update"}
               </Button>
