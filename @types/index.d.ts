@@ -5,9 +5,12 @@ type Other = "autre";
 type Category = Sacs | Vannerie | Other;
 
 interface Item_img {
-  id?: number;
+  id: number;
   is_main: boolean;
   url: string;
+}
+interface FormItem_img extends Item_img {
+  id?: number;
 }
 
 interface Item {
@@ -21,7 +24,6 @@ interface Item {
   desc_2?: string;
   item_imgs?: Item_img[];
 }
-
 interface FormItem extends Item {
   id?: number;
   // item_id_number: string;
@@ -43,8 +45,12 @@ interface FormStateTemplate {
   price?: number;
   desc_1?: string;
   desc_2?: string;
-  item_img_id: number | null;
-  item_img_url: string;
+  item_img_main_id: number | null;
+  item_img_main_url: string;
+  item_img_sub1_id?: number | null;
+  item_img_sub1_url?: string ;
+  item_img_sub2_id?: number | null;
+  item_img_sub2_url?: string;
 }
 
 interface AdminItemFormProps {

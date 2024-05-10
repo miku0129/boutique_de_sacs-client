@@ -113,36 +113,34 @@ export const deleteDocument_of_an_item = async (itemId: number) => {
   }
 };
 
-export const addDocument_of_an_item = async (item: FormItem, image: Item_img) => {
+export const addDocument_of_an_item = async (
+  item: FormItem,
+  itemImgs: FormItem_img[]
+) => {
   const items = await getAllDocuments();
   const tailEndId_for_newItem = getTailendId(items as Item[]);
   try {
     item = { ...item, id: tailEndId_for_newItem };
     await setDoc(doc(db, collection_name, String(tailEndId_for_newItem)), item);
 
-    const { url } = image;
-    try {
-      //当座は1productにつき1画像のみ登録可能とする
-      const imageOfNewItem = {
-        id: 0,
-        is_main: true,
-        url: url,
-      };
-      await setDoc(
-        doc(
-          db,
-          collection_name,
-          String(tailEndId_for_newItem),
-          "item_imgs",
-          "0"
-        ),
-        imageOfNewItem
-      );
-      window.alert("L'article a été enregistré avec succès.");
-    } catch (e) {
-      window.alert(
-        `Échec de l'enregistrement de l'image de l'élément. Error log: ${e}`
-      );
+    for (let i = 0; i < itemImgs.length; i++) {
+      try {
+        await setDoc(
+          doc(
+            db,
+            collection_name,
+            String(tailEndId_for_newItem),
+            "item_imgs",
+            `${i}`
+          ),
+          itemImgs[i]
+        );
+        window.alert("L'article a été enregistré avec succès.");
+      } catch (e) {
+        window.alert(
+          `Échec de l'enregistrement de l'image de l'élément. Error log: ${e}`
+        );
+      }
     }
   } catch (e) {
     window.alert(`Échec de l'enregistrement de l'article. Error log: ${e}`);
@@ -153,7 +151,7 @@ export const updateDocument_of_an_item = async (
   itemId: number,
   item: FormItem,
   itemImgsId: number,
-  image: Item_img
+  image: FormItem_img
 ) => {
   const itemRef = doc(db, collection_name, String(itemId));
   try {

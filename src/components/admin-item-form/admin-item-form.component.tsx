@@ -4,6 +4,7 @@ import {
   addDocument_of_an_item,
   updateDocument_of_an_item,
 } from "../../utilities/firebase/firebase.utils";
+import { makeArrayOfItemImgs } from "../../utilities/utility";
 import { formTypes } from "../../types/types";
 import {
   redirect_url_after_updating_item_prod,
@@ -67,21 +68,21 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       desc_1: formData!.desc_1,
       desc_2: formData!.desc_2,
     };
-    const itemImgId = formData!.item_img_id as number;
-    const image = {
-      is_main: true,
-      url: formData!.item_img_url,
-    };
+    const itemImgs = makeArrayOfItemImgs(
+      formData!.item_img_main_url,
+      formData!.item_img_sub1_url,
+      formData!.item_img_sub2_url
+    );
 
     if (formType === formTypes["REGISTER"]) {
-      await addDocument_of_an_item(item, image);
+      await addDocument_of_an_item(item, itemImgs);
       setFormData(formStateTemplate);
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
-      await updateDocument_of_an_item(itemId, item, itemImgId, image);
-      window.location.href = import.meta.env.PROD
-        ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
-        : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
+      // await updateDocument_of_an_item(itemId, item, itemImgId, image);
+      // window.location.href = import.meta.env.PROD
+      //   ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
+      //   : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
     }
   };
 
@@ -93,7 +94,12 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     formStateTemplate!.price = 0;
     formStateTemplate!.desc_1 = "";
     formStateTemplate!.desc_2 = "";
-    formStateTemplate!.item_img_url = "";
+    formStateTemplate!.item_img_main_id = null;
+    formStateTemplate!.item_img_main_url = "",
+    formStateTemplate!.item_img_sub1_id = null;
+    formStateTemplate!.item_img_sub1_url = "",
+    formStateTemplate!.item_img_sub2_id = null;
+    formStateTemplate!.item_img_sub2_url = "";
     setFormData(formStateTemplate);
   };
 
@@ -232,15 +238,15 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label htmlFor="item_img_main">
+                <Form.Label htmlFor="item_img_main_url">
                   L'URL de la photo principale de l'article
                   <span style={{ fontSize: 10, color: "red" }}> &#8251;</span>
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  id="item_img_main"
-                  name="item_img_main"
-                  value={formData!.item_img_main}
+                  id="item_img_main_url"
+                  name="item_img_main_url"
+                  value={formData!.item_img_main_url}
                   onChange={handleChange}
                   required
                 />
@@ -250,27 +256,27 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
               </Form.Group>
 
               <Form.Group>
-                <Form.Label htmlFor="item_img_sub1">
+                <Form.Label htmlFor="item_img_sub1_url">
                   L'URL de la photo de l'article
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  id="item_img_sub1"
-                  name="item_img_sub1"
-                  value={formData!.item_img_sub1}
+                  id="item_img_sub1_url"
+                  name="item_img_sub1_url"
+                  value={formData!.item_img_sub1_url}
                   onChange={handleChange}
                 />
               </Form.Group>
 
               <Form.Group>
-                <Form.Label htmlFor="item_img_sub2">
+                <Form.Label htmlFor="item_img_sub2_url">
                   L'URL de la photo de l'article
                 </Form.Label>
                 <Form.Control
                   type="text"
-                  id="item_img_sub2"
-                  name="item_img_sub2"
-                  value={formData!.item_img_sub2}
+                  id="item_img_sub2_url"
+                  name="item_img_sub2_url"
+                  value={formData!.item_img_sub2_url}
                   onChange={handleChange}
                 />
               </Form.Group>
