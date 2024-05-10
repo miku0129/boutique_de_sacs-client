@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ItemsContext } from "../../context/items.context";
 import AdminItemForm from "../admin-item-form/admin-item-form.component";
 import { formTypes } from "../../types/types";
-import { findItemById, findMainImgOfItemById } from "../../utilities/utility";
+import { findItemById } from "../../utilities/utility";
 import { formStateTemplate, msg_loading } from "../../asset/asset";
 
 const AdminItemEdit = () => {
@@ -23,10 +23,22 @@ const AdminItemEdit = () => {
         formStateTemplate!.price = item.price;
         formStateTemplate!.desc_1 = item.desc_1;
         formStateTemplate!.desc_2 = item.desc_2;
-        const item_main_img = findMainImgOfItemById(params.id!, items);
-        if (item_main_img) {
-          formStateTemplate!.item_img_id = item_main_img.id;
-          formStateTemplate!.item_img_url = item_main_img.url;
+        if (item.item_imgs) {
+          const mainImg = item.item_imgs.find((item_img) => item_img.is_main);
+          formStateTemplate!.item_img_main_id = mainImg!.id;
+          formStateTemplate!.item_img_main_url = mainImg!.url;
+
+          const subImgs = item.item_imgs.filter(
+            (item_img) => !item_img.is_main
+          );
+          if (subImgs[0]) {
+            formStateTemplate!.item_img_sub1_id = subImgs[0].id;
+            formStateTemplate!.item_img_sub1_url = subImgs[0].url;
+          }
+          if (subImgs[1]) {
+            formStateTemplate!.item_img_sub2_id = subImgs[1].id;
+            formStateTemplate!.item_img_sub2_url = subImgs[1].url;
+          }
         }
         setHasInitValForUpdate(true);
       }
