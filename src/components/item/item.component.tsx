@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { ItemsContext } from "../../context/items.context";
 
 import NoticeItemGeneral from "../notice_item_general/notice_item_general.component";
 import NoticeRepairChair from "../notice_repair_chair/notice_repair_chair.component";
@@ -21,7 +23,9 @@ import "./item.component.scss";
 const Item = () => {
   const params = useParams();
   const id = params.id;
-  const item: Item = id !== undefined ? findItemById(id) : undefined;
+  const items = useContext(ItemsContext)[0];
+  const item: Item | undefined =
+    id !== undefined ? findItemById(id, items) : undefined;
 
   let price_or_notification = "";
   if (item && item.is_available && typeof item.price === "number") {
@@ -38,6 +42,9 @@ const Item = () => {
         return <h5 key={idx}>{str.trim()}.</h5>;
       });
   };
+  console.log("id", id)
+
+  console.log("item", item)
 
   return (
     item && (
