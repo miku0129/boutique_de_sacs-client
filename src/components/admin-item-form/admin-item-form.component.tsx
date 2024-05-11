@@ -4,7 +4,10 @@ import {
   addDocument_of_an_item,
   updateDocument_of_an_item,
 } from "../../utilities/firebase/firebase.utils";
-import { makeArrayOfItemImgs } from "../../utilities/utility";
+import {
+  makeItemImgsArrayForRegister,
+  makeItemImgsArrayForUpdate,
+} from "../../utilities/utility";
 import { formTypes } from "../../types/types";
 import {
   redirect_url_after_updating_item_prod,
@@ -57,7 +60,6 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     }
     setValidated(true);
 
-    const itemId = formData!.id as number;
     const item = {
       item_id_number: formData!.item_id_number,
       name: formData!.name,
@@ -67,22 +69,30 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
         typeof formData!.price === "undefined" ? 0 : Number(formData!.price),
       desc_1: formData!.desc_1,
       desc_2: formData!.desc_2,
-    };
-    const itemImgs = makeArrayOfItemImgs(
-      formData!.item_img_main_url,
-      formData!.item_img_sub1_url,
-      formData!.item_img_sub2_url
-    );
-
+    } as FormItem;
     if (formType === formTypes["REGISTER"]) {
-      await addDocument_of_an_item(item, itemImgs);
+      const imagesOfItem = makeItemImgsArrayForRegister(
+        formData!.item_img_main_url,
+        formData!.item_img_sub1_url,
+        formData!.item_img_sub2_url
+      );
+      await addDocument_of_an_item(item, imagesOfItem);
       setFormData(formStateTemplate);
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
-      // await updateDocument_of_an_item(itemId, item, itemImgId, image);
-      // window.location.href = import.meta.env.PROD
-      //   ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
-      //   : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
+      const itemId = formData!.id as number;
+      const imagesOfItem = makeItemImgsArrayForUpdate(
+        formData!.item_img_main_id,
+        formData!.item_img_main_url,
+        formData!.item_img_sub1_id,
+        formData!.item_img_sub1_url,
+        formData!.item_img_sub2_id,
+        formData!.item_img_sub2_url
+      );
+      await updateDocument_of_an_item(itemId, item, imagesOfItem);
+      window.location.href = import.meta.env.PROD
+        ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
+        : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
     }
   };
 
@@ -95,9 +105,9 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
     formStateTemplate!.desc_1 = "";
     formStateTemplate!.desc_2 = "";
     formStateTemplate!.item_img_main_id = null;
-    formStateTemplate!.item_img_main_url = "",
+    formStateTemplate!.item_img_main_url = "";
     formStateTemplate!.item_img_sub1_id = null;
-    formStateTemplate!.item_img_sub1_url = "",
+    formStateTemplate!.item_img_sub1_url = "";
     formStateTemplate!.item_img_sub2_id = null;
     formStateTemplate!.item_img_sub2_url = "";
     setFormData(formStateTemplate);

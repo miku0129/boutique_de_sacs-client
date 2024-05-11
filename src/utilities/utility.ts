@@ -8,7 +8,7 @@ export const getThisYear = (): string => {
   return fullDateString.split(" ")[3];
 };
 
-export const makeArrayOfItemImgs = (
+export const makeItemImgsArrayForRegister = (
   mainUrl: string,
   sub1Url: string | undefined,
   sub2Url: string | undefined
@@ -22,5 +22,36 @@ export const makeArrayOfItemImgs = (
         is_main: idx === 0 ? true : false,
         url: url,
       } as FormItem_img;
+    });
+};
+
+export const makeItemImgsArrayForUpdate = (
+  mainId: number | null,
+  mainUrl: string,
+  sub1Id: number | null | undefined,
+  sub1Url: string | undefined,
+  sub2Id: number | null | undefined,
+  sub2Url: string | undefined
+) => {
+  let imgs = [
+    { id: mainId, url: mainUrl },
+    { id: sub1Id, url: sub1Url },
+    { id: sub2Id, url: sub2Url },
+  ];
+  return imgs
+    .filter((img) => typeof img.url !== "undefined")
+    .map((img, idx) => {
+      if (img.id === null) {
+        return {
+          id: idx,
+          url: img.url,
+          is_main: false,
+        } as FormItem_img;
+      } else {
+        return {
+          id: img.url,
+          url: img.url,
+        } as FormItem_img;
+      }
     });
 };

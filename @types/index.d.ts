@@ -11,6 +11,7 @@ interface Item_img {
 }
 interface FormItem_img extends Item_img {
   id?: number;
+  is_main?: boolean;
 }
 
 interface Item {
@@ -26,14 +27,8 @@ interface Item {
 }
 interface FormItem extends Item {
   id?: number;
-  // item_id_number: string;
-  // name: string;
   category: Category | undefined;
   is_available: boolean | undefined;
-  // price: number;
-  // desc_1?: string;
-  // desc_2?: string;
-  // item_imgs?: Item_img[];
 }
 
 interface FormStateTemplate {
@@ -48,7 +43,7 @@ interface FormStateTemplate {
   item_img_main_id: number | null;
   item_img_main_url: string;
   item_img_sub1_id?: number | null;
-  item_img_sub1_url?: string ;
+  item_img_sub1_url?: string;
   item_img_sub2_id?: number | null;
   item_img_sub2_url?: string;
 }

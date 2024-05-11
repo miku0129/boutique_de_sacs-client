@@ -150,8 +150,7 @@ export const addDocument_of_an_item = async (
 export const updateDocument_of_an_item = async (
   itemId: number,
   item: FormItem,
-  itemImgsId: number,
-  image: FormItem_img
+  imagesOfItem: FormItem_img[]
 ) => {
   const itemRef = doc(db, collection_name, String(itemId));
   try {
@@ -159,25 +158,30 @@ export const updateDocument_of_an_item = async (
     if (docSnap_of_item.exists()) {
       await updateDoc(itemRef, { ...item });
     }
-    const ItemImgsRef = doc(
-      db,
-      collection_name,
-      String(itemId),
-      "item_imgs",
-      String(itemImgsId)
-    );
 
-    try {
-      const docSnap_of_img = await getDoc(ItemImgsRef);
-      if (docSnap_of_img.exists()) {
-        await updateDoc(ItemImgsRef, { ...image });
-      }
-      window.alert(`L'article a été mis à jour avec succès.`);
-    } catch (e) {
-      window.alert(
-        `Échec de la mise à jour de l'image de l'élément. Error log: ${e}`
+    for (let i = 0; i < imagesOfItem.length; i++) {
+      console.log("?", imagesOfItem[i])
+      const ItemImgsRef = doc(
+        db,
+        collection_name,
+        String(itemId),
+        "item_imgs",
+        String(imagesOfItem[i].id)
       );
+      try {
+        const docSnap_of_img = await getDoc(ItemImgsRef);
+        if (docSnap_of_img.exists()) {
+          await updateDoc(ItemImgsRef, { ...imagesOfItem[i] });
+        } else {
+          await setDoc(ItemImgsRef, { ...imagesOfItem[i] });
+        }
+      } catch (e) {
+        window.alert(
+          `Échec de la mise à jour de l'image de l'élément. Error log: ${e}`
+        );
+      }
     }
+    window.alert(`L'article a été mis à jour avec succès.`);
   } catch (e) {
     window.alert(`Échec de la mise à jour de l'élément. Error log: ${e}`);
   }

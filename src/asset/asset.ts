@@ -11,7 +11,6 @@ export const header_category_1 = "Sacs";
 export const header_category_2 = "Vannerie";
 export const header_category_3 = "Rénovation de chaises";
 
-
 export const item_purchase_button_text = "Contactez le vendeur";
 
 export const price_or_notification_text = "Article sur commande";
@@ -33,7 +32,7 @@ export const btn_cancel = "Annuler";
 
 export const msg_loading = "Loading...";
 
-export const formStateTemplate:FormStateTemplate = {
+export const formStateTemplate: FormStateTemplate = {
   id: null,
   item_id_number: "",
   name: "",
@@ -51,5 +50,5 @@ export const formStateTemplate:FormStateTemplate = {
 };
 
 export const redirect_url_after_updating_item_prod =
-  "https://kreya-d-zil--pr9-develop-ag0qiiqu.web.app";
+  "https://kreya-d-zil.web.app";
 export const redirect_url_after_updating_item_dev = "http://localhost:5173";
