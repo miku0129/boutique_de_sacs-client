@@ -49,7 +49,7 @@ export const makeItemImgsArrayForUpdate = (
         } as FormItem_img;
       } else {
         return {
-          id: img.url,
+          id: img.id,
           url: img.url,
         } as FormItem_img;
       }
