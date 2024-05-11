@@ -28,7 +28,7 @@ const Item = () => {
     id !== undefined ? findItemById(id, items) : undefined;
 
   let price_or_notification = "";
-  if (item && item.is_available && typeof item.price === "number") {
+  if (item && item.is_available && item.price !== 0) {
     price_or_notification = "Prix: " + item.price + " euros";
   } else {
     price_or_notification = price_or_notification_text;

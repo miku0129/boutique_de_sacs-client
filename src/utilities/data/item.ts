@@ -488,7 +488,7 @@ export const item = {
       desc_2:
         "Prix uniquement sur devis et après avoir touché l'objet à rénover.",
       category: "autre",
-      price: "Article sur commande",
+      price: 0,
       is_available: true,
       item_imgs: [
         {
@@ -734,7 +734,7 @@ export const item = {
         "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
       desc_2: "Tissus: voile de kite et coton. Modèle sous licence Dodynette.",
       category: "sacs",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
       item_imgs: [
         {
@@ -757,7 +757,7 @@ export const item = {
         "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
       desc_2: "Tissu: voile de kite et coton. Modèle sous licence Dodynette.",
       category: "sacs",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
       item_imgs: [
         {
@@ -780,7 +780,7 @@ export const item = {
         "L'assise et le dossier d'origines étaient en cannage. Nous avons fait le choix de remplacer ce cannage par une planche en contreplaqué capitonnée avec un tissu d'ameublement!",
       desc_2: "",
       category: "autre",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
       item_imgs: [
         {
