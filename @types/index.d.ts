@@ -4,40 +4,58 @@ type Other = "autre";
 
 type Category = Sacs | Vannerie | Other;
 
-type Item_img_url = {
+interface Item_img {
   id: number;
   is_main: boolean;
   url: string;
-};
+}
+interface FormItem_img extends Item_img {
+  id?: number;
+  is_main?: boolean;
+}
+interface FormItem_img_of_getTailEnd extends Item_img {
+  id: number;
+  url: string;
+}
 
-type Item = {
-  id: string;
+
+interface Item {
+  id: number;
   item_id_number: string;
   name: string;
   category: Category;
   is_available: boolean;
-  price: number | string;
+  price: number;
   desc_1?: string;
   desc_2?: string;
-  item_img_urls?: Item_img_url[];
-};
+  item_imgs?: Item_img[];
+}
+interface FormItem extends Item {
+  id?: number;
+  category: Category | undefined;
+  is_available: boolean | undefined;
+}
 
-type FormStateTemplate = {
+interface FormStateTemplate {
   id: number | null;
-  item_id_number: string | undefined;
+  item_id_number: string;
   name: string;
   category: Category | undefined;
   is_available: boolean | undefined;
   price?: number;
   desc_1?: string;
   desc_2?: string;
-  item_img_id: number | null;
-  item_img_url: string;
-};
+  item_img_main_id: number | null;
+  item_img_main_url: string;
+  item_img_sub1_id?: number | null;
+  item_img_sub1_url?: string;
+  item_img_sub2_id?: number | null;
+  item_img_sub2_url?: string;
+}
 
-type AdminItemFormProps = {
+interface AdminItemFormProps {
   props: {
     formType: string;
     formStateTemplate?: FormStateTemplate;
   };
-};
+}

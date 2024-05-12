@@ -32,7 +32,7 @@ export const btn_cancel = "Annuler";
 
 export const msg_loading = "Loading...";
 
-export const formStateTemplate = {
+export const formStateTemplate: FormStateTemplate = {
   id: null,
   item_id_number: "",
   name: "",
@@ -41,10 +41,15 @@ export const formStateTemplate = {
   price: 0,
   desc_1: "",
   desc_2: "",
-  item_img_id: null,
-  item_img_url: "",
+  item_img_main_id: null,
+  item_img_main_url: "",
+  item_img_sub1_id: null,
+  item_img_sub1_url: "",
+  item_img_sub2_id: null,
+  item_img_sub2_url: "",
 };
 
 export const redirect_url_after_updating_item_prod =
-  "https://kreya-d-zil--pr9-develop-ag0qiiqu.web.app";
-export const redirect_url_after_updating_item_dev = "http://localhost:5173";
+  "https://kreya-d-zil.web.app/";
+export const redirect_url_after_updating_item_dev =
+  "https://kreya-d-zil--pr11-develop-ft98okjm.web.app";

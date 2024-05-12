@@ -1,6 +1,6 @@
 # Kréya-D-zil
 
-This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - this TypeScript web app supports artisan designers who offer unique and original creations made in Guadalupe. ⛱
+This repository contains the codebase of a website for <strong>Kréya-D-zil</strong> - this TypeScript web app supports artisan designers who offer unique and original creations made in Guadalupe.
 <br/>
 
 ## Demo
@@ -9,7 +9,7 @@ This repository contains the codebase of a website for <strong>Kréya-D-zil</str
 
 ## Motivation
 
-To create opportunities for the artist to showcase his/her work and sell it on the web. Provide an accessible store space for all customers.
+To create opportunities for artists to showcase their work and sell it on the web. To provide artists with the ability to freely edit the display of their work and to provide a retail space that is accessible to all customers.
 
 ## Features
 

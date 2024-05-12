@@ -11,7 +11,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/fSn8xsj/20240107-142050.jpg",
@@ -45,7 +45,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/wJzkbzC/20240107-142002.jpg",
@@ -74,7 +74,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/72xZ6C0/20240107-141845.jpg",
@@ -98,7 +98,7 @@ export const item = {
       category: "sacs",
       price: 55,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/mFv0yQv/20240107-141815.jpg",
@@ -132,7 +132,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/FDd6t3C/20240107-141521.jpg",
@@ -166,7 +166,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/BGpdxXg/20240107-141440.jpg",
@@ -200,7 +200,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/SrKwppr/20240107-141304.jpg",
@@ -229,7 +229,7 @@ export const item = {
       category: "sacs",
       price: 50,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/4mbFM7f/20240107-151138.jpg",
@@ -258,7 +258,7 @@ export const item = {
       category: "sacs",
       price: 80,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/RDM4xrC/20240107-140557.jpg",
@@ -298,7 +298,7 @@ export const item = {
       category: "sacs",
       price: 80,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/k1XtKDf/20240107-140725.jpg",
@@ -330,7 +330,7 @@ export const item = {
       category: "vannerie",
       price: 70,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/nBSgsTx/20240107-153851.jpg",
@@ -352,7 +352,7 @@ export const item = {
       category: "vannerie",
       price: 80,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/zbTdFLr/20240107-153924.jpg",
@@ -374,7 +374,7 @@ export const item = {
       category: "vannerie",
       price: 85,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/HdvyRMB/20240107-153950.jpg",
@@ -402,7 +402,7 @@ export const item = {
       category: "vannerie",
       price: 75,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/vxGY5NK/20230913-135943.jpg",
@@ -434,7 +434,7 @@ export const item = {
       category: "vannerie",
       price: 30,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/23JM8vq/20240107-153826.jpg",
@@ -456,7 +456,7 @@ export const item = {
       category: "vannerie",
       price: 30,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/HppYZ3M/20230913-140134.jpg",
@@ -488,9 +488,9 @@ export const item = {
       desc_2:
         "Prix uniquement sur devis et après avoir touché l'objet à rénover.",
       category: "autre",
-      price: "Article sur commande",
+      price: 0,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/0n7Mj7n/20211129-172835.jpg",
@@ -528,7 +528,7 @@ export const item = {
       category: "sacs",
       price: 45,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/CnFtPSz/Sac-ordinateur-60.jpg",
@@ -556,7 +556,7 @@ export const item = {
       category: "sacs",
       price: 40,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/BN4jP4n/20220819-114630.jpg",
@@ -579,7 +579,7 @@ export const item = {
       category: "vannerie",
       price: 75,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/K2c5MXF/20230913-135831.jpg",
@@ -596,13 +596,12 @@ export const item = {
       id: 21,
       item_id_number: "202321",
       name: "Panier 2 teintes naturelles",
-      desc_1:
-        "Grand panier tressé avec des brins aux 2 teintes naturelles.",
+      desc_1: "Grand panier tressé avec des brins aux 2 teintes naturelles.",
       desc_2: "Matière: rouelle de rotin.",
       category: "vannerie",
       price: 80,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/ykkyBX6/20230913-135532.jpg",
@@ -629,7 +628,7 @@ export const item = {
       category: "vannerie",
       price: 45,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/K6w6CBd/20230122-094630.jpg",
@@ -657,7 +656,7 @@ export const item = {
       category: "vannerie",
       price: 20,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/b6V4365/20211015-074624.jpg",
@@ -690,7 +689,7 @@ export const item = {
       category: "vannerie",
       price: 60,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/9H7Dv0M/20220204-144917.jpg",
@@ -714,7 +713,7 @@ export const item = {
       category: "sacs",
       price: 75,
       is_available: true,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/HdcRwTT/20230202-175245.jpg",
@@ -733,12 +732,11 @@ export const item = {
       name: "Sac banane ALL WE DO IS KITING",
       desc_1:
         "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
-      desc_2:
-        "Tissus: voile de kite et coton. Modèle sous licence Dodynette.",
+      desc_2: "Tissus: voile de kite et coton. Modèle sous licence Dodynette.",
       category: "sacs",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/zrBCgxs/20240128-164000.jpg",
@@ -757,12 +755,11 @@ export const item = {
       name: "Sac banane Bandidos",
       desc_1:
         "Sac banane réalisée avec une ancienne voile de kitesurf! 100% sur mesures!",
-      desc_2:
-        "Tissu: voile de kite et coton. Modèle sous licence Dodynette.",
+      desc_2: "Tissu: voile de kite et coton. Modèle sous licence Dodynette.",
       category: "sacs",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/NpZzS3L/20240303-174307.jpg",
@@ -781,12 +778,11 @@ export const item = {
       name: "Berceuse simple",
       desc_1:
         "L'assise et le dossier d'origines étaient en cannage. Nous avons fait le choix de remplacer ce cannage par une planche en contreplaqué capitonnée avec un tissu d'ameublement!",
-      desc_2:
-        "",
+      desc_2: "",
       category: "autre",
-      price: "Article sur commande",
+      price: 0,
       is_available: false,
-      item_img_urls: [
+      item_imgs: [
         {
           id: 1,
           url: "https://i.ibb.co/CQpbyq2/20211129-101222.jpg",
@@ -799,7 +795,5 @@ export const item = {
         },
       ],
     },
-
-
   ],
 };

@@ -24,8 +24,8 @@ const AdminItemList = () => {
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
                     <Card.Text>
-                      {item.item_img_urls
-                        ? item.item_img_urls
+                      {item.item_imgs
+                        ? item.item_imgs
                             .filter((img) => img.is_main)
                             .map((img) => {
                               return (
