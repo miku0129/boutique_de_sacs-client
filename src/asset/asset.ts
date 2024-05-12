@@ -50,5 +50,6 @@ export const formStateTemplate: FormStateTemplate = {
 };
 
 export const redirect_url_after_updating_item_prod =
+  "https://kreya-d-zil.web.app/";
+export const redirect_url_after_updating_item_dev =
   "https://kreya-d-zil--pr11-develop-ft98okjm.web.app";
-export const redirect_url_after_updating_item_dev = "http://localhost:5173";
