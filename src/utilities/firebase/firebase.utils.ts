@@ -160,25 +160,42 @@ export const updateDocument_of_an_item = async (
     }
 
     for (let i = 0; i < imagesOfItem.length; i++) {
-      console.log("?", imagesOfItem[i])
-      const ItemImgsRef = doc(
-        db,
-        collection_name,
-        String(itemId),
-        "item_imgs",
-        String(imagesOfItem[i].id)
-      );
-      try {
-        const docSnap_of_img = await getDoc(ItemImgsRef);
-        if (docSnap_of_img.exists()) {
-          await updateDoc(ItemImgsRef, { ...imagesOfItem[i] });
-        } else {
-          await setDoc(ItemImgsRef, { ...imagesOfItem[i] });
-        }
-      } catch (e) {
-        window.alert(
-          `Échec de la mise à jour de l'image de l'élément. Error log: ${e}`
+      if (imagesOfItem[i].url !== "") {
+        const ItemImgsRef = doc(
+          db,
+          collection_name,
+          String(itemId),
+          "item_imgs",
+          String(imagesOfItem[i].id)
         );
+        try {
+          const docSnap_of_img = await getDoc(ItemImgsRef);
+          if (docSnap_of_img.exists()) {
+            await updateDoc(ItemImgsRef, { ...imagesOfItem[i] });
+          } else {
+            await setDoc(ItemImgsRef, { ...imagesOfItem[i] });
+          }
+        } catch (e) {
+          window.alert(
+            `Échec de la mise à jour de l'image de l'élément. Error log: ${e}`
+          );
+        }
+      } else if (imagesOfItem[i].id !== null && imagesOfItem[i].url === "") {
+        try {
+          await deleteDoc(
+            doc(
+              db,
+              collection_name,
+              String(itemId),
+              "item_imgs",
+              String(imagesOfItem[i].id)
+            )
+          );
+        } catch (e) {
+          window.alert(
+            `Échec de la suppression à jour de l'image de l'élément. Error log: ${e}`
+          );
+        }
       }
     }
     window.alert(`L'article a été mis à jour avec succès.`);

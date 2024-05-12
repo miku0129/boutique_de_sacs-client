@@ -76,19 +76,15 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       setFormData(formStateTemplate);
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
-      // const itemId = formData!.id as number;
-      // const imagesOfItem = makeItemImgsArrayForUpdate(
-      //   formData!.item_img_main_id,
-      //   formData!.item_img_main_url,
-      //   formData!.item_img_sub1_id,
-      //   formData!.item_img_sub1_url,
-      //   formData!.item_img_sub2_id,
-      //   formData!.item_img_sub2_url
-      // );
-      // await updateDocument_of_an_item(itemId, item, imagesOfItem);
-      // window.location.href = import.meta.env.PROD
-      //   ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
-      //   : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
+      const itemId = formData!.id as number;
+      const images = setItemImgs(
+        formData as FormStateTemplate,
+        formTypes["UPDATE"]
+      );
+      await updateDocument_of_an_item(itemId, item, images as FormItem_img[]);
+      window.location.href = import.meta.env.PROD
+        ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
+        : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
     }
   };
 

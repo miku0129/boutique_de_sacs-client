@@ -42,9 +42,6 @@ const Item = () => {
         return <h5 key={idx}>{str.trim()}.</h5>;
       });
   };
-  console.log("id", id)
-
-  console.log("item", item)
 
   return (
     item && (
