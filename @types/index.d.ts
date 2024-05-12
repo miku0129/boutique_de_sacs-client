@@ -13,6 +13,11 @@ interface FormItem_img extends Item_img {
   id?: number;
   is_main?: boolean;
 }
+interface FormItem_img_of_getTailEnd extends Item_img {
+  id: number;
+  url: string;
+}
+
 
 interface Item {
   id: number;
