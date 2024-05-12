@@ -10,6 +10,8 @@ export const getThisYear = (): string => {
   return fullDateString.split(" ")[3];
 };
 
+//FireStoreにおいてデータは必ずしも追加順に格納されないため
+//最後尾のIDを取得するためにソートする必要がある。
 export const getTailendId = <T extends Item[] | FormItem_img_of_getTailEnd[]>(
   obj: T
 ) => {

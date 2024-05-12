@@ -18,7 +18,7 @@ import {
 } from "firebase/firestore/lite";
 import { firestore as db } from "./firebase.utils";
 
-import { getTailendId } from "./firebase.helper";
+import { getTailendId } from "../utility";
 
 //To initialize shop data
 import { item } from "../data/item";
