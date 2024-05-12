@@ -10,6 +10,20 @@ export const getThisYear = (): string => {
   return fullDateString.split(" ")[3];
 };
 
+export const getTailendId = <T extends Item[] | FormItem_img_of_getTailEnd[]>(
+  obj: T
+) => {
+  const array_of_id_of_items = obj.map((obj) => obj.id);
+  const sorted_array_of_id_of_items = array_of_id_of_items.sort(
+    (a, b) => a - b
+  );
+  console.log("sorted", sorted_array_of_id_of_items);
+  const id_for_the_new_item =
+    sorted_array_of_id_of_items[sorted_array_of_id_of_items.length - 1] + 1;
+
+  return id_for_the_new_item;
+};
+
 export const setItemImgs = (formData: FormStateTemplate, formType: string) => {
   if (formType === formTypes["REGISTER"]) {
     let urls = [
@@ -31,19 +45,22 @@ export const setItemImgs = (formData: FormStateTemplate, formType: string) => {
       { id: formData.item_img_main_id, url: formData.item_img_main_url },
       { id: formData.item_img_sub1_id, url: formData.item_img_sub1_url },
       { id: formData.item_img_sub2_id, url: formData.item_img_sub2_url },
-    ];
-    return imgs.map((img, idx) => {
+    ] as FormItem_img_of_getTailEnd[];
+    return imgs.map((img) => {
       if (img.url !== "") {
-        return img.id === null
-          ? ({
-              id: idx,
-              url: img.url,
-              is_main: false,
-            } as FormItem_img)
-          : ({
-              id: img.id,
-              url: img.url,
-            } as FormItem_img);
+        if (img.id === null) {
+          const id = getTailendId(imgs);
+          return {
+            id: id,
+            url: img.url,
+            is_main: false,
+          } as FormItem_img;
+        } else {
+          return {
+            id: img.id,
+            url: img.url,
+          } as FormItem_img;
+        }
       } else {
         return { id: img.id, url: "" } as FormItem_img;
       }
