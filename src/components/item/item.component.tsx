@@ -44,51 +44,53 @@ const Item = () => {
   };
 
   return (
-    item && (
-      <div key={item.id}>
-        <ItemContentLayout>
-          <div>
-            <Carousel>
-              {item.item_imgs &&
-                item.item_imgs.map((item_img: Item_img) => {
-                  return (
-                    <Carousel.Item key={item_img.id + 1}>
-                      <CustomItemImg src={item_img.url} />
-                    </Carousel.Item>
-                  );
-                })}
-            </Carousel>
-          </div>
+    <div>
+      {item && (
+        <div key={item.id}>
+          <ItemContentLayout>
+            <div>
+              <Carousel>
+                {item.item_imgs &&
+                  item.item_imgs.map((item_img: Item_img) => {
+                    return (
+                      <Carousel.Item key={item_img.id + 1}>
+                        <CustomItemImg src={item_img.url} />
+                      </Carousel.Item>
+                    );
+                  })}
+              </Carousel>
+            </div>
 
-          <div>
             <div>
-              <h1>{item.name}</h1>
-              <p>numéro: {item.item_id_number}</p>
+              <div>
+                <h1>{item.name}</h1>
+                <p>numéro: {item.item_id_number}</p>
+              </div>
+              <div>
+                <h3>{price_or_notification}</h3>
+                <hr />
+                <div>{item.desc_1 && makeNewline(item.desc_1)}</div>
+                <hr />
+                <div>{item.desc_2 && makeNewline(item.desc_2)}</div>
+              </div>
+              {
+                <CustomLink to={"/contact"} state={{ item }}>
+                  <CustomBtn>{item_purchase_button_text}</CustomBtn>
+                </CustomLink>
+              }
             </div>
-            <div>
-              <h3>{price_or_notification}</h3>
-              <hr />
-              <div>{item.desc_1 && makeNewline(item.desc_1)}</div>
-              <hr />
-              <div>{item.desc_2 && makeNewline(item.desc_2)}</div>
-            </div>
-            {
-              <CustomLink to={"/contact"} state={{ item }}>
-                <CustomBtn>{item_purchase_button_text}</CustomBtn>
-              </CustomLink>
-            }
-          </div>
-        </ItemContentLayout>
-        <ContentLayout>
-          <hr />
-          <h2>Cher client</h2>
-          {(item.category === "sacs" || item.category === "vannerie") && (
-            <NoticeItemGeneral />
-          )}
-          {item.category === "autre" && <NoticeRepairChair />}
-        </ContentLayout>
-      </div>
-    )
+          </ItemContentLayout>
+          <ContentLayout>
+            <hr />
+            <h2>Cher client</h2>
+            {(item.category === "sacs" || item.category === "vannerie") && (
+              <NoticeItemGeneral />
+            )}
+            {item.category === "autre" && <NoticeRepairChair />}
+          </ContentLayout>
+        </div>
+      )}
+    </div>
   );
 };
 
