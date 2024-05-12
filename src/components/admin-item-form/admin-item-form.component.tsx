@@ -4,10 +4,7 @@ import {
   addDocument_of_an_item,
   updateDocument_of_an_item,
 } from "../../utilities/firebase/firebase.utils";
-import {
-  makeItemImgsArrayForRegister,
-  makeItemImgsArrayForUpdate,
-} from "../../utilities/utility";
+import { setItemImgs } from "../../utilities/utility";
 import { formTypes } from "../../types/types";
 import {
   redirect_url_after_updating_item_prod,
@@ -65,34 +62,33 @@ const AdminItemForm = ({ props }: AdminItemFormProps) => {
       name: formData!.name,
       category: formData!.category,
       is_available: formData!.is_available,
-      price:
-        typeof formData!.price === "undefined" ? 0 : Number(formData!.price),
+      price: Number(formData!.price),
       desc_1: formData!.desc_1,
       desc_2: formData!.desc_2,
     } as FormItem;
+
     if (formType === formTypes["REGISTER"]) {
-      const imagesOfItem = makeItemImgsArrayForRegister(
-        formData!.item_img_main_url,
-        formData!.item_img_sub1_url,
-        formData!.item_img_sub2_url
+      const images = setItemImgs(
+        formData as FormStateTemplate,
+        formTypes["REGISTER"]
       );
-      await addDocument_of_an_item(item, imagesOfItem);
+      await addDocument_of_an_item(item, images as FormItem_img[]);
       setFormData(formStateTemplate);
       window.location.reload();
     } else if (formType === formTypes["UPDATE"]) {
-      const itemId = formData!.id as number;
-      const imagesOfItem = makeItemImgsArrayForUpdate(
-        formData!.item_img_main_id,
-        formData!.item_img_main_url,
-        formData!.item_img_sub1_id,
-        formData!.item_img_sub1_url,
-        formData!.item_img_sub2_id,
-        formData!.item_img_sub2_url
-      );
-      await updateDocument_of_an_item(itemId, item, imagesOfItem);
-      window.location.href = import.meta.env.PROD
-        ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
-        : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
+      // const itemId = formData!.id as number;
+      // const imagesOfItem = makeItemImgsArrayForUpdate(
+      //   formData!.item_img_main_id,
+      //   formData!.item_img_main_url,
+      //   formData!.item_img_sub1_id,
+      //   formData!.item_img_sub1_url,
+      //   formData!.item_img_sub2_id,
+      //   formData!.item_img_sub2_url
+      // );
+      // await updateDocument_of_an_item(itemId, item, imagesOfItem);
+      // window.location.href = import.meta.env.PROD
+      //   ? `${redirect_url_after_updating_item_prod}/admin/dashboard`
+      //   : `${redirect_url_after_updating_item_dev}/admin/dashboard`;
     }
   };
 
