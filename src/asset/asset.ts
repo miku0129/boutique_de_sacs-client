@@ -3,7 +3,7 @@ export const shop_logo_url = "https://i.ibb.co/cw2g2dr/logo.png";
 export const shop_concept_1 =
   "Créatrice vous propose des pièces uniques et originales, réalisées à Sainte Anne!";
 export const shop_concept_2 =
-  "Articles personnalisés et sur-mesures, sur commande!";
+  "Articles personnalisés et sur-mesure, sur commande!";
 
 export const header_about = "Qui suis-je?";
 export const header_shop = "Boutique";
@@ -18,7 +18,7 @@ export const price_or_notification_text = "Article sur commande";
 export const about_text_1 =
   "Mon parcours créatif a commencé en 2016 avec ma première machine, offerte par ma famille! Ma mère m'a transmis les bases de la couture, puis, j'ai approfondi mes compétences grâce aux multiples tutoriels en ligne!";
 export const about_text_2 =
-  "En 2021, j'ai gagné une formation vannerie avec Mariko'w, situé à Saint François, que j'ai complétée par une formation cannage! Grâce aux bases que m'a enseignées Mariko'w ainsi qu'à ma motivation personnelle j'ai continué à tresser des paniers et je me suis lancée dans la rénovation de mobilier!";
+  "En 2021, j'ai gagné une formation vannerie avec Mariko'w, situé à Saint François, que j'ai complétée par une formation cannage! Ainsi qu'à ma motivation personnelle j'ai continué à tresser des paniers et je me suis lancée dans la rénovation de mobilier!";
 export const about_text_3 =
   "Passionnée, je me laisse guider par l'inspiration et les fibres naturelles!";
 export const about_text_4 =
